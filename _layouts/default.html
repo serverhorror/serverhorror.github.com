@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{{ page.title }}</title>
+        <title>{{ page.title | downcase }}</title>
     </head>
     <body>
         <ul>
@@ -10,7 +10,7 @@
             <li>Last Modified: <time datetime="{{ site.time | date: "%F" }}">{{ site.time | date: "%F" }}</time></li>
         </ul>
         <div>
-            {{ content }}
+            {{ content | downcase }}
         </div>
         <ul>
             <li><a href="{{ site.url }}">Home</a></li>
