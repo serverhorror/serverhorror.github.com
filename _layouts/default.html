@@ -4,10 +4,14 @@
         <title>{{ page.title }}</title>
     </head>
     <body>
-        {{ content }}
-<ul>
-    <li><a href="{{ site.url }}">Home</a></li>
-    <li><time datetimte="{{ site.time }}">{{ site.time }}</time></li>
-</ul>
+        <div>
+            {{ content }}
+        </div>
+        <ul>
+            <li><a href="{{ site.url }}">Home</a></li>
+            <li>
+            <time datetimte="{{ site.time }}">{{ site.time }}</time>
+            </li>
+        </ul>
     </body>
 </html>
