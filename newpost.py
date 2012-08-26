@@ -25,7 +25,7 @@ def main(args):
 	date = datetime.today()
 
 	front_matter_data[u"title"] = title
-	front_matter_data[u"date"] = date.strformat(u'%F')
+	front_matter_data[u"date"] = date.strftime(u'%F')
 	posts_dir = u"_posts"
 	post_file = u"{}-{}.md".format(
 			front_matter_data[u"date"],
