@@ -21,11 +21,15 @@ Headline
 Sub-Headline
 ------------
 
+ordered list
+------------
 
 1.  Bird
 1.  McHale
 1.  Parish
 
+unordered list
+--------------
 
 * unordered list
 * unordered list
@@ -34,12 +38,16 @@ Sub-Headline
 * unordered list
 * unordered list
 
+unordered nested list
+---------------------
 
 * unordered list
     * unordered list intended
         * unordered list intended
     * unordered list intended
 
+quotes
+-----
 
 > This is the first level of quoting.
 >
