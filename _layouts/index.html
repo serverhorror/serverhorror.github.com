@@ -2,15 +2,20 @@
 layout: default
 ---
 
+<!--
+<h1>What the heck is this about..</h1>
 <div>
     {{ content }}
 </div>
+-->
 
 <h1>Blog Posts</h1>
 <ul class="posts">
     {% for post in site.posts %}
     <li>
-        <time datetime="{{ post.date | date: "%F" }}" pubdate>{{ post.date | date: "%F" }}</time> &raquo; <a href="{{ post.url }}">{{ post.title }}</a>
+    <time datetime="{{ post.date | date: "%F" }}" pubdate>{{ post.date | date: "%F" }}</time>
+    &rArr;
+    <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
     {% endfor %}
 </ul>
