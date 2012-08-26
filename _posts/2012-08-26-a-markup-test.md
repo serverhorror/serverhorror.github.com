@@ -4,9 +4,9 @@ title: a markup test
 date: 2012-08-26 16:22:52
 ---
 
+
 Headline
 ========
-
 
 > ## This is a header.
 > 
@@ -20,6 +20,7 @@ Headline
 
 Sub-Headline
 ------------
+
 
 ordered list
 ------------
@@ -38,6 +39,7 @@ unordered list
 * unordered list
 * unordered list
 
+
 unordered nested list
 ---------------------
 
@@ -45,6 +47,7 @@ unordered nested list
     * unordered list intended
         * unordered list intended
     * unordered list intended
+
 
 quotes
 -----
@@ -55,8 +58,6 @@ quotes
 >
 > Back to the first level.
 
-
-
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
 Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
@@ -64,9 +65,9 @@ Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
 > Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
 id sem consectetuer libero luctus adipiscing.
 
+
 Code Blocks
 -----------
-
 
 This is a normal paragraph:
 
@@ -87,15 +88,11 @@ This is [an example](http://example.com/ "Title") inline link.
 
 [This link](http://example.net/) has no title attribute.
 
-
 This is [an example][id] reference-style link.
-
 
 [id]: http://example.com/  "Optional Title Here"
 
-
 Visit [Daring Fireball][] for more information.
-
 
 [Daring Fireball]: http://daringfireball.net/
 
