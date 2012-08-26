@@ -10,7 +10,9 @@ layout: default
 <ul class="posts">
   {% for post in site.posts %}
     <li><span>{{ post.date | "%Y-%m-%d" }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    <li><span>{{ post.date | "%Y" }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    <li><span>{{ post.date }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    <li><span>{{ post.date | to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    <li>Next</li>
   {% endfor %}
 </ul>
 
