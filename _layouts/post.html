@@ -3,10 +3,15 @@ layout: default
 ---
 
 <h1>{{ page.title}}</h1>
+<ul>
+    <li>Published: <time datetime="{{ page.date | date: "%F" }}" pubdate>{{ page.date | date: "%F" }}</time></li>
+</ul>
 
 {{ content | downcase }}
 
 
+<!--
 <pre>
 {{ page.content | downcase }}
 </pre>
+-->
