@@ -2,32 +2,18 @@
 <html>
     <head>
         <title>{{ page.title }}</title>
-        <!--
-        <link
-        href='http://fonts.googleapis.com/css?family=IM+Fell+Great+Primer|Stint+Ultra+Expanded'
-        rel='stylesheet' type='text/css'>
-
-
-        <style type="text/css">
-            h1, h2, h3, h4, h5, h6, h7, h8 {
-                font-family: 'IM Fell Great Primer', serif;
-            }
-            body {
-                font-family: 'Stint Ultra Expanded', cursive;
-                font-size: 12px;
-            }
-        </style>
-        -->
     </head>
     <body>
+        <ul>
+            <li><a href="{{ site.url }}">Home</a></li>
+            <li>Last Modified: <time datetimte="{{ site.time }}">{{ site.time | to_date_string }}</time></li>
+        </ul>
         <div>
             {{ content }}
         </div>
         <ul>
             <li><a href="{{ site.url }}">Home</a></li>
-            <li>
-            <time datetimte="{{ site.time }}">{{ site.time }}</time>
-            </li>
+            <li>Last Modified: <time datetimte="{{ site.time }}">{{ site.time | to_date_string }}</time></li>
         </ul>
     </body>
 </html>
