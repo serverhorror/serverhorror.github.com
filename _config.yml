@@ -2,3 +2,6 @@ safe: true
 pygments: true
 markdown: rdiscount
 permalink: pretty
+baseurl: /
+url: http://serverhorror.github.com
+
