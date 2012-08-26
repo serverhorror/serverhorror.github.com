@@ -6,11 +6,16 @@
     <body>
         {{ content }}
 
+        <time datetimte="{{ site.time }}">{{ site.time }}</time>
+
         <div>
-            {{ site.url }}
+            site.url:: {{ site.url }}
         </div>
         <div>
-            {{ baseurl }}
+            site.basurl:: {{ baseurl }}
+        </div>
+        <div>
+            basurl:: {{ baseurl }}
         </div>
     </body>
 </html>
