@@ -44,10 +44,10 @@ def main(args):
 
 
     front_matter_data[u"title"] = title
-    front_matter_data[u"date"] = date.strftime(u'%F')
+    front_matter_data[u"date"] = date.strftime(u'%F %H:%M')
     posts_dir = u"_posts"
     post_file = u"{}-{}".format(
-            front_matter_data[u"date"],
+            date.strftime("%F"),
             slugify(front_matter_data[u"title"], ),
             )
     post_file = "{}.md".format(post_file)
@@ -65,7 +65,9 @@ def main(args):
         raise
     subprocess.call(["git", "add", post])
     editor = os.getenv("EDITOR", "vim")
-    os.execlp(editor, editor, "{}".format(post))
+    subprocess.call([editor, "{}".format(post)])
+    subprocess.call(["git", "ci", "-m",
+        "New Post: {}".format(title.title(), ), post])
 
 
 
