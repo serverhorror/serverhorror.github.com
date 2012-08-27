@@ -30,4 +30,4 @@ service hostname {
     server          = /bin/hostname
     server_args     = -f
 }
-[/sourcecode]
+{% endhighlight %}
