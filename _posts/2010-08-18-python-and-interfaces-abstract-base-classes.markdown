@@ -7,7 +7,7 @@ title: Python and "Interfaces" (Abstract Base Classes)
 wordpress_id: 799
 ---
 
-[sourcecode language="python"]
+{% highlight python %}
 import sys
 import os
 
@@ -48,4 +48,4 @@ if __name__ == u'__main__':
     except (TypeError, ) as error:
         print error
         raise
-[/sourcecode]
+{% endhighlight %}
