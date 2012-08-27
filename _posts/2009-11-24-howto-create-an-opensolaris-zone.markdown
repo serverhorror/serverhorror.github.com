@@ -15,18 +15,18 @@ OK this is my first encounter with OpenSolaris Zones, so take all off the follow
 
 To make it (hopefully) easy to destroy the zone we create a ZFS Filesystem which will hold all of our zones:
 
-[sourcecode langauage="bash"]
+{% highlight bash %}
 pfexec zfs create rpool/zones
 pfexec umount /rpool/zones/
 pfexec zfs set mountpoint=/zones rpool/zones
 pfexec zfs mount rpool/zones
 pfexec chmod 0700 /zones/ # Necessary so that a later &quot;verify&quot; doesn't complain...
-[/sourcecode]
+{% endhighlight %}
 
 
 Great we have a file system to hold our zones, now let's configure a new zone:
 
-[sourcecode langauage="text"]
+{% highlight text %}
 pfexec zonecfg -z testzone
 zonecfg:testzone&gt; create
 zonecfg:testzone&gt; commit
@@ -42,12 +42,12 @@ zonecfg:testzone&gt; verify
 zonecfg:testzone&gt; end
 The end command only makes sense in the resource scope.
 zonecfg:testzone&gt;
-[/sourcecode]
+{% endhighlight %}
 
 
 Looks all nice and fine, let's verify again:
 
-[sourcecode langauage="text"]
+{% highlight text %}
 $ pfexec zoneadm -z testzone verify
 WARNING: /zones/testzone does not exist, so it could not be verified.
 When 'zoneadm install' is run, 'install' will try to create
@@ -56,12 +56,12 @@ but the 'verify' may fail if:
 the parent directory of /zones/testzone is group- or other-writable
 or
 /zones/testzone overlaps with any other installed zones.
-[/sourcecode]
+{% endhighlight %}
 
 
 Still some things to do.
 
-[sourcecode langauage="text"]
+{% highlight text %}
 $pfexec mkdir -p /zones/testzone
 $ pfexec zoneadm -z testzone verify
 /zones/testzone must not be group readable.
@@ -71,12 +71,12 @@ $ pfexec zoneadm -z testzone verify
 could not verify zonepath /zones/testzone because of the above errors.
 zoneadm: zone testzone failed to verify
 $ pfexec chmod 0700 /zones/testzone
-[/sourcecode]
+{% endhighlight %}
 
 
 This looks a lot better now let's install the zone. **Note: We just configured the zone, we didn't yet install it**. So let's start the installation:
 
-[sourcecode langauage="text"]
+{% highlight text %}
 $ pfexec zoneadm -z testzone  install
 A ZFS file system has been created for this zone.
  Publisher: Using opensolaris.org (http://pkg.opensolaris.org/release/).
@@ -103,18 +103,18 @@ Install Phase                              7329/732
 
  Next Steps: Boot the zone, then log into the zone console
  (zlogin -C) to complete the configuration process
-[/sourcecode]
+{% endhighlight %}
 
 
 Looks nice. Even some more instructions. So let's boot the zone:
 
-[sourcecode langauage="text"]
+{% highlight text %}
 $ pfexec zoneadm -z testzone  boot
-[/sourcecode]
+{% endhighlight %}
 
 All nice and fine, let's try to use the zone (You can escape from this by using "~." - that's a tilde and a dot - just hit "ENTER~."):
 
-[sourcecode langauage="text"]
+{% highlight text %}
 $ pfexec zlogin -C testzone
 [Connected to zone 'testzone' console]
 You did not enter a selection.
@@ -130,12 +130,12 @@ Type the number of your choice and press Return: 6
 
 Creating new rsa public/private host key pair
 Creating new dsa public/private host key pair
-[/sourcecode]
+{% endhighlight %}
 
 
 Shock! There's some curses (or whatever OpenSolaris uses) interface popping up! It will ask about hostname, time zone and root password. Enter the gritty details and try ESC-2 if it doesn't continue with F2 (I chose "X Terminal Emulator (xterms)" - seems to be a bad choice).
 
-[sourcecode langauage="text"]
+{% highlight text %}
 Configuring network interface addresses:.
 System identification is completed.
 
@@ -175,7 +175,7 @@ TCP: IPv4
 root@testzone.local:~# pkg search telnet
 pkg: Some servers failed to respond appropriately:
  http://pkg.opensolaris.org/release/: node name or service name not known
-[/sourcecode]
+{% endhighlight %}
 
 
 Again to escape from the zlogin stuff hit: "ENTER~." - that's ENTER, tide, dot.
@@ -186,44 +186,44 @@ A few minor notes on other tools that could be usefull:
 
 Installing took quite a while on my system, since I could do some work in parallel I didn't investigate. But I found the following command nice to see the status:
 
-[sourcecode langauage="text"]
+{% highlight text %}
 $ zoneadm -z testzone list -v
  ID NAME             STATUS     PATH                           BRAND    IP
  - testzone         incomplete /zones/testzone                ipkg     shared
-[/sourcecode]
+{% endhighlight %}
 
 
 So let's set up a nice terminal that watches the STATUS of our zone (the incomplete will go away as soon as the installation is finished). Of course we could watch the original terminal simply returning, but that would be kind of boring - wouldn't it?
 
-[sourcecode langauage="text"]
+{% highlight text %}
 $ while true; do clear;zoneadm -z testzone list -v; zoneadm list -iv;sleep .8; done
-[/sourcecode]
+{% endhighlight %}
 
 
 Also the state of the zone after booting it:
 
-[sourcecode langauage="text"]
+{% highlight text %}
 $ zoneadm -z testzone list -v
 ID NAME             STATUS     PATH                           BRAND    IP
 1 testzone         running    /zones/testzone                ipkg     shared
-[/sourcecode]
+{% endhighlight %}
 
 
 Shutting the zone down cleanly:
 
-[sourcecode langauage="text"]
+{% highlight text %}
 $ pfexec zlogin testzone shutdown # from the outside
 # shutdown -y -i 0 # from inside the zone
-[/sourcecode]
+{% endhighlight %}
 
 
 Then looks like this:
 
-[sourcecode langauage="text"]
+{% highlight text %}
 $ zoneadm -z testzone list -v
 ID NAME             STATUS     PATH                           BRAND    IP
 - testzone         installed  /zones/testzone                ipkg     shared
-[/sourcecode]
+{% endhighlight %}
 
 
 Happy working with your zone.
