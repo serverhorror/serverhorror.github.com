@@ -46,7 +46,7 @@ Since my private resources are limited this will run on a [hosting provider](htt
 
 The host will be running Debian/Squeeze and what you get after installing is this:
 
-[sourcecode language="text"]
+{% highlight text %}
 # Loopback device:
 auto lo
 iface lo inet loopback
@@ -62,11 +62,11 @@ auto  eth0
 
 # default route to access subnet
 up route add -net 192.0.2.192 netmask 255.255.255.192 gw 192.0.2.193 br0
-[/sourcecode]
+{% endhighlight %}
 
 Let's make a bridge which will later on be used to route the traffic from our guests to the world:
 
-[sourcecode language="text"]
+{% highlight text %}
 # Loopback device:
 auto lo
 iface lo inet loopback
@@ -82,11 +82,11 @@ iface br0 inet static
 
 # default route to access subnet
 up route add -net 192.0.2.192 netmask 255.255.255.192 gw 192.0.2.193 eth0
-[/sourcecode]
+{% endhighlight %}
 
 Let's look at the output of iproute2 now.
 
-[sourcecode language="text"]
+{% highlight text %}
 $ ip link list
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue state UNKNOWN
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -96,11 +96,11 @@ $ ip link list
     link/ether 00:24:21:b4:36:26 brd ff:ff:ff:ff:ff:ff
 4: dummy0: <BROADCAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN
     link/ether 92:0e:c3:fe:5f:ae brd ff:ff:ff:ff:ff:ff
-[/sourcecode]
+{% endhighlight %}
 
 All nice and fine, we have a br0 interface eth0 and dummy0. What about the assigned addresses?
 
-[sourcecode language="text"]
+{% highlight text %}
 $ ip address list
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue state UNKNOWN
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -120,35 +120,35 @@ $ ip address list
     link/ether 92:0e:c3:fe:5f:ae brd ff:ff:ff:ff:ff:ff
     inet6 fe80::900e:c3ff:fefe:5fae/64 scope link
        valid_lft forever preferred_lft forever
-[/sourcecode]
+{% endhighlight %}
 
 All nice and fine, br0 has the IP configured eth0 and dummy0 don't have an IPv4 address. This looks quite good. Let's see how the routing table works:
 
-[sourcecode language="text"]
+{% highlight text %}
 $ ip route list
 192.0.2.192/26 dev br0  proto kernel  scope link  src 192.0.2.195
 default via 192.0.2.193 dev br0
-[/sourcecode]
+{% endhighlight %}
 
 This doesn't look so good. In the /etc/network/interfaces file we told debian to route thru eth0 but ended up routing thru br0 what happened?
 
 Actually nothing too serious. Our Linux kernel knows that eth0 doesn't have an address and thus uses br0 instead. Which actually is what whe told it to do in the definition of iface br0 inet static. What about our bridge config?
 
-[sourcecode language="text"]
+{% highlight text %}
 $ sudo brctl show
 [sudo] password for sysmaint:
 bridge name	bridge id		STP enabled	interfaces
 br0		8000.002421b43626	no		    dummy0
                                                               eth0
-[/sourcecode]
+{% endhighlight %}
 
-[sourcecode language="text"]
+{% highlight text %}
 $ sudo brctl showmacs br0
 port no	mac addr		        is local?	ageing timer
   1	        00:23:9c:17:34:23	no		   0.00
   1	        00:24:21:b4:36:26	yes		   0.00
   2	        92:0e:c3:fe:5f:ae	yes		   0.00
-[/sourcecode]
+{% endhighlight %}
 
 All nice and fine, our bridge is here, and has the members we defined.
 
@@ -170,11 +170,11 @@ It's time to run our first virtualized machine. For testing purposes we'll simpl
   3. Install Debian/Stable to verify we have connectivity
 
 
-[sourcecode language="text"]
+{% highlight text %}
 $ qemu-img create test.img 10G
-[/sourcecode]
+{% endhighlight %}
 
-[sourcecode language="text"]
+{% highlight text %}
 sudo /usr/bin/kvm \
     -k en \
     -name test \
@@ -187,7 +187,7 @@ sudo /usr/bin/kvm \
     -vnc :1 \
     -balloon virtio \
     -pidfile /var/run/kvm.test
-[/sourcecode]
+{% endhighlight %}
 
 The command above does the following:
 
@@ -227,9 +227,9 @@ The command above does the following:
 
 When this is running just fire up a VNC Viewer and connect to the host
 
-[sourcecode language="text"]
+{% highlight text %}
 $ vncviewer 192.2.0.195:1
-[/sourcecode]
+{% endhighlight %}
 
 If you have your Debian ISO image in the correct place you should be presented with the boot screen of the Debian ISO image. Just click thru and install. Since we used the netinst ISO image a successful installation means you have basic connectivity to the outside world.
 
