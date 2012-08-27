@@ -12,4 +12,12 @@ layout: default
 
     {{ content | downcase }}
 
+    <section>
+        <ul>
+            {% for tag in post.tags %}
+            <li>{{ tag }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
 </article>
