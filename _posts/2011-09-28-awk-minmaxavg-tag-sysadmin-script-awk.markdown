@@ -12,7 +12,7 @@ tags:
 
 
 
-{% highlight awk %}
+{% highlight bash %}
 #!/usr/bin/awk -f
 BEGIN
 {
