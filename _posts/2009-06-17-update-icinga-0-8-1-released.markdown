@@ -8,7 +8,7 @@ wordpress_id: 100
 ---
 
 A short followup on the recent [0.8.1 release](http://serverhorror.wordpress.com/2009/06/17/icinga-0-8-1-released/) of [Icinga](http://www.icinga.org). I just found the list of changes from the [ChangeLog in the git repository](https://git.icinga.org/index?p=icinga-core.git;a=blob_plain;f=Changelog;hb=7c5b56d64bfedf7e3a0487e1fc195294df6cb23a) of Icinga
-[sourcecode language="text"]
+{% highlight text %}
 0.8.1 - 06/17/2009
 ------------------
 * Archived Logfiles renamed from Icinga-date-syntax.log =&gt; icinga-date-syntax.log (capital 'i')
@@ -18,9 +18,9 @@ A short followup on the recent [0.8.1 release](http://serverhorror.wordpress.com
 * fix ido2db segfault when try to access non existing tables
 * DocBook v5 conversion
 * Fix menu frameset cols width<!--more-->
-[/sourcecode]
+{% endhighlight %}
 Here is the ChangeLog for Nagios referenced above:
-[sourcecode language="text"]
+{% highlight text %}
 3.1.1 - 02/??/2009
 ------------------
 * New "important check command" flag for use in service templates, to aid configuration in distributed environments
@@ -41,4 +41,4 @@ Here is the ChangeLog for Nagios referenced above:
 * Fix for incorrect weighting in host flap detection logic
 * Added libtap to distribution. Use ./configure --enable-libtap to compile
 * nagios.log permissions are now kept after log rotation
-[/sourcecode]
+{% endhighlight %}
