@@ -11,9 +11,9 @@ tags:
 
 So I was looking how to install [VirtualBox](http://www.virtualbox.org/) under [OpenSolaris](http://www.opensolaris.org). My first thought was a simple
 
-[sourcecode langauage="text"]
+{% highlight text %}
 pkg install virtualbox
-[/sourcecode]
+{% endhighlight %}
 
 
 or similiar would be enough. It isn't :).
