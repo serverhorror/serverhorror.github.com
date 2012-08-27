@@ -6,7 +6,7 @@ layout: default
     <header>
     <h1>{{ page.title | downcase }}</h1>
     <ul>
-        <li>Published: <time datetime="{{ page.date | date: "%F" }}">{{ page.date | date: "%F" }}</time></li>
+        <li>Published: <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%F" }}</time></li>
     </ul>
     </header>
 
