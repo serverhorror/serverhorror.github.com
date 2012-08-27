@@ -27,17 +27,21 @@
             src="https://apis.google.com/js/plusone.js"></script>
     </head>
     <body>
+        <header class="site-header">
         <ul>
             <li><a href="{{ site.url }}">Home</a></li>
             <li>Last generated: <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%F %H:%M:%S" }}</time></li>
         </ul>
-        <div>
+        </header>
+        <section class="site-content">
             {{ content }}
-        </div>
+        </section>
+        <footer class="site-footer">
         <ul>
             <li><a href="{{ site.url }}">Home</a></li>
             <li>Last Modified: <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%F %H:%M:%S" }}</time></li>
         </ul>
+        </footer>
     </body>
 </html>
 

@@ -3,26 +3,27 @@ layout: default
 ---
 
 <article>
-    <header>
+    <header class="post-header">
     <h1>{{ page.title }}</h1>
     <ul>
+        {% if site.author != null %}<li>{{ site.author }}</li>{% endif %}
         <li>Published: <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%F" }}</time></li>
     </ul>
     </header>
-
+    <section class="post-content">
     {{ content }}
-
-    {% if page.tags != null %}
-    <section class="taglist">
-        <h1>Tags</h1>
-        <ul>
-            {% for tag in page.tags %}
-            <li>{{ tag }}</li>
-            {% endfor %}
-        </ul>
     </section>
-    {% endif %}
-    <section class="social">
+    <footer class="post-footer">
+        {% if page.tags != null %}
+        <section class="taglist">
+            <h1>Tags</h1>
+            <ul>
+                {% for tag in page.tags %}
+                <li>{{ tag }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
         <h1>So Called "Social" Stuff</h1>
         <!-- Place this tag where you want the +1 button to render. -->
         <div class="g-plusone" data-size="small" data-annotation="none"
@@ -34,7 +35,7 @@ layout: default
             data-url="{{ post.url }}" data-text="{{ post.title }}"
             data-via="serverhorror" data-count="none">Tweet</a>
         -->
-    </section>
+    </footer>
 
 </article>
 
