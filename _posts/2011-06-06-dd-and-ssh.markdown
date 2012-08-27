@@ -20,6 +20,6 @@ This is something I **need to remember**:
 
 [sourcecode]
 ssh user@hostname dd if=/dev/sda | dd of=${HOME}/image.raw
-[/sourcecode]
+{% endhighlight %}
 
 Specifially **don't do this: `dd if=/dev/sda of=-`**
