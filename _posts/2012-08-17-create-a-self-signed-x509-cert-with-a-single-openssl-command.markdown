@@ -26,9 +26,9 @@ This is how you create a nice **self signed x509 cert with a single openssl com
 
 _openssl req -newkey rsa:2048 -keyout server.key -out server.crt -nodes -x509_
 
-[sourcecode language="bash"]
+{% highlight bash %}
 openssl req -newkey rsa:2048 -keyout server.key -out server.crt -nodes -x509  -subj /CN=www.example.com
-[/sourcecode]
+{% endhighlight %}
 
 Now it'll just take another couple of months to finally read up on how to write a config file for that :)
 
