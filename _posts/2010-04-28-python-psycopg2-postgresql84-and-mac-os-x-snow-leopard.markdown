@@ -19,16 +19,16 @@ wordpress_id: 710
 
 
 Look no further here's the simple solution to getting [psycopg2](http://initd.org) to work without placing to much trash on your system.
-[sourcecode language="shell"]
+{% highlight bash %}
 virtualenv --no-site-packages .
 . bin/activate
 easy_install  -U setuptools
 easy_install pip
 PATH=$PATH:/opt/local/lib/postgresql84/bin/ pip install psycopg2 sqlalchemy
 #...lots of compile stuff...
-[/sourcecode]
+{% endhighlight %}
 You are done. Go into your python shell and import the [psycopg2](http://initd.org/psycopg/) module...
-[sourcecode language="shell"]
+{% highlight bash %}
 $ python
 Python 2.6.1 (r261:67515, Feb 11 2010, 00:51:29) 
 [GCC 4.2.1 (Apple Inc. build 5646)] on darwin
@@ -37,10 +37,10 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> psycopg2.__version__
 '2.2.0 (dt dec release-candidate-1 ext pq3)'
 >>> 
-[/sourcecode]
+{% endhighlight %}
 
- The solution here is this: [sourcecode language="shell"]
+ The solution here is this: {% highlight bash %}
 PATH=$PATH:/opt/local/lib/postgresql84/bin/ pip install psycopg2 sqlalchemy
-[/sourcecode]
+{% endhighlight %}
 
 The path shown here is if you installed postgresql84-server from [macports](http://macports.org). It might differ if you used the [native installer for Mac OS X](http://www.postgresql.org/download/macosx)
