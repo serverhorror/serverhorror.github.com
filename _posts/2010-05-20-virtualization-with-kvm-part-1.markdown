@@ -2,7 +2,7 @@
 comments: true
 date: 2010-05-20 12:00:40
 layout: post
-published: false
+published: true
 slug: virtualization-with-kvm-part-1
 title: Virtualization with KVM (Part 1)
 wordpress_id: 739
