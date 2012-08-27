@@ -11,11 +11,11 @@ tags:
 
 I wanted to get Nagios running on OpenSolaris, honoring the pkg System I tried:
 
-[sourcecode langauage="text"]
+{% highlight text %}
 
 pkg search nagios
 
-[/sourcecode]
+{% endhighlight %}
 
 No dice, but I hadn't added the contrib repo yet and didn't know about it up until that point :)
 
