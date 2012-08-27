@@ -12,8 +12,7 @@ tags:
 
 
 
-[sourcecode]
-
+{% highlight awk %}
 #!/usr/bin/awk -f
 BEGIN
 {
@@ -41,6 +40,6 @@ END
  print "Min = ",minimum;
 }
 
-[/sourcecode]
+{% endhighlight %}
 
 
