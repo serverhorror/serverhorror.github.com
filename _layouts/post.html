@@ -26,7 +26,10 @@ layout: default
         <h1>So Called "Social" Stuff</h1>
         <!-- Place this tag where you want the +1 button to render. -->
         <div class="g-plusone" data-size="small" data-annotation="none"
-            data-href="{{ post.url }}"></div>
+            data-href="{{ page.url }}"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button"
+            data-url="{{ page.url }}" data-text="{{ page.title }}"
+            data-via="serverhorror" data-count="none">Tweet</a>
     </section>
 
 </article>
