@@ -10,6 +10,6 @@ tags:
 ---
 
 How do you force a user to change his/her password on the next login under linux?
-[sourcecode language="text"]
+{% highlight text %}
 passwd -e <user in question>
-[/sourcecode]
+{% endhighlight %}
