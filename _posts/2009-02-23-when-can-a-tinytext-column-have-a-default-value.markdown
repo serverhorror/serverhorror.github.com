@@ -10,7 +10,7 @@ tags:
 ---
 
 [This](http://www.flamingspork.com/blog/2009/02/24/when-can-a-tinytext-column-have-a-default-value/):
-[sourcecode language="text"]
+{% highlight text %}
 $ mysql -u root test
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 2496
@@ -30,9 +30,9 @@ mysql> show warnings;
 | Warning | 1101 | BLOB/TEXT column 'a' can't have a default value |
 +---------+------+-------------------------------------------------+
 1 row in set (0.00 sec)
-[/sourcecode]
+{% endhighlight %}
 wouldn't have happened with a [real database](http://www.postgresql.org):
-[sourcecode language="text"]
+{% highlight text %}
 test=# create TABLE xxxx(
 test(#  id serial,
 test(#  bla text default 'foo'
@@ -46,4 +46,4 @@ test=# SELECT * from xxxx;
 ----+-----
   1 | foo
 (1 row)
-[/sourcecode]
+{% endhighlight %}
