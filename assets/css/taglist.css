@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
-.taglist {
+.taglist ul {
     list-style-type: none;
 }
 
-.taglist li {
+.taglist ul li {
     display: inline-block;
     padding: 3px;
     border: solid black 1px;

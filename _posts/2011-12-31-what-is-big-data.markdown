@@ -4,6 +4,7 @@ date: 2011-12-31 14:00:44
 layout: post
 slug: what-is-big-data
 title: What is big data?
+flattr: true
 wordpress_id: 1470
 author: serverhorror
 tags:

@@ -7,21 +7,13 @@
             rel="alternate"
             type="application/atom+xml"
             title="{{ site.x-name }} - Atom Feed" href="{{ site.url }}/atom.xml" />
-        {% if page.flattrable != null %}
-        <link
-            rel="payment"
-            type="text/html"
-            href="https://flattr.com/submit/auto?url={{ site.url | cgi_escape}}{{ page.url | cgi_escape }}&amp;user_id={{ site.flattr-user }}&amp;title={{ page.title | cgi_escape }}&amp;category=text&amp;tags=blog&amp;language={% if page.lang == 'en' %}en{% else %}se{% endif %}" title="Flattr this post" />
+        {% if page.flattr != null %}
+        <link rel="payment" type="text/html"
+        href="https://flattr.com/submit/auto?url={{ site.url | cgi_escape}}{{ page.url | cgi_escape }}&amp;user_id={{ site.flattr-user }}&amp;title={{ page.title | cgi_escape }}&amp;category=text&amp;tags=blog&amp;language={% if page.lang == 'en' %}en{% else %}se{% endif %}" title="Flattr this post" />
         {% endif %}
-        <link
-            href="{{ site.url }}/assets/css/syntax.css"
-            rel="stylesheet"
-            type="text/css">
-        <link
-            href="{{ site.url }}/assets/css/taglist.css"
-            rel="stylesheet"
-            type="text/css">
-            <script type="text/javascript">
+        <link href="{{ site.url }}/assets/css/syntax.css" rel="stylesheet" type="text/css" />
+        <link href="{{ site.url }}/assets/css/taglist.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript">
             (function() {
                 var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
                 s.type = 'text/javascript';
