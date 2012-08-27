@@ -10,7 +10,7 @@ tags:
 ---
 
 This is what you get from [OpenX](http://www.openx.org/) if you want to use a [PostgreSQL](http://www.postgresql.org) database (which is supported!):
-[sourcecode language="text"]
+{% highlight text %}
 PEAR Error 
 
 MDB2 Error: unknown error 
@@ -28,4 +28,4 @@ _doQuery: [Error message: Could not execute statement]
 [Native message: ERROR:  column "s.ad_id" must appear in the GROUP BY clause or be used in an aggregate function]
 
 Fatal error: Unsupported operand types in .../www/admin/market/stats.php on line 164
-[/sourcecode]
+{% endhighlight %}
