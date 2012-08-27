@@ -17,7 +17,7 @@ tags:
   * /etc/xinetd.d/[hostname](http://en.wikipedia.org/wiki/Hostname)
 
 
-[sourcecode]
+{% highlight text %}
 service hostname {
     disable         = no
     type            = UNLISTED
