@@ -21,15 +21,15 @@ essentially that means that everytime you write a new file you will have a new v
 
 So getting nilfs running on Debian/Squeeze (in that case as I tried it on my workstation) isn't much of a problem. A couple of commands and you are good to go:
 
-[sourcecode language="text"]
+{% highlight text %}
 $ sudo m-a a-i nilfs2 # compile the modules for the kernel you currently use
 $ sudo apt-get install nilfs2-tools
 $ sudo lvcreate -L 1000M -n nilfs.test vg00
 $ sudo mkfs.nilfs2 /dev/vg00/nilfs.test
 $ sudo mount /dev/vg00/nilfs.test /mnt/nilfs/
-[/sourcecode]
+{% endhighlight %}
 Now with this you can start using your shiny new nilfs2 2 partition right away, the interesting part comes from the snapshots you are able to use with nilfs2. Use lscp to show how many checkpoints have been created.
-[sourcecode language="text"]
+{% highlight text %}
 $ sudo lscp
         CNO        DATE     TIME  MODE  FLG   NBLKINC       ICNT
          51  2009-06-08 11:42:43   cp    -       1181          6
@@ -47,7 +47,7 @@ $ sudo lscp
          84  2009-06-08 11:47:28   cp    i         10          5
          85  2009-06-08 11:47:40   cp    i         10          5
          86  2009-06-08 11:48:21   cp    i         13          5
-[/sourcecode]
+{% endhighlight %}
 Yes I did this from a random directory, lscp will try to find a nilfs2 filesystem by looking at /proc/mounts. Regarding the meaning of the columns I'm pretty sure you can read the manpage yourself. Now let's get a mount from an older version of the filesystem. This involves 3 steps:
 
 
@@ -62,7 +62,7 @@ Yes I did this from a random directory, lscp will try to find a nilfs2 filesyste
   3. mount it
 
 
-[sourcecode language="text"]
+{% highlight text %}
 ...
 # I decided to use no. 65
 $ sudo chcp ss 65
@@ -81,7 +81,7 @@ $ sudo ls -l /mnt/cp/
 total 117808
 -rw-r--r-- 1 martin martin 120151000 2009-06-08 11:43 debian-501-amd64-netinst.iso
 -rw-r--r-- 1 martin root           7 2009-06-08 10:50 foo
-[/sourcecode]
+{% endhighlight %}
 Aha! Now we have a version from just a couple of minutes before we did something to our filesystem.
 
 How do we put that to actual use now?
