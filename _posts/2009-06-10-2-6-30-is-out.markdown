@@ -1,0 +1,13 @@
+---
+comments: true
+date: 2009-06-10 13:00:07
+layout: post
+slug: 2-6-30-is-out
+title: 2.6.30 is out!
+wordpress_id: 65
+---
+
+Just a small sidenote: Linux 2.6.30 is out and [NILFS2](http://serverhorror.wordpress.com/2009/06/08/howto-nilfs2/) is now officially considered stable!
+
+
+**Yay!**

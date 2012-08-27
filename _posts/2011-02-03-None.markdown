@@ -1,0 +1,235 @@
+---
+comments: true
+date: 2011-02-03 17:57:13
+layout: post
+published: false
+slug: None
+title: Offer IPv4 connectivity over public IPs to  guest machines - (Virtualization
+  with KVM - Part 3)
+wordpress_id: 787
+tags:
+- sysadmin
+---
+
+
+	
+  * <del>[Get Started! Do the basic setup, verify we have KVM working](http://blog.serverhorror.com/2010/05/20/virtualization-with-kvm-part-1/)</del>
+
+	
+  * <del>[Automated Guest Installations from the direct physical host](http://blog.serverhorror.com/2010/06/06/fully-automated-installations-with-debian-virtualization-with-kvm-part-2)</del>
+
+	
+  * **Offer IPv4 connectivity over public IPs to  guest machines**
+
+	
+  * Offer IPv6 and IPv4 connectivity to guest machines
+
+	
+  * Offer IPv6 as the only connectivity to guest machines
+
+	
+  * Automagically create new guests with a single command
+
+
+Did you follow closely [the last](http://blog.serverhorror.com/2010/05/20/virtualization-with-kvm-part-1/) [two posts](http://blog.serverhorror.com/2010/06/06/fully-automated-installations-with-debian-virtualization-with-kvm-part-2)?
+
+If you did so, consider yourself lucky. All we need to do is add two files to our setup. OK I'll admit it I'm lying! Still in essence FAI provides us with the possibility of just creating a single template file and a really short script to deploy a shiny new host with a <del>public</del> globally routable IPv4 address
+
+So here's the plan:
+
+
+
+	
+  * fine tune the network setup to
+
+	
+    * provide an internal (private) network interface to PXE boot from
+
+	
+    * provide an external (<del>public</del> globally routable) network interface to provide a public IP
+
+
+
+
+	
+  * create the "template file" in the FAI config space
+
+	
+  * redeploy
+
+	
+  * enjoy the public IP
+
+
+Let's fine tune!
+
+First a bit of host network setup, add the following stanza to your /etc/network/interfaces:
+
+    
+    auto pxebr0
+    iface pxebr0 inet static
+        bridge_maxwait 2
+        # up brctl addbr $IFACE
+        address 172.16.0.1
+        netmask 255.255.0.0
+
+
+and modify the br0 stanza:
+
+    
+    ## device: br0
+    auto br0
+    iface br0 inet static
+        bridge_ports eth0
+        bridge_maxwait 2
+        address 192.0.2.2
+        netmask 255.255.255.0
+        gateway   192.0.2.1
+
+
+Now for the only file we actually need to update
+**/srv/fai/config/file/etc/network/interfaces/demohost**:
+
+    
+    # Loopback device:
+    auto lo
+    iface lo inet loopback
+    
+    ## device: eth1
+    auto  eth1
+    iface eth1 inet static
+      address   192.0.2.3
+      netmask   255.255.255.0
+      gateway   192.0.2.1
+
+
+And the script FAI will use during the installation process
+**/srv/fai/config/scripts/demohost/30-interfaces**:
+
+    
+    #! /bin/bash
+    
+    fcopy -i /etc/resolv.conf
+    fcopy -iM /etc/network/interfaces /etc/networks
+    fcopy -iM /etc/network/interfaces
+
+
+and sudo ifdown pxebr0; sudo ifdown br0; sudo ifup pxebr0; sudo ifup br0. Then expand our kvm-command to this:
+
+    
+    NAME="demohost.serverhorror.com"
+    ETH0_MAC="06:00:06:62:d3:2d"
+    ETH1_MAC="06:00:06:5b:51:c1"
+    MEMORY="1024"
+    VDA="${HOME}/test.img"
+    
+    sudo /usr/bin/kvm -k en-us \
+        -name $NAME \
+        -boot order=cn \
+        -drive file=$VDA,if=virtio,format=raw,media=disk,boot=on \
+        -net nic,macaddr=$ETH0_MAC,vlan=0 -net tap,vlan=0,name=eth0,ifname=pxetap0,script=no,downscript=no \
+        -net nic,macaddr=$ETH1_MAC,vlan=1 -net tap,vlan=1,name=eth1,ifname=pubtap0,script=no,downscript=no \
+        -usbdevice tablet -watchdog i6300esb \
+        -m $MEMORY \
+        -vnc none \
+        -balloon virtio \
+        -pidfile /var/run/$NAME.pid \
+        -monitor stdio \
+        -S
+
+
+**Also do not forget to update your host definitions in dhcpd.conf to use the new ethernet address for the fixed-host definition(s)**
+So what happens here?
+
+
+
+	
+  * Define 2 Network interfaces
+
+	
+    * pxetap0 to PXE boot from FAI (eth0 in the guest)
+
+	
+    * pubtap0 to provide the <del>public</del> globally routable address (eth1 in the guest)
+
+
+
+
+	
+  * "boot" the guest in a stopped state (the -S) so we have enough time to set some things up before actually booting
+
+	
+  * disable vnc by default
+
+
+After you ran the command open up another terminal and bring the interfaces and routes up.
+
+    
+    sudo brctl addif pxebr0 pxetap0
+    sudo ip link set dev pxetap0 up
+    sudo ip route add 172.16.0.0/16 dev pxebr0
+
+
+
+    
+    sudo brctl addif br0 pubtap0
+    sudo ip link set dev pubtap0 up
+    sudo ip route add 192.0.2.3 dev br0
+
+
+Let's set up the options to boot the way we intend to and actually continue the guest process (**c**)
+
+    
+    QEMU 0.12.4 monitor - type 'help' for more information
+    (qemu) change vnc password
+    Password: ****
+    (qemu) change vnc :1
+    (qemu) boot_set n
+    boot device list now set to n
+    (qemu) c
+
+
+Now sit back and relax. If you got everything right you should be able to
+
+
+
+	
+  * PXE boot
+
+	
+  * enjoy the FAI installation process
+
+	
+  * spot the place where the demohost class copies the new /etc/network/interfaces file
+
+	
+  * hit enter
+
+	
+  * watch your guest reboot
+
+	
+  * enjoy a <del>public</del> globally routable IPv4 address
+
+
+So where are we now:
+
+	
+  * <del>[Get Started! Do the basic setup, verify we have KVM working](http://blog.serverhorror.com/2010/05/20/virtualization-with-kvm-part-1/)</del>
+
+	
+  * <del>[Automated Guest Installations from the direct physical host](http://blog.serverhorror.com/2010/06/06/fully-automated-installations-with-debian-virtualization-with-kvm-part-2)</del>
+
+	
+  * <del>Offer IPv4 connectivity over public IPs to  guest machines</del>
+
+	
+  * Offer IPv6 and IPv4 connectivity to guest machines
+
+	
+  * Offer IPv6 as the only connectivity to guest machines
+
+	
+  * Automagically create new guests with a single command
+
+

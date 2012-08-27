@@ -1,0 +1,14 @@
+---
+comments: true
+date: 2008-11-25 14:00:00
+layout: post
+slug: fly-blind
+title: Fly Blind
+wordpress_id: 223
+tags:
+- sysadmin
+---
+
+Quite a short time of records before the switch happened in this diagram. I do hope the system is new and hasn't been in use for long before they started using [Munin](http://munin.projects.linpro.no/)
+
+[![](http://s3.amazonaws.com/io-soup-assets/asset/0151/0929_26f2.png)](http://s3.amazonaws.com/io-soup-assets/asset/0151/0929_26f2.png)
