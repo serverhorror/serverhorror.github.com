@@ -23,4 +23,4 @@ git filter-branch -f --env-filter '\
     export GIT_AUTHOR_EMAIL; \
     GIT_AUTHOR_NAME="New Author"; \
     export GIT_AUTHOR_NAME'
-[/sourcecode]
+{% endhighlight %}
