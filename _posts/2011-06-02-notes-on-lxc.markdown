@@ -102,7 +102,7 @@ lxc.cgroup.devices.allow = c 136:* rwm
 lxc.cgroup.devices.allow = c 5:2 rwm
 # rtc
 lxc.cgroup.devices.allow = c 254:0 rwm
-[/sourcecode]
+{% endhighlight %}
 
 
 
@@ -122,7 +122,7 @@ devpts /srv/lxc/vm01/debootstrapped/dev/pts devpts defaults 0 0
 proc /srv/lxc/vm01/debootstrapped/proc    proc   defaults 0 0
 sysfs /srv/lxc/vm01/debootstrapped/sys     sysfs  defaults 0 0
 none /srv/lxc/vm01/debootstrapped/dev/shm tmpfs  defaults 0 0
-[/sourcecode]
+{% endhighlight %}
 
 
 
@@ -139,7 +139,7 @@ none /srv/lxc/vm01/debootstrapped/dev/shm tmpfs  defaults 0 0
 
 [sourcecode]
 debootstrap --variant=minbase --include=dhcp-client,dialog,ifupdown,iproute,libui-dialog-perl,locales,netbase,net-tools,openssh-server,vim,curl,git-core squeeze /srv/lxc/vm01/ http://cdn.debian.net/debian/
-[/sourcecode]
+{% endhighlight %}
 
 
 
@@ -177,7 +177,7 @@ c1:12345:respawn:/sbin/getty 38400 tty1 linux
 c2:12345:respawn:/sbin/getty 38400 tty2 linux
 c3:12345:respawn:/sbin/getty 38400 tty3 linux
 c4:12345:respawn:/sbin/getty 38400 tty4 linux
-[/sourcecode]
+{% endhighlight %}
 
 
 
@@ -203,7 +203,7 @@ c4:12345:respawn:/sbin/getty 38400 tty4 linux
 # Default-Stop:
 ### END INIT INFO
 exit 0
-[/sourcecode]
+{% endhighlight %}
 
 
 
@@ -228,7 +228,7 @@ exit 0
 # Default-Stop:      0 6
 ### END INIT INFO
 exit 0
-[/sourcecode]
+{% endhighlight %}
 
 
 
