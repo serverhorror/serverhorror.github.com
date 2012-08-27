@@ -14,7 +14,7 @@ tags:
 
 I have no idea whether this is a good idea or not. But as of this moment I'm Flash Free
 
-[sourcecode]
+{% highlight bash %}
 cd /Library/Internet\ Plug-Ins/
 rm -rf Flash\ Player.plugin/ NP-PPC-Dir-Shockwave flashplayer.xpt
 {% endhighlight %}
