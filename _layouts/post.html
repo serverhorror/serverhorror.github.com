@@ -12,6 +12,7 @@ layout: default
 
     {{ content }}
 
+    {% if page.tags != null %}
     <section>
         <ul>
             {% for tag in page.tags %}
@@ -19,5 +20,6 @@ layout: default
             {% endfor %}
         </ul>
     </section>
+    {% endif %}
 
 </article>
