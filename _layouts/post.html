@@ -14,9 +14,9 @@ layout: default
 
     {% if page.tags != null %}
     <section>
-        <ul>
+        <ul class="taglist">
             {% for tag in page.tags %}
-            <li class="taglist">{{ tag }}</li>
+            <li>{{ tag }}</li>
             {% endfor %}
         </ul>
     </section>
