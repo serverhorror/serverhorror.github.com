@@ -48,7 +48,6 @@
         <ul>
             <li><a href="{{ site.url }}">Home</a></li>
             <li>Last Modified: <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%F %H:%M:%S" }}</time></li>
-            <li><a class="FlattrButton" href="{{ site.url}}{{ page.url }}" title="{{ page.title }}" lang="{% if page.lang != null %}{{ page.lang }}{% else %}en{% endif %}" rel="flattr;tags:blog;"></a></li>
         </ul>
         </footer>
     </body>

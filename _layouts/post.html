@@ -25,10 +25,14 @@ layout: default
         </section>
         {% endif %}
         <h1>So Called "Social" Stuff</h1>
-        <!-- Place this tag where you want the +1 button to render.
-        -->
-        <div class="g-plusone" data-size="small" data-annotation="none"
-            data-href="{{ page.url }}"></div>
+        <ul>
+            <li>
+            <!-- Place this tag where you want the +1 button to render.
+            -->
+            <div class="g-plusone" data-size="small" data-annotation="none" data-href="{{ page.url }}"></div>
+            </li>
+            <li><a class="FlattrButton" href="{{ site.url}}{{ page.url }}" title="{{ page.title }}" lang="{% if page.lang != null %}{{ page.lang }}{% else %}en{% endif %}" rel="flattr;tags:blog;"></a></li>
+        </ul>
     </footer>
 
 </article>
