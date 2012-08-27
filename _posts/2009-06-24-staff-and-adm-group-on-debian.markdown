@@ -43,9 +43,9 @@ The [Securing Debian HOWTO](http://www.debian.org/doc/manuals/securing-debian-ho
 
 However that wasn't good enough for me, so I fired up a new debian instance and had a look at which files (or directories for that matter) are actually writable by the staff group:
 
-[sourcecode language="text"]
+{% highlight text %}
 sudo find / -xdev -group staff -perm +0020 -exec ls -ld {} \;
-[/sourcecode]
+{% endhighlight %}
 
 
 Long story short: It seems only 2 directories are writeable:
@@ -61,16 +61,16 @@ Long story short: It seems only 2 directories are writeable:
 
 of course that includes all the subdirectories in a default Debian installation. While we're at it we can also check the same for the `adm` group:
 
-[sourcecode language="text"]
+{% highlight text %}
 sudo find / -xdev -group adm -perm +0020 -exec ls -ld {} \;
-[/sourcecode]
+{% endhighlight %}
 
 Interestingly enough, nothing came back. So let's check what we can read with this group and also what the `staff` group can read:
 
-[sourcecode language="text"]
+{% highlight text %}
 sudo find / -xdev -group adm -perm +0010 -exec ls -ld {} \;
 sudo find / -xdev -group staff -perm +0010 -exec ls -ld {} \;
-[/sourcecode]
+{% endhighlight %}
 
 
 The `_adm_` group returned a few hits in the `_/var/log_` directory while the `_staff_` group had read access to everything under `_/var/local_` and `_/usr/local`_. From my point of view it seems that `_staff_` and `_adm_` are perfectly useable for administrators as long as there aren't any critical packages installed by "exploiting" these memberships. I rather see such things installed by creating a proper package and using _apt-get_.
