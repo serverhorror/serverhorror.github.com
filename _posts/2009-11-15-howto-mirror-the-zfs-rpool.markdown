@@ -37,7 +37,7 @@ I assume you are indeed capable of physically installing a second, third or nth 
 
 
 Simply use "format" :)
-[sourcecode langauage="text"]
+{% highlight text %}
 $ pfexec format
 Searching for disks...done
 
@@ -68,9 +68,9 @@ FORMAT MENU:
  volname    - set 8-character volume name
  !<cmd>     - execute <cmd>, then return
  quit
-[/sourcecode]
+{% endhighlight %}
 No go "fdisk" it and delete all the partitions on the disk. Then create a new partition, make it a Solaris partition and be done with that part.
-[sourcecode langauage="text"]
+{% highlight text %}
 format> fdisk
 Total disk size is 30401 cylinders
  Cylinder size is 16065 (512 byte) blocks
@@ -106,25 +106,25 @@ each time the computer is reset or turned on.
 Please type "y" or "n". y
 Partition 1 is now the active partition.
 Enter Selection: 5
-[/sourcecode]
+{% endhighlight %}
 
 
 # Duplicate the disk layout on both disks
 
 
 Now OpenSolaris provides us with 2 nice tools to make one disk have exactly the same layout as another disk. Use them like below:
-[sourcecode langauage="text"]
+{% highlight text %}
 $ pfexec prtvtoc /dev/rdsk/c8t0d0s2 # first disk
 $ pfexec prtvtoc /dev/rdsk/c8t2d0s2 # second disk
 $ pfexec prtvtoc /dev/rdsk/c8t0d0s2 | pfexec fmthard -s - /dev/rdsk/c8t2d0s2 # make the 1st disk the same as the 2nd
-[/sourcecode]
+{% endhighlight %}
 
 
 # Attach it to the pool in question
 
 
 Let's have a quick look at the existing pool:
-[sourcecode langauage="text"]
+{% highlight text %}
 $ zpool status
  pool: rpool
  state: ONLINE
@@ -136,16 +136,16 @@ config:
  c8t0d0s0    ONLINE       0     0     0
 
 errors: No known data errors
-[/sourcecode]
+{% endhighlight %}
 Nice we now see what our original device name is and what our pool name is, we need both for the next command. Remember in my example the new disk slice (the BIOS vs. EFI thing) is  _c8t2d0s0_. We should be all fine to attach the slice to the pool and see it start recovering.__
-[sourcecode langauage="text"]
+{% highlight text %}
 $ pfexec zpool attach rpool c8t0d0s0 c8t2d0s0
 invalid vdev specification
 use '-f' to override the following errors:
 /dev/dsk/c8t2d0s0 overlaps with /dev/dsk/c8t2d0s2
-[/sourcecode]
+{% endhighlight %}
 Ouch, didn't quite work, so let's do as instructed, and right thereafter let's investigate the staus of the pool:
-[sourcecode langauage="text"]
+{% highlight text %}
 $ pfexec zpool attach -f rpool c8t0d0s0 c8t2d0s0
 Please be sure to invoke installgrub(1M) to make 'c8t2d0s0' bootable.
 $ zpool status
@@ -164,15 +164,15 @@ config:
  c8t2d0s0      ONLINE       0     0     0  113M resilvered
 
 errors: No known data errors
-[/sourcecode]
+{% endhighlight %}
 Looks all nice, now let's do the grub stuff so that we can boot from both disks:
-[sourcecode langauage="text"]
+{% highlight text %}
 $ pfexec installgrub /boot/grub/stage1 /boot/grub/stage2 /dev/rdsk/c8t2d0s0
 stage1 written to partition 0 sector 0 (abs 16065)
 stage2 written to partition 0, 271 sectors starting at 50 (abs 16115)
-[/sourcecode]
+{% endhighlight %}
 A last check on the status of our pool:
-[sourcecode langauage="text"]
+{% highlight text %}
 $ zpool status
  pool: rpool
  state: ONLINE
@@ -189,5 +189,5 @@ config:
  c8t2d0s0      ONLINE       0     0     0  2.95G resilvered
 
 errors: No known data errors
-[/sourcecode]
+{% endhighlight %}
 To my untrained OpenSolaris eye this looks all nice and shiny now.
