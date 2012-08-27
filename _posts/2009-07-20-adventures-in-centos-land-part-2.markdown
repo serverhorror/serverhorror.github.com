@@ -10,7 +10,7 @@ tags:
 ---
 
 OK let's see what's going on with our [CentOS mail host from last time](http://serverhorror.wordpress.com/2009/07/19/adventures-in-centos-land-part-1/). First let's check that we don't have too much listening on public interfaces after all we only need SSH, SMTPs, IMAPs and HTTPs when everything is set up...
-[sourcecode language="text"]
+{% highlight text %}
 # netstat -tulpen
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address     Foreign Address   State   User  Inode  PID/Program name   
@@ -28,9 +28,9 @@ udp        0      0 0.0.0.0:111       0.0.0.0:*        �
 udp        0      0 0.0.0.0:631       0.0.0.0:*                 0     54165  19672/cupsd         
 udp        0      0 :::32826          :::*                      70    54205  19689/avahi-daemon:
 udp        0      0 :::5353           :::*                      70    54203  19689/avahi-daemon:
-[/sourcecode]
+{% endhighlight %}
 Quite a lot listening there for a server that is freshly installed. Let's turn of the nastiest stuff in the first place (NFS being public? WTF?).
-[sourcecode language="text"]
+{% highlight text %}
 # service portmap stop
 Stopping portmap:                                          [  OK  ]
 # service cups stop
@@ -49,9 +49,9 @@ Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address     Foreign Address  State   User  Inode  PID/Program name
 tcp        0      0 0.0.0.0:25        0.0.0.0:*        LISTEN  0     55050  20006/master
 tcp        0      0 :::22             :::*             LISTEN  0     4961   1917/sshd
-[/sourcecode]
+{% endhighlight %}
 Much better isn't it? Now let's take care of reboots:
-[sourcecode language="text"]
+{% highlight text %}
 # chkconfig --level 345 portmap off
 # chkconfig --level 345 cups off
 # chkconfig --level 345 avahi-daemon off
@@ -59,10 +59,10 @@ Much better isn't it? Now let's take care of reboots:
 # chkconfig --level 235 sendmail off
 # chkconfig --level 2345 postfix on
 # chkconfig --level 2345 sshd on
-[/sourcecode]
+{% endhighlight %}
 Just to be on the safe side let's double check that ssh will come up on reboots:
-[sourcecode language="text"]
+{% highlight text %}
 # chkconfig --list sshd
 sshd               0:off    1:off    2:on    3:on    4:on    5:on    6:off
-[/sourcecode]
+{% endhighlight %}
 Looks all nice. Now _shutdown -r now_ and see if it stays that way...(This is left as an exercise for the reader)

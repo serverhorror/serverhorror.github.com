@@ -56,7 +56,7 @@ Here are the requirements:
 
 
 Let's see if your required software is available:
-[sourcecode language="text"]
+{% highlight text %}
 # yum search nagios
 Excluding Packages from CentOS-5 - Base
 Finished
@@ -71,9 +71,9 @@ Finished
 Excluding Packages from CentOS-5 - Extras
 Finished
 No Matches found
-[/sourcecode]
+{% endhighlight %}
 Shoot nothing here..., let's see where we can find the repo. The [CentOS Wiki Page on Repositories](http://wiki.centos.org/AdditionalResources/Repositories) is the first hint. It leads us to the description on [how to enable the rpmforge repository](http://wiki.centos.org/AdditionalResources/Repositories/RPMForge). Let's see what happens after the setup process:
-[sourcecode language="text"]
+{% highlight text %}
 # yum check-update
 rpmforge                  100% |=========================| 1.1 kB    00:00
 Excluding Packages from CentOS-5 - Base
@@ -110,15 +110,15 @@ perl-XML-Twig.noarch                     3.32-1.el5.rf   
 rsync.i386                               3.0.6-1.el5.rf         rpmforge
 subversion.i386                          1.6.3-0.1.el5.rf       rpmforge
 syslinux.i386                            3.82-1.el5.rf          rpmforge
-[/sourcecode]
+{% endhighlight %}
 Ouch again, quite a few packages to update. Where did the priority stuff go described in the setup process? After some Googling I found that the Priority Plugin itself is indeed enabled, but the plugin infrastructure that yum has is not there: Doh!
 
 Let's enable the plugin infrastructure..
-[sourcecode language="text"]
+{% highlight text %}
 # vim /etc/yum.conf
-[/sourcecode]
+{% endhighlight %}
 and let's check the contents:
-[sourcecode language="text"]
+{% highlight text %}
 [main]
 cachedir=/var/cache/yum
 debuglevel=2
@@ -135,9 +135,9 @@ metadata_expire=1800
 
 # PUT YOUR REPOS HERE OR IN separate files named file.repo
 # in /etc/yum.repos.d
-[/sourcecode]
+{% endhighlight %}
 Aha! The _plugins=1_ line was missing. Check again that it is indeed working:
-[sourcecode language="text"]
+{% highlight text %}
 # yum check-update
 Loading "priorities" plugin
 Loading "fastestmirror" plugin
@@ -169,9 +169,9 @@ Finished
 Excluding Packages from CentOS-5 - Extras
 Finished
 416 packages excluded due to repository priority protections
-[/sourcecode]
+{% endhighlight %}
 Success! No updates available from the rpmforge repository. Now let's check wether we got something like nagios (and nrpe for that matter):
-[sourcecode language="text"]
+{% highlight text %}
 # yum list nagios nrpe dovecot postfix openldap-servers openldap-clients openldap
 Loading "priorities" plugin
 Loading "fastestmirror" plugin
@@ -205,11 +205,11 @@ postfix.i386                             2:2.3.3-2.el5.centos.m installed
 Available Packages
 nagios.i386                              3.0.6-1.el5.rf         rpmforge
 postfix.i386                             2:2.3.3-2              base
-[/sourcecode]
+{% endhighlight %}
 Success (again)! Tons of nagios and nrpe packages available. Yes I already installed some packages because I thought all I need was available, CentOS is a RHEL clone after all and claims to be Enterprise. How much enterprise can you be if the standard monitoring tool isn't available in the official repositories?
 
 So much for basic package availability in CentOS...see you next time dear CentOS (or rather RHEL)
-[sourcecode language="text"]
+{% highlight text %}
 yum install nagios
 Loading "priorities" plugin
 Loading "fastestmirror" plugin
@@ -259,4 +259,4 @@ Total download size: 3.6 M
 Is this ok [y/N]: N
 Exiting on user Command
 Complete!
-[/sourcecode]
+{% endhighlight %}

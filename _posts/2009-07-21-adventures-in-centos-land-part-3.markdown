@@ -70,7 +70,7 @@ Let's see, yum is the package manager and seems to work quite well, no sign of R
 O.K. - so much for a basic running service. Of course that doesn't do that much that is useful for us. Let's first configure slapd and a basic LDAP tree. The config of slapd is rather simple, we don't really have any users except one so we don't exactly need any groups. Why bother with LDAP then? Well, once you get used to having LDAP and a nice GUI tool is actually a lot <del>easier</del> more convenient to deal with than with the good unix passwords. **Note: I recommend to NEVER EVER put system users required to start daemons/applications in LDAP, don't even think about it!**
 
 Now here comes the slapd.conf:
-[sourcecode language="text"]
+{% highlight text %}
 # egrep -v '^ *#|^$' /etc/openldap/slapd.conf
 include        /etc/openldap/schema/core.schema
 include        /etc/openldap/schema/cosine.schema
@@ -98,9 +98,9 @@ index ou,cn,mail,surname,givenname      eq,pres,sub
 index uidNumber,gidNumber,loginShell    eq,pres
 index uid,memberUid                     eq,pres,sub
 index nisMapName,nisMapEntry            eq,pres,sub
-[/sourcecode]
+{% endhighlight %}
 And this is our LDIF (already with the user we want to use for mailing):
-[sourcecode language="text"]
+{% highlight text %}
 dn: dc=example,dc=org
 objectClass: dcObject
 objectClass: top
@@ -174,7 +174,7 @@ mailLocalAddress: hostmaster@example.org
 mailLocalAddress: abuse@example.org
 sn: Postmaster
 userPassword: changeme
-[/sourcecode]
+{% endhighlight %}
 Let's see now what we have.
 
 
