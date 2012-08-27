@@ -4,4 +4,5 @@ markdown: rdiscount
 permalink: pretty
 baseurl: /
 url: http://serverhorror.github.com
+x-name: serverhorror.github.com
 
