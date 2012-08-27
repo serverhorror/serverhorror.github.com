@@ -6,7 +6,13 @@
         <link
             rel="alternate"
             type="application/atom+xml"
-            title="{{ site.x-name }} - Atom Feed" href="{{ site.url }}/atom.xml" />
+            title="{{ site.site-name }} - Atom Feed" href="{{ site.url }}/atom.xml" />
+        {% if page.tags != null %}
+        <meta name="keywords" content="{{ page.tags | join: ',' }}">
+        {% endif %}
+        {% if page.author != null %}
+        <meta name="author" content="{{ page.author }}">
+        {% endif %}
         {% if page.flattr != null %}
         <link rel="payment" type="text/html"
         href="https://flattr.com/submit/auto?url={{ site.url | cgi_escape}}{{ page.url | cgi_escape }}&amp;user_id={{ site.flattr-user }}&amp;title={{ page.title | cgi_escape }}&amp;category=text&amp;tags=blog&amp;language={% if page.lang == 'en' %}en{% else %}se{% endif %}" title="Flattr this post" />
