@@ -14,7 +14,7 @@ behaviour](http://www.pythian.com/blogs/1422/draft-mind-the-sql_mode-when-runnin
 
 **Step One**: Create a table with a primary key
 
-{% highlight %}
+{% highlight text %}
 mysql> use test;
 Database changed
 mysql> show tables;
@@ -54,7 +54,7 @@ mysql>
 {% endhighlight %}
 
 **Step Two**: Alter the table to an auto_increment
-{% highlight %}
+{% highlight text %}
 mysql> alter table test_table modify id int not null auto_increment, auto_increment=3;
 Query OK, 3 rows affected (0.03 sec)
 Records: 3  Duplicates: 0  Warnings: 0
@@ -78,7 +78,7 @@ To be fair: There is a solution to this, but personally I think that should
 be the default, or at least there should be the a warning or error when such
 a statement is altering your data.
 
-{% highlight %}
+{% highlight text %}
 mysql> set sql_mode='NO_AUTO_VALUE_ON_ZERO';
 Query OK, 0 rows affected (0.00 sec)
 
