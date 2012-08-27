@@ -10,7 +10,7 @@ wordpress_id: 136
 [Nagios 3.1.2 Released](http://www.nagios.org/news/77-news-announcements/205-nagios-312-released) has just been released. I'm not quite sure I want to try it, given the recent fork from [Nagios (Icinga)](http://www.icinga.org), where [all the people who were contributing the interesting plugins and addons](http://www.icinga.org/team/).
 
 Anyway here are the recent notes from the Nagios ChangeLog:
-[sourcecode language="text"]
+{% highlight text %}
 3.1.2 - 06/23/2009
 ------------------
 * Fix for CPU hogging in service and host check scheduling logic
@@ -51,4 +51,4 @@ s
 * Patch to add transparency to statusmap icons for truecolor images
 * Patch to add read-only permissions to extinfo CGI
 * Security fix for statuswml.cgi where arbitrary shell injection was possible
-[/sourcecode]
+{% endhighlight %}
