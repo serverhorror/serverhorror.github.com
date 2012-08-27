@@ -4,6 +4,11 @@
     list-style-type: none;
 }
 
+.taglist li {
+    display: inline-block;
+
+}
+
 /*
  * vim: set ts=4 sts=4 fenc=utf-8 expandtab :
  */
