@@ -31,7 +31,7 @@ So I'm trying to claim this blog on technorati, this is about the 50st try to do
 
 
 ﻿
-[sourcecode langauage="bash"]
+{% highlight bash %}
 $ curl --silent http://blog.serverhorror.com/feed/ |grep -c -i A4ET8RMV5F4D
 23
-[/sourcecode]
+{% endhighlight %}
