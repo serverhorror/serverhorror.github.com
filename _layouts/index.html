@@ -11,7 +11,7 @@ and would like to develop a theme for me feel free to do that! <em>:)</em>
 <ul class="posts">
     {% for post in site.posts %}
     <li>
-    <time datetime="{{ post.date | date_to_xmlschema }}" pubdate>{{ post.date | date: "%F" }}</time>
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%F" }}</time>
     &rArr;
     <a href="{{ post.url }}">{{ post.title }}</a>
         <!-- Place this tag where you want the +1 button to render. -->
