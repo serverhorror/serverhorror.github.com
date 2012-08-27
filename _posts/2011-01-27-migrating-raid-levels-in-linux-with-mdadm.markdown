@@ -15,7 +15,7 @@ Clear out any RAID information on the disks involved
 
 [sourcecode]
 $ sudo mdadm --zero-superblock /dev/sd[bcdefghijk]
-[/sourcecode]
+{% endhighlight %}
 
 Keep Status overview running while we work on this:
 
@@ -28,86 +28,86 @@ $ while true;
         sudo mdadm --detail /dev/md/md0
         sleep 2
     done
-[/sourcecode]
+{% endhighlight %}
 
 Create a RAID1 with a missing disk:
 
 [sourcecode]
 $ sudo mdadm --create md0 --raid-devices 2 --level 1 /dev/sdb missing
-[/sourcecode]
+{% endhighlight %}
 
 Add a hot spare(s), mdadm will start a recovery process so that the degraded
 array will gain a clean state:
 
 [sourcecode]
 $ sudo mdadm --manage /dev/md/md0 --add /dev/sdc
-[/sourcecode]
+{% endhighlight %}
 
 Add a hot spare(s):
 
 [sourcecode]
 $ sudo mdadm --manage /dev/md/md0 --add /dev/sdd
-[/sourcecode]
+{% endhighlight %}
 
 Check the hot spare is working and make sdc available again:
 
 [sourcecode]
 $ sudo mdadm --manage /dev/md/md0 --fail /dev/sdc --remove /dev/sdc --add /dev/sdc
-[/sourcecode]
+{% endhighlight %}
 
 Convert into a RAID5 array:
 
 [sourcecode]
 $ sudo mdadm --grow /dev/md/md0 --level 5
-[/sourcecode]
+{% endhighlight %}
 
 Add a disk to the array, to get a clean state for the array:
 
 [sourcecode]
 $ sudo mdadm --grow /dev/md/md0 --raid-devices 3
-[/sourcecode]
+{% endhighlight %}
 
 Add a hot spare(s):
 
 [sourcecode]
 $ sudo mdadm --manage /dev/md/md0 --add /dev/sd[ef]
-[/sourcecode]
+{% endhighlight %}
 
 Grow the RAID5 to have more space available:
 
 [sourcecode]
 $ sudo mdadm --grow /dev/md/md0 --raid-devices 4
-[/sourcecode]
+{% endhighlight %}
 
 Add a second hot spare so that we can migrate from RAID5 to RAID6 (RAID5 to RAID6 needs to spares available):
 
 [sourcecode]
 $ sudo mdadm --manage /dev/md/md0 --add /dev/sdg
-[/sourcecode]
+{% endhighlight %}
 
 Convert into a RAID6 array and make it rebuild to a clean state:
 
 [sourcecode]
 $ sudo mdadm --grow /dev/md/md0 --raid-devices 6 --level 6
-[/sourcecode]
+{% endhighlight %}
 
 Add another hot-spare to be able to migrate from RAID6 to RAID5 (RAID6 to RAID5 needs one spare available):
 
 [sourcecode]
 $ sudo mdadm --manage /dev/md/md0 --add /dev/sdh
-[/sourcecode]
+{% endhighlight %}
 
 Convert from RAID6 to RAID5:
 
 [sourcecode]
 $ sudo mdadm --grow /dev/md/md0 --level 5 --raid-devices 7
-[/sourcecode]
+{% endhighlight %}
 
 Add 3 more spares (just in case):
 
 [sourcecode]
 sudo mdadm --manage /dev/md/md0 --add /dev/sd[ijk]
-[/sourcecode]
+{% endhighlight %}
 
 Exercise left to the reader (in that order):
 
