@@ -7,10 +7,14 @@ title: MySQL - kiss goodbye to your data
 wordpress_id: 244
 ---
 
-[Planet MySQL](http://www.planetmysql.org) had a [blog post about some strange behaviour](http://www.pythian.com/blogs/1422/draft-mind-the-sql_mode-when-running-alter-table#more-1422) [MySQL](http://www.mysql.com) is showing
+[Planet MySQL](http://www.planetmysql.org) had a [blog post about some
+strange
+behaviour](http://www.pythian.com/blogs/1422/draft-mind-the-sql_mode-when-running-alter-table#more-1422)
+[MySQL](http://www.mysql.com) is showing
 
 **Step One**: Create a table with a primary key
-[sourcecode language="text"]
+
+{% highlight %}
 mysql> use test;
 Database changed
 mysql> show tables;
@@ -47,9 +51,10 @@ mysql> select * from test_table;
 3 rows in set (0.00 sec)
 
 mysql>
-[/sourcecode]
+{% endhighlight %}
+
 **Step Two**: Alter the table to an auto_increment
-[sourcecode language="text"]
+{% highlight %}
 mysql> alter table test_table modify id int not null auto_increment, auto_increment=3;
 Query OK, 3 rows affected (0.03 sec)
 Records: 3  Duplicates: 0  Warnings: 0
@@ -65,11 +70,15 @@ mysql> select * from test_table;
 3 rows in set (0.00 sec)
 
 mysql>
-[/sourcecode]
+{% endhighlight %}
+
 **Step Three**: Kiss goodbye to your data
 
-To be fair: There is a solution to this, but personally I think that should be the default, or at least there should be the a warning or error when such a statement is altering your data.
-[sourcecode language="text"]
+To be fair: There is a solution to this, but personally I think that should
+be the default, or at least there should be the a warning or error when such
+a statement is altering your data.
+
+{% highlight %}
 mysql> set sql_mode='NO_AUTO_VALUE_ON_ZERO';
 Query OK, 0 rows affected (0.00 sec)
 
@@ -80,4 +89,5 @@ mysql> select @@session.sql_mode;
 | NO_AUTO_VALUE_ON_ZERO |
 +-----------------------+
 1 row in set (0.00 sec)
-[/sourcecode]
+{% endhighlight %}
+
