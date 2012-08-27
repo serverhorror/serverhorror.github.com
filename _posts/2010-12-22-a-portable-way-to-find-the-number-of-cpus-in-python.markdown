@@ -11,8 +11,8 @@ tags:
 
 This works in Python to get the number of CPUs in a system:
 
-[sourcecode language="python"]
+{% highlight python %}
 import os
 print os.sysconf('SC_NPROCESSORS_CONF')
 print os.sysconf('SC_NPROCESSORS_ONLN') # if different that the above this should be used
-[/sourcecode]
+{% endhighlight %}
