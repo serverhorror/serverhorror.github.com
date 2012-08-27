@@ -13,7 +13,7 @@ tags:
 
 Since the [MySQL](http://www.mysql.com) tab completion sucks anyway, but I usually forget how to enable it here's how:
 
-[sourcecode]
+{% highlight ini %}
 [mysql]
 #no-auto-rehash # faster start of mysql but no tab completion
 auto-rehash
