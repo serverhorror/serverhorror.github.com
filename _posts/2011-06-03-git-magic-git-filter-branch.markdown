@@ -17,7 +17,7 @@ tags:
 
 Rewrite all commits in `git` to a new author:
 
-[sourcecode]
+{% highlight bash %}
 git filter-branch -f --env-filter '\
     GIT_AUTHOR_EMAIL=author@example.invalid; \
     export GIT_AUTHOR_EMAIL; \
