@@ -5,3 +5,4 @@ _site/
 *.shell-to-bash
 *.sourcecode-to-highlight
 *.endhighlight
+*.fix-highlight
