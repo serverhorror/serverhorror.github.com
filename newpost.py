@@ -4,6 +4,7 @@ import os
 import sys
 import os.path
 import errno
+import subprocess
 from datetime import datetime
 from string import Template
 
@@ -31,7 +32,7 @@ def main(args):
 			front_matter_data[u"date"],
 			front_matter_data[u"title"].lower().replace(u" ", u"-"),
 			)
-	post = os.path.join(posts_dir, post_file)
+	post = os.path.abspath(os.path.join(posts_dir, post_file))
 
 	t = Template(front_matter)
 	boilerplate = t.safe_substitute(front_matter_data)
@@ -43,7 +44,9 @@ def main(args):
 		os.close(f)
 	except OSError, err:
 		raise
-	print "Run vim {}".format(post)
+	subprocess.call(["git", "add", post])
+	editor = os.getenv("EDITOR", "vim")
+	os.execlp(editor, editor, "{}".format(post))
 
 
 
