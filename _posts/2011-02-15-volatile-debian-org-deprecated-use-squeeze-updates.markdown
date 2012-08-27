@@ -19,15 +19,15 @@ As of today the [volatile.debian.org](http://www.debian.org/volatile/) is discon
 
 The short version is to got to your `/etc/apt/sources.list` and replace your volatile with
 
-[sourcecode language="text"]
+{% highlight text %}
 deb http://ftp.debian.org/debian squeeze-updates main
-[/sourcecode]
+{% endhighlight %}
 
 Then run (with your usual procedures of testing that of course):
 
-[sourcecode language="text"]
+{% highlight text %}
 apt-get update
 apt-get upgrade
-[/sourcecode]
+{% endhighlight %}
 
 and you should be fine
