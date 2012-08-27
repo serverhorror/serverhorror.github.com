@@ -3,26 +3,43 @@
     <head>
         <meta charset="UTF-8">
         <title>{{ page.title }}</title>
-        <link href="{{ site.url }}/assets/css/syntax.css" rel="stylesheet" type="text/css">
-        <link href="{{ site.url }}/assets/css/taglist.css" rel="stylesheet" type="text/css">
-        <link rel="alternate" type="application/atom+xml"
-        title="{{ site.x-name }} - Atom Feed" href="{{ site.url }}/atom.xml" />
-
-
+        <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="{{ site.x-name }} - Atom Feed" href="{{ site.url }}/atom.xml" />
+        {% if page.flattrable != null %}
+        <link
+            rel="payment"
+            type="text/html"
+            href="https://flattr.com/submit/auto?url={{ site.url | cgi_escape}}{{ page.url | cgi_escape }}&amp;user_id={{ site.flattr-user }}&amp;title={{ page.title | cgi_escape }}&amp;category=text&amp;tags=blog&amp;language={% if page.lang == 'en' %}en{% else %}se{% endif %}" title="Flattr this post" />
+        {% endif %}
+        <link
+            href="{{ site.url }}/assets/css/syntax.css"
+            rel="stylesheet"
+            type="text/css">
+        <link
+            href="{{ site.url }}/assets/css/taglist.css"
+            rel="stylesheet"
+            type="text/css">
+            <script type="text/javascript">
+            (function() {
+                var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = '//api.flattr.com/js/0.6/load.js?mode=auto&button=compact&uid={{ site.flattr-usert&category=text';
+                t.parentNode.insertBefore(s, t);
+            })();
+        </script>
         <script type="text/javascript">
-
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', '{{ site.google-analytics-id }}']);
             _gaq.push(['_trackPageview']);
-
             (function() {
                 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
                 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
             })();
         </script>
-        <!-- Place this tag in your head or just before your close body tag.
-        -->
         <script type="text/javascript"
             src="https://apis.google.com/js/plusone.js"></script>
     </head>
@@ -30,7 +47,6 @@
         <header class="site-header">
         <ul>
             <li><a href="{{ site.url }}">Home</a></li>
-            <li>Last generated: <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%F %H:%M:%S" }}</time></li>
         </ul>
         </header>
         <section class="site-content">
@@ -40,6 +56,7 @@
         <ul>
             <li><a href="{{ site.url }}">Home</a></li>
             <li>Last Modified: <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%F %H:%M:%S" }}</time></li>
+            <li><a class="FlattrButton" href="{{ site.url}}{{ page.url }}" title="{{ page.title }}" lang="{% if page.lang != null %}{{ page.lang }}{% else %}en{% endif %}" rel="flattr;tags:blog;"></a></li>
         </ul>
         </footer>
     </body>
