@@ -7,12 +7,12 @@ title: What's the difference between `pass` and `None`?
 wordpress_id: 801
 ---
 
-[sourcecode language="python"]
+{% highlight python %}
 class N(object):
     None
 
 class P(object):
     pass
 
-[/sourcecode]
+{% endhighlight %}
 Could someone please explain that to me?
