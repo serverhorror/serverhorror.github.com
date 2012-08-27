@@ -47,11 +47,11 @@ So what about the rest of the above examples?
 
 Consider SSL mass hosting with a single IP and say you give each VHost another port starting at 8441.
 
-[sourcecode langauage="text"]
+{% highlight text %}
 _https._tcp.example.com. 3600 IN SRV 0 10 8441 www.example.com.
 _https._tcp.example.net. 3600 IN SRV 0 10 8442 www.example.net.
 _https._tcp.example.org. 3600 IN SRV 0 10 8443 www.example.org.
-[/sourcecode]
+{% endhighlight %}
 
 
 Granted with [Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication) that problem is already solved, but I know  a few setups that for certain reasons won't be able to upgrade to packages that are able to use that technique. And personally I think that this approach is nicer especially since it solves this problem for every service. Take Thunderbird 3, it _tries autodiscovery_ but quite often fails. If there was a _pop3._tcp.example.com SRV entry it would just work.
