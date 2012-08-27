@@ -47,25 +47,25 @@ Let me use those 3 simple rules to create
 ## 1 MiB -- 10 MiB files
 
 
-[sourcecode language="bash"]$(( ($RANDOM % 10) + 1))[/sourcecode]
+{% highlight bash %}$(( ($RANDOM % 10) + 1)){% endhighlight %}
 
 
 ## 15 MiB -- 25 MiB files
 
 
-[sourcecode language="bash"]$(( ($RANDOM % 10) + 15))[/sourcecode]
+{% highlight bash %}$(( ($RANDOM % 10) + 15)){% endhighlight %}
 
 
 ## General Solution
 
 
-[sourcecode language="bash"]
+{% highlight bash %}
 MINSIZE=<number>
 MAXSIZE=<number>
 $(( ($RANDOM % ($MAXSIZE-$MINSIZE)) + $MINSIZE))
-[/sourcecode]
+{% endhighlight %}
 
-[sourcecode language="bash"]
+{% highlight bash %}
 MINSIZE=30
 MAXSIZE=60
 for i in {1..3}
@@ -77,11 +77,11 @@ do
 done 2>/dev/null \
 && echo 'SUCCESS: Creating data files' \
 || echo 'FAILURE: Creating data files'
-[/sourcecode]
+{% endhighlight %}
 
 The result looks quite good.
 
-[sourcecode lang="bash"]
+{% highlight bash %}
 du -sm testdata.*
 10	testdata.01-15.1.data
 5	testdata.01-15.2.data
@@ -92,6 +92,6 @@ du -sm testdata.*
 31	testdata.30-60.1.data
 38	testdata.30-60.2.data
 55	testdata.30-60.3.data
-[/sourcecode]
+{% endhighlight %}
 
 Yes I know this is minor math at best. But still I tend to forget that problems like this are easily solveable, so I'll not it down here. And yes, there's probably a bunch of cases where bash isn't what you want to use. I needed lots of files to test mdadm behaviour so that I can use them as disks and create RAID arrays.
