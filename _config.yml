@@ -3,6 +3,6 @@ pygments: true
 markdown: rdiscount
 permalink: pretty
 baseurl: /
-url: http://serverhorror.github.com
-x-name: serverhorror.github.com
+url: http://blog.serverhorror.com
+x-name: blog.serverhorror.com
 
