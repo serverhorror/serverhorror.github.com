@@ -10,7 +10,8 @@ wordpress_id: 235
 
 Just a short reminder how to easily create class methods in python. Useful for creating factory methods that return the instance of a certain class.
 
-{% highlight python %}user@localhost:~$ python
+{% highlight text %}
+user@localhost:~$ python
 Python 2.4.4 (#2, Apr 15 2008, 23:43:20)
 [GCC 4.1.2 20061115 (prerelease) (Debian 4.1.1-21)] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
@@ -47,7 +48,7 @@ This in fact works quite fine except for one thing:
 
 Python method are first class objects, if you have die above in a module named foo.py you will need the following code:
 
-{% highlight python %}
+{% highlight text %}
 Python 2.6.4 (r264:77598, Jan 18 2010, 11:44:15)
 [GCC 4.3.4] on linux2
 >>> import foo
@@ -59,7 +60,7 @@ Python 2.6.4 (r264:77598, Jan 18 2010, 11:44:15)
 
 Quite a lot of typing, you may want to consider the following:
 
-{% highlight python %}
+{% highlight text %}
 Python 2.6.4 (r264:77598, Jan 18 2010, 11:44:15)
 [GCC 4.3.4] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
