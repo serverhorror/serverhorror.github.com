@@ -8,8 +8,11 @@ wordpress_id: 243
 ---
 
 >From: Giudo von Rossom &lt;...&gt;
+>
 >Subject: Re: HELP!...Google SketchUp needs a Python API
+>
 >Newsgroups: comp.lang.python
+>
 >Date: 29 Nov 2008 00:26:06 GMT
 >
 >On Fri, 28 Nov 2008 15:22:58 -0800, r wrote:
