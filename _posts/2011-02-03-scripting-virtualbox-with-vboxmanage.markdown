@@ -21,7 +21,7 @@ Well **not really scripting**. Merely a note on the basic usage of `VBoxManage` 
 ## Get Basic Info About What We Need
 
 
-[sourcecode]
+{% highlight bash %}
 VBoxManage list
 VBoxManage list ostypes
 {% endhighlight %}
@@ -30,7 +30,7 @@ VBoxManage list ostypes
 ## Create a Guest and Register it to be visible in the GUI
 
 
-[sourcecode]
+{% highlight bash %}
 VBoxManage createvm --name clitest --ostype Linux26_64
 VBoxManage registervm ~/VirtualBox\ VMs/clitest/clitest.vbox
 VBoxManage list vms
@@ -40,7 +40,7 @@ VBoxManage list vms
 ## Adjust the settings
 
 
-[sourcecode]
+{% highlight bash %}
 VBoxManage modifyvm clitest --vram 16
 VBoxManage modifyvm clitest --memory 1024
 VBoxManage modifyvm clitest --boot1 dvd --boot2 disk --boot3 none
@@ -56,7 +56,7 @@ VBoxManage modifyvm clitest --firmware bios
 ## Create a disk to boot from
 
 
-[sourcecode]
+{% highlight bash %}
 VBoxManageo vbm createhd --filename ~/VirtualBox\ VMs/clitest/root.vdi --size $((2**10 * 5))
 {% endhighlight %}
 
@@ -64,7 +64,7 @@ VBoxManageo vbm createhd --filename ~/VirtualBox\ VMs/clitest/root.vdi --size $(
 ## Create a SATA Controller
 
 
-[sourcecode]
+{% highlight bash %}
 VBoxManage storagectl clitest --name SATA\ Controller --add sata --sataportcount 2 --bootable on
 {% endhighlight %}
 
@@ -72,7 +72,7 @@ VBoxManage storagectl clitest --name SATA\ Controller --add sata --sataportcount
 ## Attach an ISO image and disk to the Guest
 
 
-[sourcecode]
+{% highlight bash %}
 VBoxManage storageattach clitest --storagectl SATA\ Controller --port 0 --device 0 --type dvddrive --medium ~/ISOs/Fedora-13-x86_64-netinst.iso
 VBoxManage storageattach clitest --storagectl SATA\ Controller --port 1 --device 0 --type hdd --medium clitest/root.vdi
 {% endhighlight %}
@@ -81,6 +81,6 @@ VBoxManage storageattach clitest --storagectl SATA\ Controller --port 1 --device
 ## Boot it
 
 
-[sourcecode]
+{% highlight bash %}
 VBoxManage startvm clitest --type gui
 {% endhighlight %}
