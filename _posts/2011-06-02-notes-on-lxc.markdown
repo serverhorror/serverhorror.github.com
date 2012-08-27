@@ -79,7 +79,7 @@ Minor notes on how to set up a host and a first container for [LXC](http://en.wi
 
 
 
-[sourcecode]
+{% highlight  properties %}
 lxc.utsname=vm01 lxc.network.type=empty
 lxc.network.flags=up
 lxc.mount=/etc/lxc/vm01/fstab
@@ -117,7 +117,7 @@ lxc.cgroup.devices.allow = c 254:0 rwm
 
 
 
-[sourcecode]
+{% highlight text %}
 devpts /srv/lxc/vm01/debootstrapped/dev/pts devpts defaults 0 0
 proc /srv/lxc/vm01/debootstrapped/proc    proc   defaults 0 0
 sysfs /srv/lxc/vm01/debootstrapped/sys     sysfs  defaults 0 0
@@ -137,7 +137,7 @@ none /srv/lxc/vm01/debootstrapped/dev/shm tmpfs  defaults 0 0
 
 
 
-[sourcecode]
+{% highlight bash %}
 debootstrap --variant=minbase --include=dhcp-client,dialog,ifupdown,iproute,libui-dialog-perl,locales,netbase,net-tools,openssh-server,vim,curl,git-core squeeze /srv/lxc/vm01/ http://cdn.debian.net/debian/
 {% endhighlight %}
 
@@ -160,7 +160,7 @@ debootstrap --variant=minbase --include=dhcp-client,dialog,ifupdown,iproute,libu
 
 
 
-[sourcecode]
+{% highlight text %}
 id:3:initdefault:
 si::sysinit:/etc/init.d/rcS
 l0:0:wait:/etc/init.d/rc 0
@@ -192,7 +192,7 @@ c4:12345:respawn:/sbin/getty 38400 tty4 linux
 
 
 
-[sourcecode]
+{% highlight bash %}
 #!/bin/sh
 ### BEGIN INIT INFO
 # Provides:          hwclockfirst
@@ -218,7 +218,7 @@ exit 0
 
 
 
-[sourcecode]
+{% highlight bash %}
 #!/bin/sh
 ### BEGIN INIT INFO
 # Provides:          hwclock
