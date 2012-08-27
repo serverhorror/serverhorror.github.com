@@ -13,12 +13,12 @@ tags:
 
 Since I always have to look it up in the [manpage of lsof(8)](http://manpages.debian.net/cgi-bin/man.cgi?query=lsof):
 
-[sourcecode language="bash"]
+{% highlight bash %}
 lsof -nP -a -i -u ${USER} # list all network connections for ${USER}
 lsof -nP -a -i UDP -u ${USER} # list UDP connections for ${USER}
 lsof -nP -a -i TCP -u ${USER} # list TCP connections for ${USER}
 lsof -nP -a -i 6 -i TCP -u ${USER} # list IPv6 TCP connections for ${USER}
-[/sourcecode]
+{% endhighlight %}
 
 
 
