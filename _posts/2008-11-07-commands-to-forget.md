@@ -12,7 +12,7 @@ tags:
 Commands I always forget (mostly this is [Linux](http://www.kernel.org/) only, or at least [GNU Tools](http://www.gnu.org/)):
 
 
-* gzip input from stdin to a file: [ ](http://manpages.debian.net/cgi-bin/man.cgi?query=cat&sektion=1)
+* gzip input from stdin to a file:
     {% highlight bash %}
     cat <sourcefile> | gzip > <targetfile>
     {% endhighlight %}
