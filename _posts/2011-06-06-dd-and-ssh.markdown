@@ -18,7 +18,7 @@ tags:
 
 This is something I **need to remember**:
 
-[sourcecode]
+{% highlight bash %}
 ssh user@hostname dd if=/dev/sda | dd of=${HOME}/image.raw
 {% endhighlight %}
 
