@@ -10,10 +10,10 @@ wordpress_id: 248
 My personal µ-awk tutorial, just some notes I like **not to forget**...
 
 Print the average of a column:
-[sourcecode langauage="text"]
+{% highlight text %}
 # grep daemon_with_interesting_column_eight daemon.log | awk '{sum+=$8} END { print "Average = ",sum/NR}'
-[/sourcecode]
+{% endhighlight %}
 Print the average of a column fullfilling a constraint:
-[sourcecode langauage="text"]
+{% highlight text %}
 # awk '/$8>=0.02/  {sum+=$8} END { print "Average = ",sum/NR}'
-[/sourcecode]
+{% endhighlight %}
