@@ -39,6 +39,9 @@ def slugify(value):
 
 
 def main(args):
+    if len(args) < 2:
+        print "I need to have a title for the post!"
+        exit(1)
     title = u" ".join([arg.decode("utf-8") for arg in args[1:]])
     date = datetime.today()
 
