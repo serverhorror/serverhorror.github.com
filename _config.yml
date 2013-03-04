@@ -3,7 +3,7 @@ pygments: true
 markdown: rdiscount
 permalink: pretty
 baseurl: /
-url: http://blog.serverhorror.com
+url: http://serverhorror.wordpress.com
 
 site-name: "Server!/Horror!"
 
