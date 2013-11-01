@@ -1,8 +1,0 @@
-*.swp
-_site/
-
-## WordPress Migration
-*.shell-to-bash
-*.sourcecode-to-highlight
-*.endhighlight
-*.fix-highlight
