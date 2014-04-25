@@ -18,7 +18,7 @@ author:
 ---
 <p>Just a small note for myself on our hardware.</p>
 <p>I tend to forget this everytime I indeed need it. Maybe writing all that down helps</p>
-<p>[sourcecode language="shell"]<br />
+<p>{% highlight text %}<br />
 hpacucli ctrl all show detail<br />
 hpacucli ctrl slot=0 show config<br />
 hpacucli ctrl slot=0 array all show<br />
@@ -27,4 +27,4 @@ hpacucli ctrl slot=0 physicaldrive all show<br />
 hpacucli ctrl slot=0 physicaldrive 1I:1:1 show<br />
 hpacucli ctrl slot=0 logicaldrive all show<br />
 hpacucli ctrl slot=0 logicaldrive 1 show<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>

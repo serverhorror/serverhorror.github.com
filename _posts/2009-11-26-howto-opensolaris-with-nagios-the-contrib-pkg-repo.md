@@ -16,9 +16,9 @@ meta:
 author: 
 ---
 <p>I wanted to get Nagios running on OpenSolaris, honoring the pkg System I tried:</p>
-<p>[sourcecode langauage="text"]</p>
+<p>{% highlight text %}</p>
 <p>pkg search nagios</p>
-<p>[/sourcecode]</p>
+<p>{% endhighlight %}</p>
 <p>No dice, but I hadn't added the contrib repo yet and didn't know about it up until that point :)</p>
 <p>Just add</p>
 <ul>

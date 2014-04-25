@@ -27,7 +27,7 @@ author:
 <p>I assume you are indeed capable of physically installing a second, third or n<sup>th</sup> disk in your computer so let's jump to point (2).</p>
 <h1>Formatting the disk(s)</h1>
 <p>Simply use "format" :)<br />
-[sourcecode langauage="text"]<br />
+{% highlight text %}<br />
 $ pfexec format<br />
 Searching for disks...done</p>
 <p>AVAILABLE DISK SELECTIONS:<br />
@@ -56,9 +56,9 @@ selecting c8t2d0<br />
  volname    - set 8-character volume name<br />
  !&lt;cmd&gt;     - execute &lt;cmd&gt;, then return<br />
  quit<br />
-[/sourcecode]<br />
+{% endhighlight %}<br />
 No go "fdisk" it and delete all the partitions on the disk. Then create a new partition, make it a Solaris partition and be done with that part.<br />
-[sourcecode langauage="text"]<br />
+{% highlight text %}<br />
 format&gt; fdisk<br />
 Total disk size is 30401 cylinders<br />
  Cylinder size is 16065 (512 byte) blocks</p>
@@ -92,17 +92,17 @@ each time the computer is reset or turned on.<br />
 Please type &quot;y&quot; or &quot;n&quot;. y<br />
 Partition 1 is now the active partition.<br />
 Enter Selection: 5<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>
 <h1>Duplicate the disk layout on both disks</h1>
 <p>Now OpenSolaris provides us with 2 nice tools to make one disk have exactly the same layout as another disk. Use them like below:<br />
-[sourcecode langauage="text"]<br />
+{% highlight text %}<br />
 $ pfexec prtvtoc /dev/rdsk/c8t0d0s2 # first disk<br />
 $ pfexec prtvtoc /dev/rdsk/c8t2d0s2 # second disk<br />
 $ pfexec prtvtoc /dev/rdsk/c8t0d0s2 | pfexec fmthard -s - /dev/rdsk/c8t2d0s2 # make the 1st disk the same as the 2nd<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>
 <h1>Attach it to the pool in question</h1>
 <p>Let's have a quick look at the existing pool:<br />
-[sourcecode langauage="text"]<br />
+{% highlight text %}<br />
 $ zpool status<br />
  pool: rpool<br />
  state: ONLINE<br />
@@ -112,16 +112,16 @@ config:</p>
  rpool       ONLINE       0     0     0<br />
  c8t0d0s0    ONLINE       0     0     0</p>
 <p>errors: No known data errors<br />
-[/sourcecode]<br />
+{% endhighlight %}<br />
 Nice we now see what our original device name is and what our pool name is, we need both for the next command. Remember in my example the new disk slice (the BIOS vs. EFI thing) is  <em>c8t2d0s0</em>. We should be all fine to attach the slice to the pool and see it start recovering.<em></em><br />
-[sourcecode langauage="text"]<br />
+{% highlight text %}<br />
 $ pfexec zpool attach rpool c8t0d0s0 c8t2d0s0<br />
 invalid vdev specification<br />
 use '-f' to override the following errors:<br />
 /dev/dsk/c8t2d0s0 overlaps with /dev/dsk/c8t2d0s2<br />
-[/sourcecode]<br />
+{% endhighlight %}<br />
 Ouch, didn't quite work, so let's do as instructed, and right thereafter let's investigate the staus of the pool:<br />
-[sourcecode langauage="text"]<br />
+{% highlight text %}<br />
 $ pfexec zpool attach -f rpool c8t0d0s0 c8t2d0s0<br />
 Please be sure to invoke installgrub(1M) to make 'c8t2d0s0' bootable.<br />
 $ zpool status<br />
@@ -138,15 +138,15 @@ config:</p>
  c8t0d0s0      ONLINE       0     0     0<br />
  c8t2d0s0      ONLINE       0     0     0  113M resilvered</p>
 <p>errors: No known data errors<br />
-[/sourcecode]<br />
+{% endhighlight %}<br />
 Looks all nice, now let's do the grub stuff so that we can boot from both disks:<br />
-[sourcecode langauage="text"]<br />
+{% highlight text %}<br />
 $ pfexec installgrub /boot/grub/stage1 /boot/grub/stage2 /dev/rdsk/c8t2d0s0<br />
 stage1 written to partition 0 sector 0 (abs 16065)<br />
 stage2 written to partition 0, 271 sectors starting at 50 (abs 16115)<br />
-[/sourcecode]<br />
+{% endhighlight %}<br />
 A last check on the status of our pool:<br />
-[sourcecode langauage="text"]<br />
+{% highlight text %}<br />
 $ zpool status<br />
  pool: rpool<br />
  state: ONLINE<br />
@@ -161,5 +161,5 @@ config:</p>
  c8t0d0s0      ONLINE       0     0     0<br />
  c8t2d0s0      ONLINE       0     0     0  2.95G resilvered</p>
 <p>errors: No known data errors<br />
-[/sourcecode]<br />
+{% endhighlight %}<br />
 To my untrained OpenSolaris eye this looks all nice and shiny now.</p>

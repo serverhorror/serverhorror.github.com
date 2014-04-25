@@ -19,7 +19,7 @@ author:
 ---
 <p><!-- YZVNG8ZM3F8R  --><br />
 Just a short reminder how to easily create class methods in python. Useful for creating factory methods that return the instance of a certain class.</p>
-<p>[sourcecode language="python"]user@localhost:~$ python<br />
+<p>{% highlight text %}user@localhost:~$ python<br />
 Python 2.4.4 (#2, Apr 15 2008, 23:43:20)<br />
 [GCC 4.1.2 20061115 (prerelease) (Debian 4.1.1-21)] on linux2<br />
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</p>
@@ -48,19 +48,19 @@ ValueError: invalid literal for int(): 0x2<br />
 &gt;&gt;&gt; s = foo.from_int(0xe)<br />
 &gt;&gt;&gt; s.s<br />
 14<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>
 <p>This in fact works quite fine except for one thing:</p>
 <p>Python method are first class objects, if you have die above in a module named foo.py you will need the following code:</p>
-<p>[sourcecode langauage="python"]<br />
+<p>{% highlight text %}<br />
 Python 2.6.4 (r264:77598, Jan 18 2010, 11:44:15)<br />
 [GCC 4.3.4] on linux2<br />
 &gt;&gt;&gt; import foo<br />
 &gt;&gt;&gt; o = foo.foo.from_string(&quot;1&quot;)<br />
 &gt;&gt;&gt; o.s<br />
 '1'<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>
 <p>Quite a lot of typing, you may want to consider the following:</p>
-<p>[sourcecode langauage="python"]<br />
+<p>{% highlight text %}<br />
 Python 2.6.4 (r264:77598, Jan 18 2010, 11:44:15)<br />
 [GCC 4.3.4] on linux2<br />
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.<br />
@@ -70,10 +70,10 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 &gt;&gt;&gt; o = foo.from_string(&quot;a&quot;)<br />
 &gt;&gt;&gt; o.s<br />
 'a'<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>
 <p>A lot less to type isn't it?</p>
 <p>To get that working just create a module that looks like this:</p>
-<p>[sourcecode langauage="python"]<br />
+<p>{% highlight text %}<br />
 def from_string(value):<br />
     return foo(value)</p>
 <p>def from_int(value):<br />
@@ -81,4 +81,4 @@ def from_string(value):<br />
 <p>class foo(object):<br />
     def __init__(self, s):<br />
             self.s = s<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>

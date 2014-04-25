@@ -13,7 +13,7 @@ meta:
   _wpas_skip_yup: '1'
 author: 
 ---
-<p>[sourcecode language="python"]<br />
+<p>{% highlight text %}<br />
 import sys<br />
 import os</p>
 <p>from abc import ABCMeta<br />
@@ -45,4 +45,4 @@ from abc import abstractmethod</p>
     except (TypeError, ) as error:<br />
         print error<br />
         raise<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>

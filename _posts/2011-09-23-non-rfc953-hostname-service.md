@@ -21,7 +21,7 @@ author:
 <ul>
 <li>/etc/xinetd.d/<a class="zem_slink" title="Hostname" href="http://en.wikipedia.org/wiki/Hostname" rel="wikipedia">hostname</a></li>
 </ul>
-<p>[sourcecode]<br />
+<p>{% highlight text %}<br />
 service hostname {<br />
     disable         = no<br />
     type            = UNLISTED<br />
@@ -34,4 +34,4 @@ service hostname {<br />
     server          = /bin/hostname<br />
     server_args     = -f<br />
 }<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>

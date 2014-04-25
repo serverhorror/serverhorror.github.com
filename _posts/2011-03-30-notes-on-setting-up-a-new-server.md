@@ -20,7 +20,7 @@ author:
 ---
 <h2>A typical Machine</h2>
 <h3>Prepare Stuff as root</h3>
-<p>[sourcecode language="bash"]<br />
+<p>{% highlight text %}<br />
 passwd -l root<br />
 apt-get install sudo<br />
 adduser $SYSTEM_USER<br />
@@ -28,16 +28,16 @@ adduser $SYSTEM_USER adm<br />
 adduser $SYSTEM_USER staff<br />
 adduser $SYSTEM_USER sudo<br />
 su - $SYSTEM_USER<br />
-[/sourcecode]<br />
-[sourcecode language="bash"]<br />
+{% endhighlight %}<br />
+{% highlight text %}<br />
 sudo -l # verify $SYSTEM_USER can actually use sudo...<br />
 exit<br />
-[/sourcecode]<br />
-[sourcecode language="bash"]<br />
+{% endhighlight %}<br />
+{% highlight text %}<br />
 exit<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>
 <h3>Now work with <code>$SYSTEM_USER</code></h3>
-<p>[sourcecode language="bash"]<br />
+<p>{% highlight text %}<br />
 sudo apt-get update<br />
 sudo apt-get upgrade --yes<br />
 sudo apt-get install --yes vim<br />
@@ -47,4 +47,4 @@ sudo apt-get install procps lsof lsb-release bash-completion curl git-core -y<br
 source ./etc/bash_completion<br />
 grep -q -i '^PermitRootLogin' /etc/ssh/sshd_config &amp;&amp; sudo sed -i.bak -e 's/^PermitRootLogin (.*)/PermitRootLogin no/' /etc/ssh/sshd_config<br />
 sudo pkill -SIGHUP -u root -f /usr/sbin/sshd<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>

@@ -13,7 +13,7 @@ meta:
 author: 
 ---
 <div class="posterous_autopost">
-<p>[sourcecode]</p>
+<p>{% highlight text %}</p>
 <p>#!/usr/bin/awk -f<br />
 BEGIN<br />
 {<br />
@@ -38,5 +38,5 @@ BEGIN<br />
  print &quot;Max = &quot;,maximum;<br />
  print &quot;Min = &quot;,minimum;<br />
 }</p>
-<p>[/sourcecode]</p>
+<p>{% endhighlight %}</p>
 </div>

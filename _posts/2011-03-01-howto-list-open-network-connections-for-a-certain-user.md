@@ -17,12 +17,12 @@ meta:
 author: 
 ---
 <p>Since I always have to look it up in the <a title="LSOF(8) - manpages.debian.net" href="http://manpages.debian.net/cgi-bin/man.cgi?query=lsof">manpage of lsof(8)</a>:</p>
-<p>[sourcecode language="bash"]<br />
+<p>{% highlight text %}<br />
 lsof -nP -a -i -u ${USER} # list all network connections for ${USER}<br />
 lsof -nP -a -i UDP -u ${USER} # list UDP connections for ${USER}<br />
 lsof -nP -a -i TCP -u ${USER} # list TCP connections for ${USER}<br />
 lsof -nP -a -i 6 -i TCP -u ${USER} # list IPv6 TCP connections for ${USER}<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>
 <dl>
 <dt><code>-n</code></dt>
 <dd>don't translate IP addresses to host names</dd>

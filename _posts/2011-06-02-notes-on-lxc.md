@@ -44,7 +44,7 @@ Despite looking like copy/paste commands. <strong>These are not copy/paste comma
 <li><code>mkdir -p /etc/lxc/vm01</code></li>
 <li><code>vim /etc/lxc/vm01/conf</code>
 <div class="CodeRay">
-<div class="code">[sourcecode]<br />
+<div class="code">{% highlight text %}<br />
 lxc.utsname=vm01 lxc.network.type=empty<br />
 lxc.network.flags=up<br />
 lxc.mount=/etc/lxc/vm01/fstab<br />
@@ -67,26 +67,26 @@ lxc.cgroup.devices.allow = c 136:* rwm<br />
 lxc.cgroup.devices.allow = c 5:2 rwm<br />
 # rtc<br />
 lxc.cgroup.devices.allow = c 254:0 rwm<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>
 </div>
 </div>
 </li>
 <li><code>vim /etc/lxc/vm01/fstab</code>
 <div class="CodeRay">
-<div class="code">[sourcecode]<br />
+<div class="code">{% highlight text %}<br />
 devpts /srv/lxc/vm01/debootstrapped/dev/pts devpts defaults 0 0<br />
 proc /srv/lxc/vm01/debootstrapped/proc    proc   defaults 0 0<br />
 sysfs /srv/lxc/vm01/debootstrapped/sys     sysfs  defaults 0 0<br />
 none /srv/lxc/vm01/debootstrapped/dev/shm tmpfs  defaults 0 0<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>
 </div>
 </div>
 </li>
 <li>Install base system
 <div class="CodeRay">
-<div class="code">[sourcecode]<br />
+<div class="code">{% highlight text %}<br />
 debootstrap --variant=minbase --include=dhcp-client,dialog,ifupdown,iproute,libui-dialog-perl,locales,netbase,net-tools,openssh-server,vim,curl,git-core squeeze /srv/lxc/vm01/ http://cdn.debian.net/debian/<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>
 </div>
 </div>
 </li>
@@ -94,7 +94,7 @@ debootstrap --variant=minbase --include=dhcp-client,dialog,ifupdown,iproute,libu
 <li><code>echo vm01 &gt; /srv/lxc/vm01/etc/hostname</code></li>
 <li><code>vim /srv/lxc/vm01/etc/inittab</code>
 <div class="CodeRay">
-<div class="code">[sourcecode]<br />
+<div class="code">{% highlight text %}<br />
 id:3:initdefault:<br />
 si::sysinit:/etc/init.d/rcS<br />
 l0:0:wait:/etc/init.d/rc 0<br />
@@ -111,13 +111,13 @@ c1:12345:respawn:/sbin/getty 38400 tty1 linux<br />
 c2:12345:respawn:/sbin/getty 38400 tty2 linux<br />
 c3:12345:respawn:/sbin/getty 38400 tty3 linux<br />
 c4:12345:respawn:/sbin/getty 38400 tty4 linux<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>
 </div>
 </div>
 </li>
 <li><code>vim /srv/lxc/vm01/etc/init.d/hwclockfirst.sh</code>
 <div class="CodeRay">
-<div class="code">[sourcecode]<br />
+<div class="code">{% highlight text %}<br />
 #!/bin/sh<br />
 ### BEGIN INIT INFO<br />
 # Provides:          hwclockfirst<br />
@@ -128,13 +128,13 @@ c4:12345:respawn:/sbin/getty 38400 tty4 linux<br />
 # Default-Stop:<br />
 ### END INIT INFO<br />
 exit 0<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>
 </div>
 </div>
 </li>
 <li><code>vim /srv/lxc/vm01/etc/init.d/hwclock.sh</code>
 <div class="CodeRay">
-<div class="code">[sourcecode]<br />
+<div class="code">{% highlight text %}<br />
 #!/bin/sh<br />
 ### BEGIN INIT INFO<br />
 # Provides:          hwclock<br />
@@ -144,7 +144,7 @@ exit 0<br />
 # Default-Stop:      0 6<br />
 ### END INIT INFO<br />
 exit 0<br />
-[/sourcecode]</p>
+{% endhighlight %}</p>
 </div>
 </div>
 </li>
