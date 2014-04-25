@@ -13,5 +13,7 @@ meta:
   _wpas_done_linkedin: '1'
 author: 
 ---
-<p>Haha!?</p>
-<p><img class="aligncenter size-full wp-image-1517" title="VIM-SEGV" src="http://serverhorror.files.wordpress.com/2012/01/vim-segv.png" alt="" width="700" height="127" /></p>
+
+Haha!?
+
+![http://serverhorror.files.wordpress.com/2012/01/vim-segv.png]
