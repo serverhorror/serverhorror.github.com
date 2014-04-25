@@ -13,31 +13,39 @@ meta:
   _wpas_skip_yup: '1'
 author: 
 ---
-<p>{% highlight text %}
+{% highlight python %}
 import sys
-import os</p>
-<p>from abc import ABCMeta
-from abc import abstractmethod</p>
-<p>class MetaClass:
-    __metaclass__ = ABCMeta</p>
-<p>    @abstractmethod
+import os
+from abc import ABCMeta
+from abc import abstractmethod
+
+
+class MetaClass:
+    __metaclass__ = ABCMeta
+    @abstractmethod
     def needs_implementation(self):
-        pass</p>
-<p>class ImplementationClassOK(MetaClass):
+        pass
+
+
+class ImplementationClassOK(MetaClass):
     def random_method(self):
         pass
     def needs_implementation(self):
-        pass</p>
-<p>class ImplementationClassFail(MetaClass):
+        pass
+
+
+class ImplementationClassFail(MetaClass):
     def random_method(self):
-        pass</p>
-<p>if __name__ == u'__main__':</p>
-<p>    print u'Type OK: ', type(ImplementationClassOK)
+        pass
+
+
+if __name__ == u'__main__':
+    print u'Type OK: ', type(ImplementationClassOK)
     ok = ImplementationClassOK()
     print u'Type Instance OK: ', type(ok)
-    print ok</p>
-<p>    print type(ImplementationClassFail)</p>
-<p>    try:
+    print ok
+    print type(ImplementationClassFail)
+    try:
         print u'Type FAIL: ', type(ImplementationClassFail)
         fail = ImplementationClassFail()
         print u'Type Instance FAIL: ', type(fail)
@@ -45,4 +53,4 @@ from abc import abstractmethod</p>
     except (TypeError, ) as error:
         print error
         raise
-{% endhighlight %}</p>
+{% endhighlight %}

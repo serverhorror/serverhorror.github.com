@@ -23,7 +23,8 @@ author:
 <p>What I found was <a href="http://en.wikipedia.org/wiki/Simple_API_for_XML">sax</a> and <a href="http://en.wikipedia.org/wiki/Expat_%28XML%29">expat</a>, both of which are available in the <a href="http://docs.python.org/library/index.html">python standard library</a>.</p>
 <p>I chose to use sax as I didn't want to jump into XML to deep, and a bit of googling around suggestedSo what's the simplest way of using this SAX thing with python?</p>
 <p>First let's define some sample data</p>
-<pre style="padding-left:30px;"><?xml version="1.0" encoding="UTF-8"?>
+{% highlight xml %}
+<?xml version="1.0" encoding="UTF-8"?>
 <itemList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
      <item hostName="host1.example.com" itemName="boolean item">
              <dateRecorded>1967-08-13</dateRecorded>
@@ -41,7 +42,8 @@ author:
              <dateRecorded>1967-08-13</dateRecorded>
              <stringValue>foo</stringValue>
      </item>
-</itemList></pre>
+</itemList>
+{% endhighlight %}
 <p>Now our first draft of using the SAX module in python. What you do with SAX essentially is:</p>
 <ul>
 <li>import the needed modules</li>
@@ -55,7 +57,8 @@ author:
 <li>what to do when an element ends</li>
 <li>what to do with content of elements</li>
 </ul>
-<pre style="padding-left:30px;">#!/usr/bin/env python
+{% highlight python %}
+#!/usr/bin/env python
 # vim: syn=python ts=4 sts=4 enc=utf-8 tw=78 bg=dark expandtab:
 
 import os
@@ -63,9 +66,12 @@ import sys
 from xml import sax
 class ItemListParser(sax.ContentHandler):
    pass
-sax.parse(sys.argv[1], ItemListParser())</pre>
+sax.parse(sys.argv[1], ItemListParser())
+{% endhighlight %}
+
 <p>No that code doesn't really do much except that it doesn't generate errors. Let's enhance it so that we at least get some info on what's happening</p>
-<pre style="padding-left:30px;">#!/usr/bin/env python
+{% highlight python %}
+#!/usr/bin/env python
 # vim: syn=python ts=4 sts=4 enc=utf-8 tw=78 bg=dark expandtab:
 
 import os
@@ -87,9 +93,12 @@ class ItemListParser(sax.ContentHandler):
    def characters(self, content):
        emit(u"Content found: %s" % (repr(content), ))
 
-sax.parse(sys.argv[1], ItemListParser())</pre>
+sax.parse(sys.argv[1], ItemListParser())
+{% endhighlight %}
+
 <p>If you run this code you should be able to see how SAX works, it's actually just executing the method defined for an event. Now the good news is you don't need to worry about memory (mostly, that is). The bad news is that you don't really have any object like access so you need some sort of state to know when to do what. Let's create a simple class that will hold the values of your items defined in the XML sample</p>
-<pre style="padding-left:30px;">class Item(object):
+{% highlight python %}
+class Item(object):
    def __init__(self, host, name, date_time, value):
        self.host = host
        self.name = name
@@ -101,9 +110,12 @@ sax.parse(sys.argv[1], ItemListParser())</pre>
            self.host,
            self.name,
            self.time,
-           self.value)</pre>
+           self.value)
+{% endhighlight %}
+
 <p>A simple data structure like Item class. The <em>hard part</em> with SAX now is that you don't have access to the necessary parameters without some work to create an instance of the Item class. Let's fix that by first doing a step backwards and writing some documentation for the <em>ItemListParser</em> class so that we have a plan of what we want.</p>
-<pre style="padding-left:30px;">class ItemListParser(sax.ContentHandler):
+{% highlight python %}
+class ItemListParser(sax.ContentHandler):
    def startDocument(self):
        """We don't need anything special when the document starts."""
    def endDocument(self):
@@ -115,9 +127,12 @@ sax.parse(sys.argv[1], ItemListParser())</pre>
 create an instance of the desired object."""
    def characters(self, content):
        """Save the characters encountered to a helper variable depending on
-the state of our parser instance."""</pre>
+the state of our parser instance."""
+{% endhighlight %}
+
 <p>That's nice, but our script is back to a <em>noop</em>. So let's implement what we just defined.</p>
-<pre style="padding-left:30px;">class ItemListParser(sax.ContentHandler):
+{% highlight python %}
+class ItemListParser(sax.ContentHandler):
     value_names = (u"boolValue",
         u"floatValue",
         u"intValue",
@@ -166,9 +181,12 @@ the state of our parser instance."""
                 self.date_time = content
         except AttributeError, e:
             # if we don't know about self._get_characters or self._date_time yet: don't care
-            emit(e)</pre>
+            emit(e)
+	    {% endhighlight %}
+
 <p>Now we are all good to go, but still we don't have anything done to our <em>Item</em> class that holds the data we encountered. Let's change that and at least create a single <em>Item</em> that we can print. To do that just modify the endelement method to look like the following:</p>
-<pre style="padding-left:30px;">    def endElement(self, name):
+{% highlight python %}
+    def endElement(self, name):
         """Clear the state depending on the element encountered,
            possibly create an instance of the desired object."""
         if name == "item":
@@ -187,10 +205,14 @@ the state of our parser instance."""
             self._date_time = False
         elif name in ItemListParser.value_names:
             # reset the state
-            self._get_characters = False</pre>
+            self._get_characters = False
+{% endhighlight %}
+
 <p>If we now call our python script with a file that contains our sample XML you should get the following output:</p>
-<pre style="padding-left:30px;">$ python itemlistparser.py sampleData.xml
+{% highlight bash %}
+$ python itemlistparser.py sampleData.xml
 <: "host1.example.com" "boolean item" "2000-08-13" "true">
 <: "host1.example.com" "float item" "2001-08-13" "1.2">
 <: "host1.example.com" "int item without time" "2002-08-13" "12">
-<: "host1.example.com" "string item without time" "2003-08-13" "foo"></pre>
+<: "host1.example.com" "string item without time" "2003-08-13" "foo">
+{% endhighlight  %}

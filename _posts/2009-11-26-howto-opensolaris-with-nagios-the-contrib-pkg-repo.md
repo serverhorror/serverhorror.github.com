@@ -15,13 +15,16 @@ meta:
   _oembed_15dbb68ab1388bb4cebb7a88403e2ed7: '{{unknown}}'
 author: 
 ---
-<p>I wanted to get Nagios running on OpenSolaris, honoring the pkg System I tried:</p>
-<p>{% highlight text %}</p>
-<p>pkg search nagios</p>
-<p>{% endhighlight %}</p>
-<p>No dice, but I hadn't added the contrib repo yet and didn't know about it up until that point :)</p>
-<p>Just add</p>
-<ul>
-<li><a href="http://pkg.opensolaris.org/contrib">http://pkg.opensolaris.org/contrib</a></li>
-</ul>
-<p>as a pkg source and then install Nagios. Very nice!</p>
+I wanted to get Nagios running on OpenSolaris, honoring the pkg System I tried:
+
+{% highlight text %}
+pkg search nagios
+{% endhighlight %}
+
+No dice, but I hadn't added the contrib repo yet and didn't know about it up until that point :)
+
+Just add
+
+* <a href="http://pkg.opensolaris.org/contrib">http://pkg.opensolaris.org/contrib</a>
+
+as a pkg source and then install Nagios. Very nice!

@@ -13,10 +13,10 @@ meta:
   _wpas_skip_yup: '1'
 author: 
 ---
-<p>{% highlight text %}
+{% highlight python %}
 class N(object):
-    None</p>
-<p>class P(object):
-    pass</p>
-<p>{% endhighlight %}
-Could someone please explain that to me?</p>
+    None
+class P(object):
+    pass
+{% endhighlight %}
+Could someone please explain that to me?
