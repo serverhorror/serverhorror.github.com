@@ -22,7 +22,7 @@ BEGIN
  sum=0;
 }</p>
 <p>{
- if($3&gt;maximum)
+ if($3>maximum)
  {
  maximum=$3;
  }

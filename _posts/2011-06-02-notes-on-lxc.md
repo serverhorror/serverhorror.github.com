@@ -91,7 +91,7 @@ debootstrap --variant=minbase --include=dhcp-client,dialog,ifupdown,iproute,libu
 </div>
 </li>
 <li><code>/usr/sbin/chroot /srv/lxc/vm01 /usr/bin/passwd -d root</code></li>
-<li><code>echo vm01 &gt; /srv/lxc/vm01/etc/hostname</code></li>
+<li><code>echo vm01 > /srv/lxc/vm01/etc/hostname</code></li>
 <li><code>vim /srv/lxc/vm01/etc/inittab</code>
 <div class="CodeRay">
 <div class="code">{% highlight text %}
@@ -148,7 +148,7 @@ exit 0
 </div>
 </div>
 </li>
-<li><code>&gt;/etc/lxc/vm01/log</code></li>
+<li><code>>/etc/lxc/vm01/log</code></li>
 <li><code>lxc-start -n vm01 -f /etc/lxc/vm01/conf -o /etc/lxc/vm01/log --logpriority INFO</code></li>
 </ol>
 </div>

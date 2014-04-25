@@ -28,7 +28,7 @@ author:
 <ol>
 <li>Changing the way PDF files are opened in Finder didn't help</li>
 <li>Scanning Safari Preferences didn't help</li>
-<li>Scanning Adobe Prefences revealed an option but I wasn't able to uncheck it. ("Preferences" -&gt; "Internet" -&gt; "Display PDF in browser using:" - in case you are searching</li>
+<li>Scanning Adobe Prefences revealed an option but I wasn't able to uncheck it. ("Preferences" -> "Internet" -> "Display PDF in browser using:" - in case you are searching</li>
 </ol>
 <p>To "switch back" delete (or move) the file "/Library/Internet Plug-Ins/AdobePDFViewer.plugin". The resulting preferences from Adobe Reader are shown below. Also now you have Preview.app back in Safari when opening PDF files.</p>
 <p><a href="http://serverhorror.files.wordpress.com/2011/01/adobereaderprefs.png"><img class="aligncenter size-full wp-image-910" title="AdobeReaderPrefs" src="http://serverhorror.files.wordpress.com/2011/01/adobereaderprefs.png" alt="" width="640" height="430" /></a>To be able to switch around easily I recommend you simply move the file to a convenient location. If you need Safari to open PDF files with Adobe Reader again just move "AdobePDFViewer.plugin" back to "/Library/Internet Plug-Ins/" and restart Safari. The same approach should work if you move it to "~/Library/Internet Plug-Ins/" - though I haven't tested that and right now I am too lazy to do that...</p>

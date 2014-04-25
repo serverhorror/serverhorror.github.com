@@ -35,10 +35,10 @@ $ python
 Python 2.6.1 (r261:67515, Feb 11 2010, 00:51:29)
 [GCC 4.2.1 (Apple Inc. build 5646)] on darwin
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-&gt;&gt;&gt; import psycopg2
-&gt;&gt;&gt; psycopg2.__version__
+>>> import psycopg2
+>>> psycopg2.__version__
 '2.2.0 (dt dec release-candidate-1 ext pq3)'
-&gt;&gt;&gt;
+>>>
 {% endhighlight %}</p>
 <p> The solution here is this: {% highlight text %}
 PATH=$PATH:/opt/local/lib/postgresql84/bin/ pip install psycopg2 sqlalchemy

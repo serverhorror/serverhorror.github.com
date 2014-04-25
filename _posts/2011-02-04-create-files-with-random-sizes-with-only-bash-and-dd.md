@@ -40,8 +40,8 @@ author:
 <p>{% highlight text %}$(( ($RANDOM % 10) + 15)){% endhighlight %}</p>
 <h2>General Solution</h2>
 <p>{% highlight text %}
-MINSIZE=<number&gt;
-MAXSIZE=<number&gt;
+MINSIZE=<number>
+MAXSIZE=<number>
 $(( ($RANDOM % ($MAXSIZE-$MINSIZE)) + $MINSIZE))
 {% endhighlight %}</p>
 <p>{% highlight text %}
@@ -52,7 +52,7 @@ do
     dd if=/dev/zero of=testdata.01-15.${i}.data bs=1m count=0 seek=$(( ($RANDOM % 10) + 1))
     dd if=/dev/zero of=testdata.15-25.${i}.data bs=1m count=0 seek=$(( ($RANDOM % 10) + 15))
     dd if=/dev/zero of=testdata.${MINSIZE}-${MAXSIZE}.${i}.data bs=1m count=0 seek=$(( ($RANDOM % ($MAXSIZE-$MINSIZE)) + $MINSIZE))</p>
-<p>done 2&gt;/dev/null \
+<p>done 2>/dev/null \
 &amp;&amp; echo 'SUCCESS: Creating data files' \
 || echo 'FAILURE: Creating data files'
 {% endhighlight %}</p>

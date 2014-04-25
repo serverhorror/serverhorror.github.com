@@ -23,7 +23,7 @@ Just a short reminder how to easily create class methods in python. Useful for c
 Python 2.4.4 (#2, Apr 15 2008, 23:43:20)
 [GCC 4.1.2 20061115 (prerelease) (Debian 4.1.1-21)] on linux2
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</p>
-<p>&gt;&gt;&gt; class foo(object):
+<p>>>> class foo(object):
 ...     def __init__(self, s):
 ...             self.s = s
 ...     @classmethod
@@ -33,20 +33,20 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 ...     def from_int(cls, in_):
 ...             return cls(int(in_))
 ...
-&gt;&gt;&gt; s = foo.from_string(&quot;foo&quot;)
-&gt;&gt;&gt; s = foo.from_int(&quot;foo&quot;)
+>>> s = foo.from_string(&quot;foo&quot;)
+>>> s = foo.from_int(&quot;foo&quot;)
 Traceback (most recent call last):
 File &quot;&quot;, line 1, in ?
 File &quot;&quot;, line 9, in from_int
 ValueError: invalid literal for int(): foo
-&gt;&gt;&gt; s = foo.from_int(&quot;2&quot;)
-&gt;&gt;&gt; s = foo.from_int(&quot;0x2&quot;)
+>>> s = foo.from_int(&quot;2&quot;)
+>>> s = foo.from_int(&quot;0x2&quot;)
 Traceback (most recent call last):
 File &quot;&quot;, line 1, in ?
 File &quot;&quot;, line 9, in from_int
 ValueError: invalid literal for int(): 0x2
-&gt;&gt;&gt; s = foo.from_int(0xe)
-&gt;&gt;&gt; s.s
+>>> s = foo.from_int(0xe)
+>>> s.s
 14
 {% endhighlight %}</p>
 <p>This in fact works quite fine except for one thing:</p>
@@ -54,9 +54,9 @@ ValueError: invalid literal for int(): 0x2
 <p>{% highlight text %}
 Python 2.6.4 (r264:77598, Jan 18 2010, 11:44:15)
 [GCC 4.3.4] on linux2
-&gt;&gt;&gt; import foo
-&gt;&gt;&gt; o = foo.foo.from_string(&quot;1&quot;)
-&gt;&gt;&gt; o.s
+>>> import foo
+>>> o = foo.foo.from_string(&quot;1&quot;)
+>>> o.s
 '1'
 {% endhighlight %}</p>
 <p>Quite a lot of typing, you may want to consider the following:</p>
@@ -64,11 +64,11 @@ Python 2.6.4 (r264:77598, Jan 18 2010, 11:44:15)
 Python 2.6.4 (r264:77598, Jan 18 2010, 11:44:15)
 [GCC 4.3.4] on linux2
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-&gt;&gt;&gt; import foo
-&gt;&gt;&gt; foo.from_string(&quot;a&quot;)
-<foo.foo object at 0x7f0c78d94350&gt;
-&gt;&gt;&gt; o = foo.from_string(&quot;a&quot;)
-&gt;&gt;&gt; o.s
+>>> import foo
+>>> foo.from_string(&quot;a&quot;)
+<foo.foo object at 0x7f0c78d94350>
+>>> o = foo.from_string(&quot;a&quot;)
+>>> o.s
 'a'
 {% endhighlight %}</p>
 <p>A lot less to type isn't it?</p>

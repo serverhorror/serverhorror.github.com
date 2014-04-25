@@ -24,7 +24,7 @@ author:
 * ido2db will now prints out available database drivers
 * fix ido2db segfault when try to access non existing tables
 * DocBook v5 conversion
-* Fix menu frameset cols width<!--more--&gt;
+* Fix menu frameset cols width<!--more-->
 {% endhighlight %}
 Here is the ChangeLog for Nagios referenced above:
 {% highlight text %}

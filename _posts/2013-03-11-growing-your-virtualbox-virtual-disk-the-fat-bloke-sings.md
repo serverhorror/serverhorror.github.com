@@ -19,6 +19,6 @@ meta:
 author: 
 ---
 <p>{% highlight text %}
-VBoxManage modifyhd <uuid&gt;|<filename&gt; [--resize <megabytes&gt;|--resizebyte <bytes&gt;]
+VBoxManage modifyhd <uuid>|<filename> [--resize <megabytes>|--resizebyte <bytes>]
 {% endhighlight %}</p>
 <p>via <a href="https://blogs.oracle.com/fatbloke/entry/growing_your_virtualbox_virtual_disk">Growing your VirtualBox Virtual Disk (The Fat Bloke Sings)</a>.</p>
