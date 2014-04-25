@@ -1,5 +1,6 @@
 name: Server!/Horror!
 markdown: redcarpet
 pygments: true
+baseurl: http://serverhorror.com
 
 # vim: set ts=2 sts=2 fenc=utf-8 expandtab:
