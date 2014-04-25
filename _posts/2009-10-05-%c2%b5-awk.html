@@ -1,0 +1,27 @@
+---
+layout: post
+title: µ-awk
+categories: []
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  blogger_blog: ctrl.alt.delete.co.at
+  blogger_author: MartinMarchernoreply@blogger.com
+  blogger_permalink: /2009/01/awk.html
+  reddit: a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1270743950";}
+  delicious: a:3:{s:5:"count";s:1:"0";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1270743940";}
+  _wpas_skip_twitter: '1'
+  _wpas_skip_fb: '1'
+author: 
+---
+<p>My personal µ-awk tutorial, just some notes I like <strong>not to forget</strong>...</p>
+<p>Print the average of a column:<br />
+[sourcecode langauage="text"]<br />
+# grep daemon_with_interesting_column_eight daemon.log | awk '{sum+=$8} END { print &quot;Average = &quot;,sum/NR}'<br />
+[/sourcecode]<br />
+Print the average of a column fullfilling a constraint:<br />
+[sourcecode langauage="text"]<br />
+# awk '/$8&gt;=0.02/  {sum+=$8} END { print &quot;Average = &quot;,sum/NR}'<br />
+[/sourcecode]</p>

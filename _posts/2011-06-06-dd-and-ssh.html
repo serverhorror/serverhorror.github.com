@@ -1,0 +1,28 @@
+---
+layout: post
+title: dd and ssh
+categories: []
+tags:
+- Clients
+- Hostname
+- IP address
+- linux
+- Protocols
+- PuTTY
+- Secure Shell
+- SSH
+status: publish
+type: post
+published: true
+meta:
+  reddit: a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1319740346";}
+  _wpas_skip_twitter: '1'
+  _wpas_skip_fb: '1'
+  _wpas_skip_linkedin: '1'
+author: 
+---
+<p>This is something I <strong>need to remember</strong>:</p>
+<p>[sourcecode]<br />
+ssh user@hostname dd if=/dev/sda | dd of=${HOME}/image.raw<br />
+[/sourcecode]</p>
+<p>Specifially <strong>don't do this: <code>dd if=/dev/sda of=-</code></strong></p>
