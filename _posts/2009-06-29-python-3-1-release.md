@@ -14,13 +14,15 @@ meta:
 author: 
 ---
 <p>Great news: 2 days ago Python 3.1 has been released.</p>
-<p>You can find the <a href="http://svn.python.org/projects/python/tags/r31/Misc/NEWS">ChangeLog here</a>. Personally I find these fixes great (not any specific order):<br />
-[sourcecode language="text"]<br />
-- Issue #1655: Make imaplib IPv6-capable. Patch by Derek Morr.<br />
-- Issue #1664: Make nntplib IPv6-capable. Patch by Derek Morr.<br />
-- Issue #4868: utf-8, utf-16 and latin1 decoding are now 2x to 4x faster. The common cases are optimized thanks to a dedicated fast path and a moderate amount of loop unrolling.<br />
-- Issue #4874: Most builtin decoders now reject unicode input.<br />
-- Issue #3959: The ipaddr module has been added to the standard library. Contributed by Google.<br />
-- The json module now works exclusively with str and not bytes.<br />
-[/sourcecode]<br />
+<p>You can find the <a href="http://svn.python.org/projects/python/tags/r31/Misc/NEWS">ChangeLog here</a>. Personally I find these fixes great (not any specific order):
+
+{% highlight text %}
+- Issue #1655: Make imaplib IPv6-capable. Patch by Derek Morr.
+- Issue #1664: Make nntplib IPv6-capable. Patch by Derek Morr.
+- Issue #4868: utf-8, utf-16 and latin1 decoding are now 2x to 4x faster. The common cases are optimized thanks to a dedicated fast path and a moderate amount of loop unrolling.
+- Issue #4874: Most builtin decoders now reject unicode input.
+- Issue #3959: The ipaddr module has been added to the standard library. Contributed by Google.
+- The json module now works exclusively with str and not bytes.
+{% endhighlight text %}
+
 I nearly missed it but my RSS Reader was kind enough to remind me, first <a href="http://sayspy.blogspot.com/2009/06/python-31-is-out.html">found it on this blog post</a></p>

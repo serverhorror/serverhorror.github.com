@@ -31,9 +31,11 @@ author:
 <li><a href="http://www.debian.org/doc/manuals/securing-debian-howto/ch12.en.html#s12.1.12.3">What is the difference between the adm and the staff group?</a></li>
 </ul>
 <p>However that wasn't good enough for me, so I fired up a new debian instance and had a look at which files (or directories for that matter) are actually writable by the staff group:</p>
-<p>[sourcecode language="text"]<br />
-sudo find / -xdev -group staff -perm +0020 -exec ls -ld {} \;<br />
-[/sourcecode]</p>
+
+{% highlight text %}
+sudo find / -xdev -group staff -perm +0020 -exec ls -ld {} \;
+{% endhighlight text %}
+
 <p>Long story short: It seems only 2 directories are writeable:</p>
 <p>&nbsp;</p>
 <ul>
@@ -41,14 +43,18 @@ sudo find / -xdev -group staff -perm +0020 -exec ls -ld {} \;<br />
 <li>/usr/local</li>
 </ul>
 <p>of course that includes all the subdirectories in a default Debian installation. While we're at it we can also check the same for the `adm` group:</p>
-<p>[sourcecode language="text"]<br />
-sudo find / -xdev -group adm -perm +0020 -exec ls -ld {} \;<br />
-[/sourcecode]</p>
+
+{% highlight text %}
+sudo find / -xdev -group adm -perm +0020 -exec ls -ld {} \;
+{% endhighlight text %}
+
 <p>Interestingly enough, nothing came back. So let's check what we can read with this group and also what the `staff` group can read:</p>
-<p>[sourcecode language="text"]<br />
-sudo find / -xdev -group adm -perm +0010 -exec ls -ld {} \;<br />
-sudo find / -xdev -group staff -perm +0010 -exec ls -ld {} \;<br />
-[/sourcecode]</p>
+
+{% highlight text %}
+sudo find / -xdev -group adm -perm +0010 -exec ls -ld {} \;
+sudo find / -xdev -group staff -perm +0010 -exec ls -ld {} \;
+{% endhighlight text %}
+
 <p>The `<em>adm</em>` group returned a few hits in the `<em>/var/log</em>` directory while the `<em>staff</em>` group had read access to everything under `<em>/var/local</em>` and `<em>/usr/local`</em>. From my point of view it seems that `<em>staff</em>` and `<em>adm</em>` are perfectly useable for administrators as long as there aren't any critical packages installed by "exploiting" these memberships. I rather see such things installed by creating a proper package and using <em>apt-get</em>.</p>
 <p>&nbsp;</p>
 <p>Of course there should be some testing done on a regular basis that no files or directories are in a place where `<em>staff</em>` or `<em>adm</em>` people shouldn't write to.</p>

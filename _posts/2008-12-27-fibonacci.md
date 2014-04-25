@@ -14,18 +14,20 @@ meta:
   _wpas_skip_twitter: '1'
 author: 
 ---
-<p>Something I tend to forget:<br />
-[sourcecode language="python"]<br />
-def fibonacci():<br />
-    a, b = 1, 2<br />
-    while True:<br />
-        yield a<br />
-        a, b = b, a + b<br />
-[/sourcecode]<br />
-Another way of implementing it of course this is very slow, try calculating the <a href="http://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci number</a> of 50 with this algorithm and then get it with the first algorithm:<br />
-[sourcecode language="python"]<br />
-def fib(n):<br />
-    if n &lt; 2:<br />
-        return n<br />
-    return fib(n-1) + fib(n-2)<br />
-[/sourcecode]</p>
+Something I tend to forget:
+{% highlight python %}
+def fibonacci():
+    a, b = 1, 2
+    while True:
+        yield a
+        a, b = b, a + b
+{% endhighlight %}
+Another way of implementing it of course this is very slow, try calculating the
+[Fibonacci number](http://en.wikipedia.org/wiki/Fibonacci_number) of 50 with
+this algorithm and then get it with the first algorithm:
+{% highlight python %}
+def fib(n):
+    if n > 2:
+        return n
+    return fib(n-1) + fib(n-2)
+{% endhighlight %}

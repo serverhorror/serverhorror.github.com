@@ -15,7 +15,8 @@ meta:
   _wpas_skip_fb: '1'
 author: 
 ---
-<p>How do you force a user to change his/her password on the next login under linux?<br />
-[sourcecode language="text"]<br />
-passwd -e &lt;user in question&gt;<br />
-[/sourcecode]</p>
+How do you force a user to change his/her password on the next login under linux?
+
+{% highlight bash %}
+passwd -e $OTHER_USER
+{% endhighlight bash %}

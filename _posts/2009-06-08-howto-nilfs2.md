@@ -21,59 +21,59 @@ author:
 </ul>
 <p>essentially that means that everytime you write a new file you will have a new version of your filesystem just ready to be mounted at a convenient place so that you are able to restore the version of the file from just about 2 seconds ago. Check the <a href="http://en.wikipedia.org/wiki/NILFS">details of NILFS on the wikipedia page</a> for a good overview. This post will be about basic usage and some ideas I have how to put it to actual use in a production environment.</p>
 <p>So getting nilfs running on Debian/Squeeze (in that case as I tried it on my workstation) isn't much of a problem. A couple of commands and you are good to go:</p>
-<p>[sourcecode language="text"]<br />
-$ sudo m-a a-i nilfs2 # compile the modules for the kernel you currently use<br />
-$ sudo apt-get install nilfs2-tools<br />
-$ sudo lvcreate -L 1000M -n nilfs.test vg00<br />
-$ sudo mkfs.nilfs2 /dev/vg00/nilfs.test<br />
-$ sudo mount /dev/vg00/nilfs.test /mnt/nilfs/<br />
-[/sourcecode]<br />
-Now with this you can start using your shiny new nilfs2 2 partition right away, the interesting part comes from the snapshots you are able to use with nilfs2. Use lscp to show how many checkpoints have been created.<br />
-[sourcecode language="text"]<br />
-$ sudo lscp<br />
-        CNO        DATE     TIME  MODE  FLG   NBLKINC       ICNT<br />
-         51  2009-06-08 11:42:43   cp    -       1181          6<br />
-         52  2009-06-08 11:42:48   cp    -       1168          6<br />
-         53  2009-06-08 11:42:53   cp    -       1464          6<br />
-         54  2009-06-08 11:42:58   cp    -        551          6<br />
-         55  2009-06-08 11:43:03   cp    -        748          6<br />
-         56  2009-06-08 11:43:08   cp    -       1505          6<br />
-         57  2009-06-08 11:43:13   cp    -        785          6<br />
-         58  2009-06-08 11:43:18   cp    -       2155          6<br />
-         59  2009-06-08 11:43:23   cp    -        688          6<br />
-         60  2009-06-08 11:43:28   cp    -        762          6<br />
-         ...<br />
-         83  2009-06-08 11:45:30   cp    -       2643          5<br />
-         84  2009-06-08 11:47:28   cp    i         10          5<br />
-         85  2009-06-08 11:47:40   cp    i         10          5<br />
-         86  2009-06-08 11:48:21   cp    i         13          5<br />
-[/sourcecode]<br />
+{% highlight bash %}
+sudo m-a a-i nilfs2 # compile the modules for the kernel you currently use
+sudo apt-get install nilfs2-tools
+sudo lvcreate -L 1000M -n nilfs.test vg00
+sudo mkfs.nilfs2 /dev/vg00/nilfs.test
+sudo mount /dev/vg00/nilfs.test /mnt/nilfs/
+{% endhighlight text %}
+Now with this you can start using your shiny new nilfs2 2 partition right away, the interesting part comes from the snapshots you are able to use with nilfs2. Use lscp to show how many checkpoints have been created.
+{% highlight text %}
+$ sudo lscp
+        CNO        DATE     TIME  MODE  FLG   NBLKINC       ICNT
+         51  2009-06-08 11:42:43   cp    -       1181          6
+         52  2009-06-08 11:42:48   cp    -       1168          6
+         53  2009-06-08 11:42:53   cp    -       1464          6
+         54  2009-06-08 11:42:58   cp    -        551          6
+         55  2009-06-08 11:43:03   cp    -        748          6
+         56  2009-06-08 11:43:08   cp    -       1505          6
+         57  2009-06-08 11:43:13   cp    -        785          6
+         58  2009-06-08 11:43:18   cp    -       2155          6
+         59  2009-06-08 11:43:23   cp    -        688          6
+         60  2009-06-08 11:43:28   cp    -        762          6
+         ...
+         83  2009-06-08 11:45:30   cp    -       2643          5
+         84  2009-06-08 11:47:28   cp    i         10          5
+         85  2009-06-08 11:47:40   cp    i         10          5
+         86  2009-06-08 11:48:21   cp    i         13          5
+{% endhighlight text %}
 Yes I did this from a random directory, lscp will try to find a nilfs2 filesystem by looking at /proc/mounts. Regarding the meaning of the columns I'm pretty sure you can read the manpage yourself. Now let's get a mount from an older version of the filesystem. This involves 3 steps:</p>
-<ol>
-<li>find the checkpoint you want to mount</li>
-<li>make the checkpoint a snapshot</li>
-<li>mount it</li>
-</ol>
-<p>[sourcecode language="text"]<br />
-...<br />
-# I decided to use no. 65<br />
-$ sudo chcp ss 65<br />
-$ sudo lscp|grep 65<br />
-        65  2009-06-08 11:43:54   ss    -       1563          6<br />
-$ mount -t nilfs2 -r -o cp=65 /dev/vg00/nilfs.test /mnt/cp/<br />
-$ sudo ls -l /mnt/nilfs/<br />
-total 181796<br />
--rw-r--r-- 1 martin martin  43220992 2009-04-14 00:20 debian-501-amd64-businesscard.iso<br />
--rw-r--r-- 1 martin martin 142194688 2009-04-14 00:21 debian-501-amd64-netinst.iso<br />
-$ sudo mkdir -p /mnt/cp/<br />
-$ sudo ls -l /mnt/cp/<br />
-total 0<br />
-$ sudo mount -t nilfs2 -r -o cp=65 /dev/vg00/nilfs.test /mnt/cp/<br />
-$ sudo ls -l /mnt/cp/<br />
-total 117808<br />
--rw-r--r-- 1 martin martin 120151000 2009-06-08 11:43 debian-501-amd64-netinst.iso<br />
--rw-r--r-- 1 martin root           7 2009-06-08 10:50 foo<br />
-[/sourcecode]<br />
+
+* find the checkpoint you want to mount
+* make the checkpoint a snapshot
+* mount it
+
+{% highlight text %}
+...
+# I decided to use no. 65
+$ sudo chcp ss 65
+$ sudo lscp|grep 65
+        65  2009-06-08 11:43:54   ss    -       1563          6
+$ mount -t nilfs2 -r -o cp=65 /dev/vg00/nilfs.test /mnt/cp/
+$ sudo ls -l /mnt/nilfs/
+total 181796
+-rw-r--r-- 1 martin martin  43220992 2009-04-14 00:20 debian-501-amd64-businesscard.iso
+-rw-r--r-- 1 martin martin 142194688 2009-04-14 00:21 debian-501-amd64-netinst.iso
+$ sudo mkdir -p /mnt/cp/
+$ sudo ls -l /mnt/cp/
+total 0
+$ sudo mount -t nilfs2 -r -o cp=65 /dev/vg00/nilfs.test /mnt/cp/
+$ sudo ls -l /mnt/cp/
+total 117808
+-rw-r--r-- 1 martin martin 120151000 2009-06-08 11:43 debian-501-amd64-netinst.iso
+-rw-r--r-- 1 martin root           7 2009-06-08 10:50 foo
+{% endhighlight text %}
 Aha! Now we have a version from just a couple of minutes before we did something to our filesystem.</p>
 <p>How do we put that to actual use now?</p>
 <ul>

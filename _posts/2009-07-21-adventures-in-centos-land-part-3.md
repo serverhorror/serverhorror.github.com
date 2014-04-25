@@ -43,104 +43,116 @@ author:
 </ul>
 <p>Let's see, yum is the package manager and seems to work quite well, no sign of RPM-dependency hell any more.</p>
 <p>O.K. - so much for a basic running service. Of course that doesn't do that much that is useful for us. Let's first configure slapd and a basic LDAP tree. The config of slapd is rather simple, we don't really have any users except one so we don't exactly need any groups. Why bother with LDAP then? Well, once you get used to having LDAP and a nice GUI tool is actually a lot <del>easier</del> more convenient to deal with than with the good unix passwords. <strong>Note: I recommend to NEVER EVER put system users required to start daemons/applications in LDAP, don't even think about it!</strong></p>
-<p>Now here comes the slapd.conf:<br />
-[sourcecode language="text"]<br />
-# egrep -v '^ *#|^$' /etc/openldap/slapd.conf<br />
-include        /etc/openldap/schema/core.schema<br />
-include        /etc/openldap/schema/cosine.schema<br />
-include        /etc/openldap/schema/inetorgperson.schema<br />
-include        /etc/openldap/schema/nis.schema<br />
-include        /etc/openldap/schema/misc.schema<br />
-pidfile        /var/run/openldap/slapd.pid<br />
-argsfile    /var/run/openldap/slapd.args<br />
-TLSCACertificateFile /etc/pki/tls/certs/ca-bundle.crt<br />
-TLSCertificateFile /etc/pki/tls/certs/slapd.pem<br />
-TLSCertificateKeyFile /etc/pki/tls/certs/slapd.pem<br />
-access to dn.base=&quot;&quot; by * read<br />
-access to dn.base=&quot;cn=Subschema&quot; by * read<br />
-access to *<br />
- by self write<br />
- by users read<br />
- by anonymous auth<br />
-database    bdb<br />
-suffix &quot;dc=example,dc=org&quot;<br />
-rootdn &quot;cn=System Maintenance Account,ou=System,dc=example,dc=org&quot;<br />
-rootpw changeme<br />
-directory    /var/lib/ldap<br />
-index objectClass                       eq,pres<br />
-index ou,cn,mail,surname,givenname      eq,pres,sub<br />
-index uidNumber,gidNumber,loginShell    eq,pres<br />
-index uid,memberUid                     eq,pres,sub<br />
-index nisMapName,nisMapEntry            eq,pres,sub<br />
-[/sourcecode]<br />
-And this is our LDIF (already with the user we want to use for mailing):<br />
-[sourcecode language="text"]<br />
-dn: dc=example,dc=org<br />
-objectClass: dcObject<br />
-objectClass: top<br />
-objectClass: organization<br />
-dc: dc=example,dc=org<br />
-o: Example Corp.</p>
-<p>dn: ou=People,dc=example,dc=org<br />
-objectClass: organizationalUnit<br />
-objectClass: top<br />
-ou: People</p>
-<p>dn: cn=Alice  Squarepants,ou=People,dc=example,dc=org<br />
-objectClass: inetOrgPerson<br />
-objectClass: organizationalPerson<br />
-objectClass: person<br />
-objectClass: top<br />
-objectClass: inetLocalMailRecipient<br />
-cn: Alice  Squarepants<br />
-mail: asquarepants@example.org<br />
-mailLocalAddress: alice@example.org<br />
-sn: Doe<br />
-userPassword: changeme</p>
-<p>dn: ou=System,dc=example,dc=org<br />
-objectClass: organizationalUnit<br />
-objectClass: top<br />
-ou: System</p>
-<p>dn: cn=System Maintenance Account,ou=System,dc=example,dc=org<br />
-objectClass: organizationalRole<br />
-objectClass: top<br />
-objectClass: simpleSecurityObject<br />
-cn: System Maintenance Account<br />
-userPassword: changeme</p>
-<p>dn: cn=postfix,ou=System,dc=example,dc=org<br />
-objectClass: organizationalRole<br />
-objectClass: top<br />
-objectClass: simpleSecurityObject<br />
-cn: postfix<br />
-userPassword: changeme</p>
-<p>dn: cn=dovecot,ou=System,dc=example,dc=org<br />
-objectClass: organizationalRole<br />
-objectClass: top<br />
-objectClass: simpleSecurityObject<br />
-cn: dovecot<br />
-userPassword: changeme</p>
-<p>dn: cn=Bob,ou=People,dc=example,dc=org<br />
-objectClass: inetOrgPerson<br />
-objectClass: organizationalPerson<br />
-objectClass: person<br />
-objectClass: top<br />
-objectClass: inetLocalMailRecipient<br />
-cn: Bob  Squarepants<br />
-mail: bob@example.org<br />
-sn: Bob Squarepants<br />
-userPassword: changeme</p>
-<p>dn: cn=Postmaster,ou=People,dc=example,dc=org<br />
-objectClass: inetOrgPerson<br />
-objectClass: organizationalPerson<br />
-objectClass: person<br />
-objectClass: top<br />
-objectClass: inetLocalMailRecipient<br />
-cn: Postmaster<br />
-mail: postmaster@example.org<br />
-mailLocalAddress: hostmaster@example.org<br />
-mailLocalAddress: abuse@example.org<br />
-sn: Postmaster<br />
-userPassword: changeme<br />
-[/sourcecode]<br />
+<p>Now here comes the slapd.conf:
+
+{% highlight text %}
+# egrep -v '^ *#|^$' /etc/openldap/slapd.conf
+include        /etc/openldap/schema/core.schema
+include        /etc/openldap/schema/cosine.schema
+include        /etc/openldap/schema/inetorgperson.schema
+include        /etc/openldap/schema/nis.schema
+include        /etc/openldap/schema/misc.schema
+pidfile        /var/run/openldap/slapd.pid
+argsfile    /var/run/openldap/slapd.args
+TLSCACertificateFile /etc/pki/tls/certs/ca-bundle.crt
+TLSCertificateFile /etc/pki/tls/certs/slapd.pem
+TLSCertificateKeyFile /etc/pki/tls/certs/slapd.pem
+access to dn.base=&quot;&quot; by * read
+access to dn.base=&quot;cn=Subschema&quot; by * read
+access to *
+ by self write
+ by users read
+ by anonymous auth
+database    bdb
+suffix &quot;dc=example,dc=org&quot;
+rootdn &quot;cn=System Maintenance Account,ou=System,dc=example,dc=org&quot;
+rootpw changeme
+directory    /var/lib/ldap
+index objectClass                       eq,pres
+index ou,cn,mail,surname,givenname      eq,pres,sub
+index uidNumber,gidNumber,loginShell    eq,pres
+index uid,memberUid                     eq,pres,sub
+index nisMapName,nisMapEntry            eq,pres,sub
+{% endhighlight text %}
+
+And this is our LDIF (already with the user we want to use for mailing):
+
+{% highlight text %}
+dn: dc=example,dc=org
+objectClass: dcObject
+objectClass: top
+objectClass: organization
+dc: dc=example,dc=org
+o: Example Corp.
+
+dn: ou=People,dc=example,dc=org
+objectClass: organizationalUnit
+objectClass: top
+ou: People
+
+dn: cn=Alice  Squarepants,ou=People,dc=example,dc=org
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+objectClass: inetLocalMailRecipient
+cn: Alice  Squarepants
+mail: asquarepants@example.org
+mailLocalAddress: alice@example.org
+sn: Doe
+userPassword: changeme
+
+dn: ou=System,dc=example,dc=org
+objectClass: organizationalUnit
+objectClass: top
+ou: System
+
+dn: cn=System Maintenance Account,ou=System,dc=example,dc=org
+objectClass: organizationalRole
+objectClass: top
+objectClass: simpleSecurityObject
+cn: System Maintenance Account
+userPassword: changeme
+
+dn: cn=postfix,ou=System,dc=example,dc=org
+objectClass: organizationalRole
+objectClass: top
+objectClass: simpleSecurityObject
+cn: postfix
+userPassword: changeme
+
+dn: cn=dovecot,ou=System,dc=example,dc=org
+objectClass: organizationalRole
+objectClass: top
+objectClass: simpleSecurityObject
+cn: dovecot
+userPassword: changeme
+
+dn: cn=Bob,ou=People,dc=example,dc=org
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+objectClass: inetLocalMailRecipient
+cn: Bob  Squarepants
+mail: bob@example.org
+sn: Bob Squarepants
+userPassword: changeme
+
+dn: cn=Postmaster,ou=People,dc=example,dc=org
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+objectClass: inetLocalMailRecipient
+cn: Postmaster
+mail: postmaster@example.org
+mailLocalAddress: hostmaster@example.org
+mailLocalAddress: abuse@example.org
+sn: Postmaster
+userPassword: changeme
+{% endhighlight text %}
+
 Let's see now what we have.</p>
 <ul>
 <li>Non-System users ready to use in LDAP - <span style="color:#ff0000;">check</span></li>
