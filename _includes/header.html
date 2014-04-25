@@ -1,0 +1,13 @@
+<!-- included from 'header.html' -->
+<header class="header">
+  <h1>{{ site.name }}</h1>
+  <div class="tagline">{{ site.tagline }}</div>
+  <ul>
+      <li><a class="extra" href="/">home</a></li>
+      <!--
+      <li><a class="extra" href="/about/">about</a></li>
+      -->
+      <li><time datetime="{{ site.time | date_to_xmlschema }}">Last Generated: {{ site.time | date_to_xmlschema }}</time></li>
+  </ul>
+<!-- vim: set ts=4 sts=4 fenc=utf-8 expandtab: -->
+</header>

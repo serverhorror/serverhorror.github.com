@@ -1,12 +1,8 @@
 ---
 layout: default
-title: Server!/Horror! &mdash; I have a magnet and I don't mind using it!
 ---
-
-<div id="title">{{ page.title }}</div>
-
+<h2>Blog Posts</h2>
 <div id="home">
-  <h1>Blog Posts</h1>
   <ul class="posts">
     {% for post in site.posts %}
       <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>

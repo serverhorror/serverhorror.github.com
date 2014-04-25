@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="{{ site.encoding }}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>{{ page.title }}</title>
         <meta name="viewport" content="width=device-width">
@@ -18,32 +18,11 @@
     </head>
     <body>
 
-        <div class="site">
-          <div class="header">
-            <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-            <a class="extra" href="/">home</a>
-            <a class="extra" href="/about/">about</a>
-          </div>
-
+        <section class="site">
+          {% include header.html %}
           {{ content }}
-
-          <div class="footer">
-            <div class="contact">
-              <p>
-                Server!/Horror!<br />
-                What You Are<br />
-                martin@marcher.name
-              </p>
-            </div>
-            <div class="contact">
-              <p>
-                <a href="https://github.com/serverhorror">github.com/serverhorror</a><br />
-                <a href="https://twitter.com/serverhorror">twitter.com/serverhorror</a><br />
-              </p>
-            </div>
-          </div>
-          <div>Last Generated: {{ site.time | date_to_xmlschema }} </div>
-        </div>
+          {% include footer.html %}
+        </section>
 
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
