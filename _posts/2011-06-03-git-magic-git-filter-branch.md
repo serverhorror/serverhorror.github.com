@@ -21,10 +21,10 @@ meta:
 author: 
 ---
 <p>Rewrite all commits in <code>git</code> to a new author:</p>
-<p>{% highlight text %}<br />
-git filter-branch -f --env-filter '\<br />
-    GIT_AUTHOR_EMAIL=author@example.invalid; \<br />
-    export GIT_AUTHOR_EMAIL; \<br />
-    GIT_AUTHOR_NAME=&quot;New Author&quot;; \<br />
-    export GIT_AUTHOR_NAME'<br />
+<p>{% highlight text %}
+git filter-branch -f --env-filter '\
+    GIT_AUTHOR_EMAIL=author@example.invalid; \
+    export GIT_AUTHOR_EMAIL; \
+    GIT_AUTHOR_NAME=&quot;New Author&quot;; \
+    export GIT_AUTHOR_NAME'
 {% endhighlight %}</p>

@@ -23,92 +23,92 @@ author:
 <h1>Network Configuration</h1>
 <h2>Bridging the Gap</h2>
 <p>The host will be running Debian/Squeeze and what you get after installing is this:</p>
-<p>{% highlight text %}<br />
-# Loopback device:<br />
-auto lo<br />
+<p>{% highlight text %}
+# Loopback device:
+auto lo
 iface lo inet loopback</p>
-<p># device: eth0<br />
-auto  eth0<br />
-    iface eth0 inet static<br />
-    address 192.0.2.195<br />
-    broadcast 192.0.2.255<br />
-    netmask 255.255.255.192<br />
-    gateway 192.0.2.193<br />
+<p># device: eth0
+auto  eth0
+    iface eth0 inet static
+    address 192.0.2.195
+    broadcast 192.0.2.255
+    netmask 255.255.255.192
+    gateway 192.0.2.193
     default route to access subnet</p>
-<p># default route to access subnet<br />
-up route add -net 192.0.2.192 netmask 255.255.255.192 gw 192.0.2.193 br0<br />
+<p># default route to access subnet
+up route add -net 192.0.2.192 netmask 255.255.255.192 gw 192.0.2.193 br0
 {% endhighlight %}</p>
 <p>Let's make a bridge which will later on be used to route the traffic from our guests to the world:</p>
-<p>{% highlight text %}<br />
-# Loopback device:<br />
-auto lo<br />
+<p>{% highlight text %}
+# Loopback device:
+auto lo
 iface lo inet loopback</p>
-<p>## device: br0<br />
-auto br0<br />
-iface br0 inet static<br />
-    bridge_ports eth0 dummy0<br />
-    bridge_maxwait 2<br />
-    address 192.0.2.195<br />
-    netmask 255.255.255.192<br />
+<p>## device: br0
+auto br0
+iface br0 inet static
+    bridge_ports eth0 dummy0
+    bridge_maxwait 2
+    address 192.0.2.195
+    netmask 255.255.255.192
     gateway   192.0.2.193</p>
-<p># default route to access subnet<br />
-up route add -net 192.0.2.192 netmask 255.255.255.192 gw 192.0.2.193 eth0<br />
+<p># default route to access subnet
+up route add -net 192.0.2.192 netmask 255.255.255.192 gw 192.0.2.193 eth0
 {% endhighlight %}</p>
 <p>Let's look at the output of <tt>iproute2</tt> now.</p>
-<p>{% highlight text %}<br />
-$ ip link list<br />
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 16436 qdisc noqueue state UNKNOWN<br />
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00<br />
-2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN qlen 1000<br />
-    link/ether 00:24:21:b4:36:26 brd ff:ff:ff:ff:ff:ff<br />
-3: br0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN<br />
-    link/ether 00:24:21:b4:36:26 brd ff:ff:ff:ff:ff:ff<br />
-4: dummy0: &lt;BROADCAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN<br />
-    link/ether 92:0e:c3:fe:5f:ae brd ff:ff:ff:ff:ff:ff<br />
+<p>{% highlight text %}
+$ ip link list
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 16436 qdisc noqueue state UNKNOWN
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN qlen 1000
+    link/ether 00:24:21:b4:36:26 brd ff:ff:ff:ff:ff:ff
+3: br0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN
+    link/ether 00:24:21:b4:36:26 brd ff:ff:ff:ff:ff:ff
+4: dummy0: &lt;BROADCAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN
+    link/ether 92:0e:c3:fe:5f:ae brd ff:ff:ff:ff:ff:ff
 {% endhighlight %}</p>
 <p>All nice and fine, we have a <tt>br0</tt> interface <tt>eth0</tt> and <tt>dummy0</tt>. What about the assigned addresses?</p>
-<p>{% highlight text %}<br />
-$ ip address list<br />
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 16436 qdisc noqueue state UNKNOWN<br />
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00<br />
-    inet 127.0.0.1/8 scope host lo<br />
-    inet6 ::1/128 scope host<br />
-       valid_lft forever preferred_lft forever<br />
-2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN qlen 1000<br />
-    link/ether 00:24:21:b4:36:26 brd ff:ff:ff:ff:ff:ff<br />
-    inet6 fe80::224:21ff:feb4:3626/64 scope link<br />
-       valid_lft forever preferred_lft forever<br />
-3: br0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN<br />
-    link/ether 00:24:21:b4:36:26 brd ff:ff:ff:ff:ff:ff<br />
-    inet 192.0.2.195/26 brd 188.40.110.255 scope global br0<br />
-    inet6 fe80::224:21ff:feb4:3626/64 scope link<br />
-       valid_lft forever preferred_lft forever<br />
-4: dummy0: &lt;BROADCAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN<br />
-    link/ether 92:0e:c3:fe:5f:ae brd ff:ff:ff:ff:ff:ff<br />
-    inet6 fe80::900e:c3ff:fefe:5fae/64 scope link<br />
-       valid_lft forever preferred_lft forever<br />
+<p>{% highlight text %}
+$ ip address list
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 16436 qdisc noqueue state UNKNOWN
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN qlen 1000
+    link/ether 00:24:21:b4:36:26 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::224:21ff:feb4:3626/64 scope link
+       valid_lft forever preferred_lft forever
+3: br0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN
+    link/ether 00:24:21:b4:36:26 brd ff:ff:ff:ff:ff:ff
+    inet 192.0.2.195/26 brd 188.40.110.255 scope global br0
+    inet6 fe80::224:21ff:feb4:3626/64 scope link
+       valid_lft forever preferred_lft forever
+4: dummy0: &lt;BROADCAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN
+    link/ether 92:0e:c3:fe:5f:ae brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::900e:c3ff:fefe:5fae/64 scope link
+       valid_lft forever preferred_lft forever
 {% endhighlight %}</p>
 <p>All nice and fine, <tt>br0</tt> has the IP configured <tt>eth0</tt> and <tt>dummy0</tt> don't have an IPv4 address. This looks quite good. Let's see how the routing table works:</p>
-<p>{% highlight text %}<br />
-$ ip route list<br />
-192.0.2.192/26 dev br0  proto kernel  scope link  src 192.0.2.195<br />
-default via 192.0.2.193 dev br0<br />
+<p>{% highlight text %}
+$ ip route list
+192.0.2.192/26 dev br0  proto kernel  scope link  src 192.0.2.195
+default via 192.0.2.193 dev br0
 {% endhighlight %}</p>
 <p>This doesn't look so good. In the <tt>/etc/network/interfaces</tt> file we told debian to route thru <tt>eth0</tt> but ended up routing thru <tt>br0</tt> what happened?</p>
 <p>Actually nothing too serious. Our Linux kernel knows that <tt>eth0</tt> doesn't have an address and thus uses <tt>br0</tt> instead. Which actually is what whe told it to do in the definition of <tt>iface br0 inet static</tt>. What about our bridge config?</p>
-<p>{% highlight text %}<br />
-$ sudo brctl show<br />
-[sudo] password for sysmaint:<br />
-bridge name	bridge id		STP enabled	interfaces<br />
-br0		8000.002421b43626	no		    dummy0<br />
-                                                              eth0<br />
+<p>{% highlight text %}
+$ sudo brctl show
+[sudo] password for sysmaint:
+bridge name	bridge id		STP enabled	interfaces
+br0		8000.002421b43626	no		    dummy0
+                                                              eth0
 {% endhighlight %}</p>
-<p>{% highlight text %}<br />
-$ sudo brctl showmacs br0<br />
-port no	mac addr		        is local?	ageing timer<br />
-  1	        00:23:9c:17:34:23	no		   0.00<br />
-  1	        00:24:21:b4:36:26	yes		   0.00<br />
-  2	        92:0e:c3:fe:5f:ae	yes		   0.00<br />
+<p>{% highlight text %}
+$ sudo brctl showmacs br0
+port no	mac addr		        is local?	ageing timer
+  1	        00:23:9c:17:34:23	no		   0.00
+  1	        00:24:21:b4:36:26	yes		   0.00
+  2	        92:0e:c3:fe:5f:ae	yes		   0.00
 {% endhighlight %}</p>
 <p>All nice and fine, our bridge is here, and has the members we defined.</p>
 <h1>Virtualize!</h1>
@@ -118,22 +118,22 @@ port no	mac addr		        is local?	ageing timer<br />
 <li>Run the guest</li>
 <li>Install Debian/Stable to verify we have connectivity</li>
 </ol>
-<p>{% highlight text %}<br />
-$ qemu-img create test.img 10G<br />
+<p>{% highlight text %}
+$ qemu-img create test.img 10G
 {% endhighlight %}</p>
-<p>{% highlight text %}<br />
-sudo /usr/bin/kvm \<br />
-    -k en \<br />
-    -name test \<br />
-    -boot order=cd,once=d \<br />
-    -drive file=$HOME/test.img,if=virtio,format=raw,media=disk \<br />
-    -drive file=$HOME/debian-504-amd64-netinst.iso,if=ide,media=cdrom \<br />
-    -usbdevice tablet \<br />
-    -watchdog i6300esb \<br />
-    -m 1024 \<br />
-    -vnc :1 \<br />
-    -balloon virtio \<br />
-    -pidfile /var/run/kvm.test<br />
+<p>{% highlight text %}
+sudo /usr/bin/kvm \
+    -k en \
+    -name test \
+    -boot order=cd,once=d \
+    -drive file=$HOME/test.img,if=virtio,format=raw,media=disk \
+    -drive file=$HOME/debian-504-amd64-netinst.iso,if=ide,media=cdrom \
+    -usbdevice tablet \
+    -watchdog i6300esb \
+    -m 1024 \
+    -vnc :1 \
+    -balloon virtio \
+    -pidfile /var/run/kvm.test
 {% endhighlight %}</p>
 <p>The command above does the following:</p>
 <ul>
@@ -150,8 +150,8 @@ sudo /usr/bin/kvm \<br />
 <li>Tell KVM to create a PID file</li>
 </ul>
 <p>When this is running just fire up a VNC Viewer and connect to the host</p>
-<p>{% highlight text %}<br />
-$ vncviewer 192.2.0.195:1<br />
+<p>{% highlight text %}
+$ vncviewer 192.2.0.195:1
 {% endhighlight %}</p>
 <p>If you have your Debian ISO image in the correct place you should be presented with the boot screen of the Debian ISO image. Just click thru and install. Since we used the netinst ISO image a successful installation means you have basic connectivity to the outside world.</p>
 <p>In the next installment we'll further refine this to provide a DHCP and TFTP server thru the user mode networking so that we can automagically install our guests without further interaction.</p>

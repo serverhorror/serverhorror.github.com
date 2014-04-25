@@ -9,10 +9,10 @@ published: false
 meta: {}
 author: 
 ---
-<p>{% highlight text %}<br />
-dd if=/dev/zero of=ec2-debian-squeeze-x64.img bs=1 count=0 seek=10G<br />
-sudo mkfs.ext3 -F -Odir_index ec2-debian-squeeze-x64.img<br />
-mkdir ec2<br />
-sudo mount -oloop ec2-debian-squeeze-x64.img ec2<br />
-sudo debootstrap --include=sudo,vim,bzip2,rsync,mtr-tiny,openssh-server,git-core,bash-completion,curl,dnsutils,git,xz-utils,xz-lzma,curl,makedev,locales --exclude=nano --arch amd64 squeeze ec2/ http://ftp.de.debian.org/debian<br />
+<p>{% highlight text %}
+dd if=/dev/zero of=ec2-debian-squeeze-x64.img bs=1 count=0 seek=10G
+sudo mkfs.ext3 -F -Odir_index ec2-debian-squeeze-x64.img
+mkdir ec2
+sudo mount -oloop ec2-debian-squeeze-x64.img ec2
+sudo debootstrap --include=sudo,vim,bzip2,rsync,mtr-tiny,openssh-server,git-core,bash-completion,curl,dnsutils,git,xz-utils,xz-lzma,curl,makedev,locales --exclude=nano --arch amd64 squeeze ec2/ http://ftp.de.debian.org/debian
 {% endhighlight %}</p>

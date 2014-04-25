@@ -13,36 +13,36 @@ meta:
   _wpas_skip_yup: '1'
 author: 
 ---
-<p>{% highlight text %}<br />
-import sys<br />
+<p>{% highlight text %}
+import sys
 import os</p>
-<p>from abc import ABCMeta<br />
+<p>from abc import ABCMeta
 from abc import abstractmethod</p>
-<p>class MetaClass:<br />
+<p>class MetaClass:
     __metaclass__ = ABCMeta</p>
-<p>    @abstractmethod<br />
-    def needs_implementation(self):<br />
+<p>    @abstractmethod
+    def needs_implementation(self):
         pass</p>
-<p>class ImplementationClassOK(MetaClass):<br />
-    def random_method(self):<br />
-        pass<br />
-    def needs_implementation(self):<br />
+<p>class ImplementationClassOK(MetaClass):
+    def random_method(self):
+        pass
+    def needs_implementation(self):
         pass</p>
-<p>class ImplementationClassFail(MetaClass):<br />
-    def random_method(self):<br />
+<p>class ImplementationClassFail(MetaClass):
+    def random_method(self):
         pass</p>
 <p>if __name__ == u'__main__':</p>
-<p>    print u'Type OK: ', type(ImplementationClassOK)<br />
-    ok = ImplementationClassOK()<br />
-    print u'Type Instance OK: ', type(ok)<br />
+<p>    print u'Type OK: ', type(ImplementationClassOK)
+    ok = ImplementationClassOK()
+    print u'Type Instance OK: ', type(ok)
     print ok</p>
 <p>    print type(ImplementationClassFail)</p>
-<p>    try:<br />
-        print u'Type FAIL: ', type(ImplementationClassFail)<br />
-        fail = ImplementationClassFail()<br />
-        print u'Type Instance FAIL: ', type(fail)<br />
-        print fail<br />
-    except (TypeError, ) as error:<br />
-        print error<br />
-        raise<br />
+<p>    try:
+        print u'Type FAIL: ', type(ImplementationClassFail)
+        fail = ImplementationClassFail()
+        print u'Type Instance FAIL: ', type(fail)
+        print fail
+    except (TypeError, ) as error:
+        print error
+        raise
 {% endhighlight %}</p>

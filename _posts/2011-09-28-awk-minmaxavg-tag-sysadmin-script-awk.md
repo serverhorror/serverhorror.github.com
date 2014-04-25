@@ -14,29 +14,29 @@ author:
 ---
 <div class="posterous_autopost">
 <p>{% highlight text %}</p>
-<p>#!/usr/bin/awk -f<br />
-BEGIN<br />
-{<br />
- minimum=0;<br />
- maximum=0;<br />
- sum=0;<br />
+<p>#!/usr/bin/awk -f
+BEGIN
+{
+ minimum=0;
+ maximum=0;
+ sum=0;
 }</p>
-<p>{<br />
- if($3&gt;maximum)<br />
- {<br />
- maximum=$3;<br />
- }<br />
- if($3&lt;minimum)<br />
- {<br />
- minimum=$3;<br />
- }<br />
- sum+=$3;<br />
+<p>{
+ if($3&gt;maximum)
+ {
+ maximum=$3;
+ }
+ if($3&lt;minimum)
+ {
+ minimum=$3;
+ }
+ sum+=$3;
 }</p>
-<p>END<br />
-{<br />
- print &quot;Average = &quot;,sum/NR;<br />
- print &quot;Max = &quot;,maximum;<br />
- print &quot;Min = &quot;,minimum;<br />
+<p>END
+{
+ print &quot;Average = &quot;,sum/NR;
+ print &quot;Max = &quot;,maximum;
+ print &quot;Min = &quot;,minimum;
 }</p>
 <p>{% endhighlight %}</p>
 </div>

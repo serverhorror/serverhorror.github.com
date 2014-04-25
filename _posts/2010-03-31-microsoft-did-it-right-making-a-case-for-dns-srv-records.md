@@ -34,10 +34,10 @@ author:
 <p>Staying with the example of puppet I'd like to see that puppet tries to find the master node by doing a DNS query that asks for the <tt>_x-puppet._tcp.example.com</tt> SRV record. So in accordance to our naming schema we could simply answer with <tt>its-devl-puppet01.example.com</tt> or any other suitable host.</p>
 <p>So what about the rest of the above examples?</p>
 <p>Consider SSL mass hosting with a single IP and say you give each VHost another port starting at 8441.</p>
-<p>{% highlight text %}<br />
-_https._tcp.example.com. 3600 IN SRV 0 10 8441 www.example.com.<br />
-_https._tcp.example.net. 3600 IN SRV 0 10 8442 www.example.net.<br />
-_https._tcp.example.org. 3600 IN SRV 0 10 8443 www.example.org.<br />
+<p>{% highlight text %}
+_https._tcp.example.com. 3600 IN SRV 0 10 8441 www.example.com.
+_https._tcp.example.net. 3600 IN SRV 0 10 8442 www.example.net.
+_https._tcp.example.org. 3600 IN SRV 0 10 8443 www.example.org.
 {% endhighlight %}</p>
 <p>Granted with <a href="http://en.wikipedia.org/wiki/Server_Name_Indication">Server Name Indication</a> that problem is already solved, but I know  a few setups that for certain reasons won't be able to upgrade to packages that are able to use that technique. And personally I think that this approach is nicer especially since it solves this problem for every service. Take Thunderbird 3, it <em>tries autodiscovery</em> but quite often fails. If there was a <tt>_pop3._tcp.example.com</tt> SRV entry it would just work.</p>
 <p>Also granted, there are quite a few protocols that already benefit from this, Kerberos clients, should do, (or rather "<a href="http://www.rfc-editor.org/rfc/rfc4120.txt">RFC4120</a> compliant clients" should do) autodiscovery in the way I described it.</p>

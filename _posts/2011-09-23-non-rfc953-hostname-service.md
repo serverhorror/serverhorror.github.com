@@ -21,17 +21,17 @@ author:
 <ul>
 <li>/etc/xinetd.d/<a class="zem_slink" title="Hostname" href="http://en.wikipedia.org/wiki/Hostname" rel="wikipedia">hostname</a></li>
 </ul>
-<p>{% highlight text %}<br />
-service hostname {<br />
-    disable         = no<br />
-    type            = UNLISTED<br />
-    id              = hostname<br />
-    port            = 101<br />
-    socket_type     = stream<br />
-    protocol        = tcp<br />
-    user            = nobody<br />
-    wait            = no<br />
-    server          = /bin/hostname<br />
-    server_args     = -f<br />
-}<br />
+<p>{% highlight text %}
+service hostname {
+    disable         = no
+    type            = UNLISTED
+    id              = hostname
+    port            = 101
+    socket_type     = stream
+    protocol        = tcp
+    user            = nobody
+    wait            = no
+    server          = /bin/hostname
+    server_args     = -f
+}
 {% endhighlight %}</p>

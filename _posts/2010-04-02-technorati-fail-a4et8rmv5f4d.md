@@ -23,8 +23,8 @@ author:
 <li>And in the comments<!-- A4ET8RMV5F4D --> too....</li>
 <li><a title="Technorati Profile" rel="me" href="http://technorati.com/claim/A4ET8RMV5F4D">Technorati Profile</a></li>
 </ul>
-<p>﻿<br />
-{% highlight text %}<br />
-$ curl --silent http://blog.serverhorror.com/feed/ |grep -c -i A4ET8RMV5F4D<br />
-23<br />
+<p>﻿
+{% highlight text %}
+$ curl --silent http://blog.serverhorror.com/feed/ |grep -c -i A4ET8RMV5F4D
+23
 {% endhighlight %}</p>

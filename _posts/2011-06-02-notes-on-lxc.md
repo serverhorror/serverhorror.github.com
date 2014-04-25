@@ -23,7 +23,7 @@ meta:
 author: 
 ---
 <div class="posterous_autopost">
-<p><strong>NOTICE</strong>:<br />
+<p><strong>NOTICE</strong>:
 Despite looking like copy/paste commands. <strong>These are not copy/paste commands</strong>. Use your brain!</p>
 <p>Minor notes on how to set up a host and a first container for <a href="http://en.wikipedia.org/wiki/Lxc">LXC</a>. This will not give you networking. Those are just the basics…</p>
 <h2>Assumptions</h2>
@@ -44,48 +44,48 @@ Despite looking like copy/paste commands. <strong>These are not copy/paste comma
 <li><code>mkdir -p /etc/lxc/vm01</code></li>
 <li><code>vim /etc/lxc/vm01/conf</code>
 <div class="CodeRay">
-<div class="code">{% highlight text %}<br />
-lxc.utsname=vm01 lxc.network.type=empty<br />
-lxc.network.flags=up<br />
-lxc.mount=/etc/lxc/vm01/fstab<br />
-lxc.rootfs=/srv/lxc/vm01<br />
-lxc.tty=4 lxc.pts=1024<br />
-# LXC Device setup<br />
-# only explicitely allowed devices...<br />
-lxc.cgroup.devices.deny = a<br />
-# /dev/null and zero<br />
-lxc.cgroup.devices.allow = c 1:3 rwm<br />
-lxc.cgroup.devices.allow = c 1:5 rwm # consoles<br />
-lxc.cgroup.devices.allow = c 5:1 rwm<br />
-lxc.cgroup.devices.allow = c 5:0 rwm<br />
-lxc.cgroup.devices.allow = c 4:0 rwm<br />
-lxc.cgroup.devices.allow = c 4:1 rwm<br />
-# /dev/{,u}random<br />
-lxc.cgroup.devices.allow = c 1:9 rwm<br />
-lxc.cgroup.devices.allow = c 1:8 rwm<br />
-lxc.cgroup.devices.allow = c 136:* rwm<br />
-lxc.cgroup.devices.allow = c 5:2 rwm<br />
-# rtc<br />
-lxc.cgroup.devices.allow = c 254:0 rwm<br />
+<div class="code">{% highlight text %}
+lxc.utsname=vm01 lxc.network.type=empty
+lxc.network.flags=up
+lxc.mount=/etc/lxc/vm01/fstab
+lxc.rootfs=/srv/lxc/vm01
+lxc.tty=4 lxc.pts=1024
+# LXC Device setup
+# only explicitely allowed devices...
+lxc.cgroup.devices.deny = a
+# /dev/null and zero
+lxc.cgroup.devices.allow = c 1:3 rwm
+lxc.cgroup.devices.allow = c 1:5 rwm # consoles
+lxc.cgroup.devices.allow = c 5:1 rwm
+lxc.cgroup.devices.allow = c 5:0 rwm
+lxc.cgroup.devices.allow = c 4:0 rwm
+lxc.cgroup.devices.allow = c 4:1 rwm
+# /dev/{,u}random
+lxc.cgroup.devices.allow = c 1:9 rwm
+lxc.cgroup.devices.allow = c 1:8 rwm
+lxc.cgroup.devices.allow = c 136:* rwm
+lxc.cgroup.devices.allow = c 5:2 rwm
+# rtc
+lxc.cgroup.devices.allow = c 254:0 rwm
 {% endhighlight %}</p>
 </div>
 </div>
 </li>
 <li><code>vim /etc/lxc/vm01/fstab</code>
 <div class="CodeRay">
-<div class="code">{% highlight text %}<br />
-devpts /srv/lxc/vm01/debootstrapped/dev/pts devpts defaults 0 0<br />
-proc /srv/lxc/vm01/debootstrapped/proc    proc   defaults 0 0<br />
-sysfs /srv/lxc/vm01/debootstrapped/sys     sysfs  defaults 0 0<br />
-none /srv/lxc/vm01/debootstrapped/dev/shm tmpfs  defaults 0 0<br />
+<div class="code">{% highlight text %}
+devpts /srv/lxc/vm01/debootstrapped/dev/pts devpts defaults 0 0
+proc /srv/lxc/vm01/debootstrapped/proc    proc   defaults 0 0
+sysfs /srv/lxc/vm01/debootstrapped/sys     sysfs  defaults 0 0
+none /srv/lxc/vm01/debootstrapped/dev/shm tmpfs  defaults 0 0
 {% endhighlight %}</p>
 </div>
 </div>
 </li>
 <li>Install base system
 <div class="CodeRay">
-<div class="code">{% highlight text %}<br />
-debootstrap --variant=minbase --include=dhcp-client,dialog,ifupdown,iproute,libui-dialog-perl,locales,netbase,net-tools,openssh-server,vim,curl,git-core squeeze /srv/lxc/vm01/ http://cdn.debian.net/debian/<br />
+<div class="code">{% highlight text %}
+debootstrap --variant=minbase --include=dhcp-client,dialog,ifupdown,iproute,libui-dialog-perl,locales,netbase,net-tools,openssh-server,vim,curl,git-core squeeze /srv/lxc/vm01/ http://cdn.debian.net/debian/
 {% endhighlight %}</p>
 </div>
 </div>
@@ -94,56 +94,56 @@ debootstrap --variant=minbase --include=dhcp-client,dialog,ifupdown,iproute,libu
 <li><code>echo vm01 &gt; /srv/lxc/vm01/etc/hostname</code></li>
 <li><code>vim /srv/lxc/vm01/etc/inittab</code>
 <div class="CodeRay">
-<div class="code">{% highlight text %}<br />
-id:3:initdefault:<br />
-si::sysinit:/etc/init.d/rcS<br />
-l0:0:wait:/etc/init.d/rc 0<br />
-l1:1:wait:/etc/init.d/rc 1<br />
-l2:2:wait:/etc/init.d/rc 2<br />
-l3:3:wait:/etc/init.d/rc 3<br />
-l4:4:wait:/etc/init.d/rc 4<br />
-l5:5:wait:/etc/init.d/rc 5<br />
-l6:6:wait:/etc/init.d/rc 6<br />
-# Normally not reached, but fallthrough in case of emergency.<br />
-z6:6:respawn:/sbin/sulogin<br />
-1:2345:respawn:/sbin/getty 38400 console<br />
-c1:12345:respawn:/sbin/getty 38400 tty1 linux<br />
-c2:12345:respawn:/sbin/getty 38400 tty2 linux<br />
-c3:12345:respawn:/sbin/getty 38400 tty3 linux<br />
-c4:12345:respawn:/sbin/getty 38400 tty4 linux<br />
+<div class="code">{% highlight text %}
+id:3:initdefault:
+si::sysinit:/etc/init.d/rcS
+l0:0:wait:/etc/init.d/rc 0
+l1:1:wait:/etc/init.d/rc 1
+l2:2:wait:/etc/init.d/rc 2
+l3:3:wait:/etc/init.d/rc 3
+l4:4:wait:/etc/init.d/rc 4
+l5:5:wait:/etc/init.d/rc 5
+l6:6:wait:/etc/init.d/rc 6
+# Normally not reached, but fallthrough in case of emergency.
+z6:6:respawn:/sbin/sulogin
+1:2345:respawn:/sbin/getty 38400 console
+c1:12345:respawn:/sbin/getty 38400 tty1 linux
+c2:12345:respawn:/sbin/getty 38400 tty2 linux
+c3:12345:respawn:/sbin/getty 38400 tty3 linux
+c4:12345:respawn:/sbin/getty 38400 tty4 linux
 {% endhighlight %}</p>
 </div>
 </div>
 </li>
 <li><code>vim /srv/lxc/vm01/etc/init.d/hwclockfirst.sh</code>
 <div class="CodeRay">
-<div class="code">{% highlight text %}<br />
-#!/bin/sh<br />
-### BEGIN INIT INFO<br />
-# Provides:          hwclockfirst<br />
-# Required-Start:    mountdevsubfs<br />
-# Required-Stop:<br />
-# Default-Start:     S<br />
-# X-Start-Before:    checkroot<br />
-# Default-Stop:<br />
-### END INIT INFO<br />
-exit 0<br />
+<div class="code">{% highlight text %}
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          hwclockfirst
+# Required-Start:    mountdevsubfs
+# Required-Stop:
+# Default-Start:     S
+# X-Start-Before:    checkroot
+# Default-Stop:
+### END INIT INFO
+exit 0
 {% endhighlight %}</p>
 </div>
 </div>
 </li>
 <li><code>vim /srv/lxc/vm01/etc/init.d/hwclock.sh</code>
 <div class="CodeRay">
-<div class="code">{% highlight text %}<br />
-#!/bin/sh<br />
-### BEGIN INIT INFO<br />
-# Provides:          hwclock<br />
-# Required-Start:    checkroot<br />
-# Required-Stop:     $local_fs<br />
-# Default-Start:     S<br />
-# Default-Stop:      0 6<br />
-### END INIT INFO<br />
-exit 0<br />
+<div class="code">{% highlight text %}
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          hwclock
+# Required-Start:    checkroot
+# Required-Stop:     $local_fs
+# Default-Start:     S
+# Default-Stop:      0 6
+### END INIT INFO
+exit 0
 {% endhighlight %}</p>
 </div>
 </div>

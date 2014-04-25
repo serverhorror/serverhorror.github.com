@@ -9,11 +9,11 @@ published: false
 meta: {}
 author: 
 ---
-<p>Obvious examples<br />
-Bad indentation<br />
-Twistd chapter useless<br />
-No Admin specifics<br />
+<p>Obvious examples
+Bad indentation
+Twistd chapter useless
+No Admin specifics
 Useless Introduction to Python Basics</p>
-<p>GOOD<br />
-snmp howto<br />
+<p>GOOD
+snmp howto
 Scapy but Way too short</p>

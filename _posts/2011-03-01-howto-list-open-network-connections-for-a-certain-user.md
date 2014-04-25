@@ -17,11 +17,11 @@ meta:
 author: 
 ---
 <p>Since I always have to look it up in the <a title="LSOF(8) - manpages.debian.net" href="http://manpages.debian.net/cgi-bin/man.cgi?query=lsof">manpage of lsof(8)</a>:</p>
-<p>{% highlight text %}<br />
-lsof -nP -a -i -u ${USER} # list all network connections for ${USER}<br />
-lsof -nP -a -i UDP -u ${USER} # list UDP connections for ${USER}<br />
-lsof -nP -a -i TCP -u ${USER} # list TCP connections for ${USER}<br />
-lsof -nP -a -i 6 -i TCP -u ${USER} # list IPv6 TCP connections for ${USER}<br />
+<p>{% highlight text %}
+lsof -nP -a -i -u ${USER} # list all network connections for ${USER}
+lsof -nP -a -i UDP -u ${USER} # list UDP connections for ${USER}
+lsof -nP -a -i TCP -u ${USER} # list TCP connections for ${USER}
+lsof -nP -a -i 6 -i TCP -u ${USER} # list IPv6 TCP connections for ${USER}
 {% endhighlight %}</p>
 <dl>
 <dt><code>-n</code></dt>

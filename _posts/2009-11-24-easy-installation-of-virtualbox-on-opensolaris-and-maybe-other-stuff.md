@@ -17,8 +17,8 @@ meta:
 author: 
 ---
 <p>So I was looking how to install <a href="http://www.virtualbox.org/">VirtualBox</a> under <a href="http://www.opensolaris.org">OpenSolaris</a>. My first thought was a simple</p>
-<p>{% highlight text %}<br />
-pkg install virtualbox<br />
+<p>{% highlight text %}
+pkg install virtualbox
 {% endhighlight %}</p>
 <p>or similiar would be enough. It isn't :).</p>
 <p>Looking around I found that the nice people from Sun provide an easy way to install VirtualBox. Note: I don't really care about the newest and best features to be available but I like it when things are easy to manage - <a href="http://serverhorror.wordpress.com/2009/11/23/running-opensolaris-now-for-better-or-worse-yay/">no really!</a> Here's how to get VirtualBox by simply using pkg with an official IPS repository.</p>
