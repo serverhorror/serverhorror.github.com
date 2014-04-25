@@ -31,9 +31,9 @@ author:
 $ pfexec format
 Searching for disks...done</p>
 <p>AVAILABLE DISK SELECTIONS:
- 0. c8t0d0 &lt;DEFAULT cyl 30398 alt 2 hd 255 sec 63&gt;
+ 0. c8t0d0 <DEFAULT cyl 30398 alt 2 hd 255 sec 63&gt;
  /pci@0,0/pci103c,3035@1f,2/disk@0,0
- 1. c8t2d0 &lt;ATA-ST3250310AS-C cyl 30398 alt 2 hd 255 sec 63&gt;
+ 1. c8t2d0 <ATA-ST3250310AS-C cyl 30398 alt 2 hd 255 sec 63&gt;
  /pci@0,0/pci103c,3035@1f,2/disk@2,0
 Specify disk (enter its number): 1
 selecting c8t2d0
@@ -54,7 +54,7 @@ selecting c8t2d0
  save       - save new disk/partition definitions
  inquiry    - show vendor, product and revision
  volname    - set 8-character volume name
- !&lt;cmd&gt;     - execute &lt;cmd&gt;, then return
+ !<cmd&gt;     - execute <cmd&gt;, then return
  quit
 {% endhighlight %}
 No go "fdisk" it and delete all the partitions on the disk. Then create a new partition, make it a Solaris partition and be done with that part.

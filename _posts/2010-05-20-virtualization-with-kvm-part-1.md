@@ -57,33 +57,33 @@ up route add -net 192.0.2.192 netmask 255.255.255.192 gw 192.0.2.193 eth0
 <p>Let's look at the output of <tt>iproute2</tt> now.</p>
 <p>{% highlight text %}
 $ ip link list
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 16436 qdisc noqueue state UNKNOWN
+1: lo: <LOOPBACK,UP,LOWER_UP&gt; mtu 16436 qdisc noqueue state UNKNOWN
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN qlen 1000
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN qlen 1000
     link/ether 00:24:21:b4:36:26 brd ff:ff:ff:ff:ff:ff
-3: br0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN
+3: br0: <BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN
     link/ether 00:24:21:b4:36:26 brd ff:ff:ff:ff:ff:ff
-4: dummy0: &lt;BROADCAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN
+4: dummy0: <BROADCAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN
     link/ether 92:0e:c3:fe:5f:ae brd ff:ff:ff:ff:ff:ff
 {% endhighlight %}</p>
 <p>All nice and fine, we have a <tt>br0</tt> interface <tt>eth0</tt> and <tt>dummy0</tt>. What about the assigned addresses?</p>
 <p>{% highlight text %}
 $ ip address list
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 16436 qdisc noqueue state UNKNOWN
+1: lo: <LOOPBACK,UP,LOWER_UP&gt; mtu 16436 qdisc noqueue state UNKNOWN
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
     inet6 ::1/128 scope host
        valid_lft forever preferred_lft forever
-2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN qlen 1000
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN qlen 1000
     link/ether 00:24:21:b4:36:26 brd ff:ff:ff:ff:ff:ff
     inet6 fe80::224:21ff:feb4:3626/64 scope link
        valid_lft forever preferred_lft forever
-3: br0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN
+3: br0: <BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN
     link/ether 00:24:21:b4:36:26 brd ff:ff:ff:ff:ff:ff
     inet 192.0.2.195/26 brd 188.40.110.255 scope global br0
     inet6 fe80::224:21ff:feb4:3626/64 scope link
        valid_lft forever preferred_lft forever
-4: dummy0: &lt;BROADCAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN
+4: dummy0: <BROADCAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN
     link/ether 92:0e:c3:fe:5f:ae brd ff:ff:ff:ff:ff:ff
     inet6 fe80::900e:c3ff:fefe:5fae/64 scope link
        valid_lft forever preferred_lft forever

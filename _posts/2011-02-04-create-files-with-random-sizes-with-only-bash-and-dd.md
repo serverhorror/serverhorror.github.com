@@ -40,8 +40,8 @@ author:
 <p>{% highlight text %}$(( ($RANDOM % 10) + 15)){% endhighlight %}</p>
 <h2>General Solution</h2>
 <p>{% highlight text %}
-MINSIZE=&lt;number&gt;
-MAXSIZE=&lt;number&gt;
+MINSIZE=<number&gt;
+MAXSIZE=<number&gt;
 $(( ($RANDOM % ($MAXSIZE-$MINSIZE)) + $MINSIZE))
 {% endhighlight %}</p>
 <p>{% highlight text %}

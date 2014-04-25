@@ -26,7 +26,7 @@ BEGIN
  {
  maximum=$3;
  }
- if($3&lt;minimum)
+ if($3<minimum)
  {
  minimum=$3;
  }

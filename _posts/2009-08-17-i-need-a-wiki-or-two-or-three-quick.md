@@ -182,14 +182,14 @@ What we did, in this las step, was:</p>
 </ul>
 <p>The URI matching probably needs a bit of explanation it matches everything except the protocoll part (http:// or https://). Construct it this way:</p>
 <ul>
-<li>&lt;servername&gt; + "/"</li>
-<li>&lt;path to wsgi file + "/"</li>
-<li>&lt;wikiname&gt; + "/"</li>
+<li><servername&gt; + "/"</li>
+<li><path to wsgi file + "/"</li>
+<li><wikiname&gt; + "/"</li>
 <li>".*$"</li>
 </ul>
 <p>To read it in a single line:</p>
 <ul>
-<li>&lt;servername&gt;/&lt;path to wsgi file&gt;/&lt;wikiname&gt;/.*$</li>
+<li><servername&gt;/<path to wsgi file&gt;/<wikiname&gt;/.*$</li>
 </ul>
 <p>Personally there's only one thing that bugs me, the servername, luckily this is Python code and you can easily write some nice code that spits out the right string you need to match the URI in question.</p>
 <p>Because it's so much fun, let's create another wiki. Add a third line to the wikis-Variable:

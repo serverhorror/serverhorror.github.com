@@ -23,25 +23,25 @@ author:
 <p>What I found was <a href="http://en.wikipedia.org/wiki/Simple_API_for_XML">sax</a> and <a href="http://en.wikipedia.org/wiki/Expat_%28XML%29">expat</a>, both of which are available in the <a href="http://docs.python.org/library/index.html">python standard library</a>.</p>
 <p>I chose to use sax as I didn't want to jump into XML to deep, and a bit of googling around suggestedSo what's the simplest way of using this SAX thing with python?</p>
 <p>First let's define some sample data</p>
-<pre style="padding-left:30px;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;itemList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-     &lt;item hostName="host1.example.com" itemName="boolean item"&gt;
-             &lt;dateRecorded&gt;1967-08-13&lt;/dateRecorded&gt;
-             &lt;boolValue&gt;true&lt;/boolValue&gt;
-     &lt;/item&gt;
-     &lt;item hostName="host1.example.com" itemName="float item"&gt;
-             &lt;dateRecorded&gt;1967-08-13&lt;/dateRecorded&gt;
-             &lt;floatValue&gt;1.2&lt;/floatValue&gt;
-     &lt;/item&gt;
-     &lt;item hostName="host1.example.com" itemName="int item without time"&gt;
-             &lt;dateRecorded&gt;1967-08-13&lt;/dateRecorded&gt;
-             &lt;intValue&gt;12&lt;/intValue&gt;
-     &lt;/item&gt;
-     &lt;item hostName="host1.example.com" itemName="string item without time"&gt;
-             &lt;dateRecorded&gt;1967-08-13&lt;/dateRecorded&gt;
-             &lt;stringValue&gt;foo&lt;/stringValue&gt;
-     &lt;/item&gt;
-&lt;/itemList&gt;</pre>
+<pre style="padding-left:30px;"><?xml version="1.0" encoding="UTF-8"?&gt;
+<itemList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+     <item hostName="host1.example.com" itemName="boolean item"&gt;
+             <dateRecorded&gt;1967-08-13</dateRecorded&gt;
+             <boolValue&gt;true</boolValue&gt;
+     </item&gt;
+     <item hostName="host1.example.com" itemName="float item"&gt;
+             <dateRecorded&gt;1967-08-13</dateRecorded&gt;
+             <floatValue&gt;1.2</floatValue&gt;
+     </item&gt;
+     <item hostName="host1.example.com" itemName="int item without time"&gt;
+             <dateRecorded&gt;1967-08-13</dateRecorded&gt;
+             <intValue&gt;12</intValue&gt;
+     </item&gt;
+     <item hostName="host1.example.com" itemName="string item without time"&gt;
+             <dateRecorded&gt;1967-08-13</dateRecorded&gt;
+             <stringValue&gt;foo</stringValue&gt;
+     </item&gt;
+</itemList&gt;</pre>
 <p>Now our first draft of using the SAX module in python. What you do with SAX essentially is:</p>
 <ul>
 <li>import the needed modules</li>
@@ -190,7 +190,7 @@ the state of our parser instance."""
             self._get_characters = False</pre>
 <p>If we now call our python script with a file that contains our sample XML you should get the following output:</p>
 <pre style="padding-left:30px;">$ python itemlistparser.py sampleData.xml
-&lt;: "host1.example.com" "boolean item" "2000-08-13" "true"&gt;
-&lt;: "host1.example.com" "float item" "2001-08-13" "1.2"&gt;
-&lt;: "host1.example.com" "int item without time" "2002-08-13" "12"&gt;
-&lt;: "host1.example.com" "string item without time" "2003-08-13" "foo"&gt;</pre>
+<: "host1.example.com" "boolean item" "2000-08-13" "true"&gt;
+<: "host1.example.com" "float item" "2001-08-13" "1.2"&gt;
+<: "host1.example.com" "int item without time" "2002-08-13" "12"&gt;
+<: "host1.example.com" "string item without time" "2003-08-13" "foo"&gt;</pre>

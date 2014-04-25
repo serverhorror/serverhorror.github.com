@@ -66,7 +66,7 @@ Python 2.6.4 (r264:77598, Jan 18 2010, 11:44:15)
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
 &gt;&gt;&gt; import foo
 &gt;&gt;&gt; foo.from_string(&quot;a&quot;)
-&lt;foo.foo object at 0x7f0c78d94350&gt;
+<foo.foo object at 0x7f0c78d94350&gt;
 &gt;&gt;&gt; o = foo.from_string(&quot;a&quot;)
 &gt;&gt;&gt; o.s
 'a'
