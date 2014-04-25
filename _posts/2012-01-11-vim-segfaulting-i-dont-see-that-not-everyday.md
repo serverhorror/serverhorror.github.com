@@ -16,4 +16,4 @@ author:
 
 Haha!?
 
-![](/assets/vim-segv.png)
+![vim segfaulting](/assets/vim-segv.png)
