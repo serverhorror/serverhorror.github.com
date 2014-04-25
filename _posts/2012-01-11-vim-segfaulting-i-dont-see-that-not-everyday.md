@@ -16,4 +16,4 @@ author:
 
 Haha!?
 
-![http://serverhorror.files.wordpress.com/2012/01/vim-segv.png]
+![](http://serverhorror.files.wordpress.com/2012/01/vim-segv.png)
