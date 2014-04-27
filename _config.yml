@@ -10,6 +10,7 @@ markdown: redcarpet
 pygments: true
 baseurl: http://serverhorror.com
 excerpt_separator: ""
+# permalink: /blog/:year/:month/:day/:title.html
 
 
 host: localhost
