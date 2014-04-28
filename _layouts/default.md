@@ -46,10 +46,10 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@site_username">
-    <meta name="twitter:title" content="Top 10 Things Ever">
-    <meta name="twitter:description" content="Up than 200 characters.">
-    <meta name="twitter:creator" content="@creator_username">
+    <meta name="twitter:site" content="@serverhorror">
+    <meta name="twitter:title" content="Server!/Horror!">
+    <meta name="twitter:description" content="I have a magnet and I don't mind using it!">
+    <meta name="twitter:creator" content="@serverhorror">
     <meta name="twitter:image:src" content="http://placekitten.com/250/250">
     <meta name="twitter:domain" content="YourDomain.com">
     <meta name="twitter:app:name:iphone" content="Vine">
