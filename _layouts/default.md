@@ -40,7 +40,7 @@
   <body class="container">
     <header class="container-fluid">
     <h1 class="page-header"><a href="{{ site.baseurl }}" class="navbar-brand">{{ site.name }}</a> <small>{{ site.tagline }}</small></h1>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
       <ul class="nav navbar-nav">
         <li><a href="/">home</a></li>
         <li><a href="/blog/">blog</a></li>
@@ -52,12 +52,14 @@
     {{ content }}
     </section>
     <footer class="container-fluid">
-      <nav class="navbar navbar-default navbar-fixed-bottom">
+      <nav class="navbar navbar-default navbar-static-bottom">
         <ul class="nav navbar-nav">
           <li><a href="mailto:martin@marcher.name">martin@marcher.name</a></li>
-          <li><a href="https://github.com/serverhorror">github.com/serverhorror</a></li>
-          <li><a href="https://twitter.com/serverhorror">twitter.com/serverhorror</a></li>
+          {% comment %}<li><a href="//github.com/serverhorror">github.com/serverhorror</a></li>{% endcomment %}
+          <li><a href="//twitter.com/serverhorror">twitter.com/serverhorror</a></li>
           <li><a href="//plus.google.com/106689595059572911333?rel=author">Google+</a></li>
+          <li><a href="//www.xing.com/go/invite/7047758">Xing</a></li>
+          <li><a href="//de.linkedin.com/in/martinmarcher">LinkedIn</a></li>
         </ul>
       </nav>
     </footer>
