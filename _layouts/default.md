@@ -38,29 +38,25 @@
     <link href="https://plus.google.com/106689595059572911333" rel="publisher" />
   </head>
   <body>
-    <header>
+    <header class="container-fluid">
     <h1 class="page-header"><a href="{{ site.baseurl }}" class="navbar-brand">{{ site.name }}</a> <small>{{ site.tagline }}</small></h1>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <ul class="nav navbar-nav">
-          <li><a href="/">home</a></li>
-          <li><a href="/blog/">blog</a></li>
-          <li><a href="/about/">about</a></li>
-        </ul>
-      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/">home</a></li>
+        <li><a href="/blog/">blog</a></li>
+        <li><a href="/about/">about</a></li>
+      </ul>
     </nav>
     </header>
     {{ content }}
-    <footer>
+    <footer class="container-fluid">
       <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-          <ul class="nav navbar-nav">
-            <li><a href="mailto:martin@marcher.name">martin@marcher.name</a></li>
-            <li><a href="https://github.com/serverhorror">github.com/serverhorror</a></li>
-            <li><a href="https://twitter.com/serverhorror">twitter.com/serverhorror</a></li>
-            <li><a href="//plus.google.com/106689595059572911333?rel=author">Google+</a></li>
-          </ul>
-        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="mailto:martin@marcher.name">martin@marcher.name</a></li>
+          <li><a href="https://github.com/serverhorror">github.com/serverhorror</a></li>
+          <li><a href="https://twitter.com/serverhorror">twitter.com/serverhorror</a></li>
+          <li><a href="//plus.google.com/106689595059572911333?rel=author">Google+</a></li>
+        </ul>
       </nav>
     </footer>
     <script>
