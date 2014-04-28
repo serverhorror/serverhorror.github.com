@@ -22,29 +22,27 @@ meta:
   _wpas_skip_fb: '1'
 author: 
 ---
-<div class="posterous_autopost">
-<p><strong>NOTICE</strong>:
-Despite looking like copy/paste commands. <strong>These are not copy/paste commands</strong>. Use your brain!</p>
-<p>Minor notes on how to set up a host and a first container for <a href="http://en.wikipedia.org/wiki/Lxc">LXC</a>. This will not give you networking. Those are just the basics…</p>
-<h2>Assumptions</h2>
-<ul>
-<li>You have an <a href="http://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux">LVM</a> configured that is named <code>lxc</code></li>
-<li><a href="http://en.wikipedia.org/wiki/Lxc">LXC</a> containers will be deployed to <code>/srv/lxc/$utsname</code></li>
-<li>LXC containers will be configured from <code>/etc/lxc/$utsname/{config,fstab}</code></li>
-</ul>
-<h2>Do It!</h2>
-<ol>
-<li><code>apt-get install debian</code></li>
-<li><code>apt-get install vim git-core lxc bash-completion</code></li>
-<li><code>. /etc/bash-completion</code></li>
-<li><code>mkdir -p /srv/lxc/vm01</code></li>
-<li><code>lvcreate -n vm01 -L 5G lxc</code></li>
-<li><code>mkfs.ext4 /dev/lxc/vm01</code></li>
-<li><code>mount /dev/lxc/vm01 /srv/lxc/vm01</code></li>
-<li><code>mkdir -p /etc/lxc/vm01</code></li>
-<li><code>vim /etc/lxc/vm01/conf</code>
-<div class="CodeRay">
-<div class="code">{% highlight text %}
+**Minor notes on how to set up a host and a first container for [LXC](http://en.wikipedia.org/wiki/Lxc). This will not give you networking. Those are just the basics…**
+
+## Assumptions
+
+* You have an [LVM](//en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux\)) configured that is named `lxc`
+* <a href="http://en.wikipedia.org/wiki/Lxc">LXC</a> containers will be deployed to `/srv/lxc/$utsname`
+* LXC containers will be configured from `/etc/lxc/$utsname/{config,fstab}`
+
+## Do It!
+
+* `apt-get install debian`
+* `apt-get install vim git-core lxc bash-completion`
+* `. /etc/bash-completion`
+* `mkdir -p /srv/lxc/vm01`
+* `lvcreate -n vm01 -L 5G lxc`
+* `mkfs.ext4 /dev/lxc/vm01`
+* `mount /dev/lxc/vm01 /srv/lxc/vm01`
+* `mkdir -p /etc/lxc/vm01`
+* `vim /etc/lxc/vm01`
+
+{% highlight ini %}
 lxc.utsname=vm01 lxc.network.type=empty
 lxc.network.flags=up
 lxc.mount=/etc/lxc/vm01/fstab
@@ -67,34 +65,28 @@ lxc.cgroup.devices.allow = c 136:* rwm
 lxc.cgroup.devices.allow = c 5:2 rwm
 # rtc
 lxc.cgroup.devices.allow = c 254:0 rwm
-{% endhighlight %}</p>
-</div>
-</div>
-</li>
-<li><code>vim /etc/lxc/vm01/fstab</code>
-<div class="CodeRay">
-<div class="code">{% highlight text %}
+{% endhighlight %}
+
+* `vim /etc/lxc/vm01/fstab`
+
+{% highlight text %}
 devpts /srv/lxc/vm01/debootstrapped/dev/pts devpts defaults 0 0
 proc /srv/lxc/vm01/debootstrapped/proc    proc   defaults 0 0
 sysfs /srv/lxc/vm01/debootstrapped/sys     sysfs  defaults 0 0
 none /srv/lxc/vm01/debootstrapped/dev/shm tmpfs  defaults 0 0
-{% endhighlight %}</p>
-</div>
-</div>
-</li>
-<li>Install base system
-<div class="CodeRay">
-<div class="code">{% highlight text %}
+{% endhighlight %}
+
+* Install base system
+
+{% highlight bash %}
 debootstrap --variant=minbase --include=dhcp-client,dialog,ifupdown,iproute,libui-dialog-perl,locales,netbase,net-tools,openssh-server,vim,curl,git-core squeeze /srv/lxc/vm01/ http://cdn.debian.net/debian/
-{% endhighlight %}</p>
-</div>
-</div>
-</li>
-<li><code>/usr/sbin/chroot /srv/lxc/vm01 /usr/bin/passwd -d root</code></li>
-<li><code>echo vm01 > /srv/lxc/vm01/etc/hostname</code></li>
-<li><code>vim /srv/lxc/vm01/etc/inittab</code>
-<div class="CodeRay">
-<div class="code">{% highlight text %}
+{% endhighlight %}`
+
+* `/usr/sbin/chroot /srv/lxc/vm01 /usr/bin/passwd -d root`
+* `echo vm01 > /srv/lxc/vm01/etc/hostname`
+* `vim /srv/lxc/vm01/etc/inittab`
+
+{% highlight text %}
 id:3:initdefault:
 si::sysinit:/etc/init.d/rcS
 l0:0:wait:/etc/init.d/rc 0
@@ -111,13 +103,11 @@ c1:12345:respawn:/sbin/getty 38400 tty1 linux
 c2:12345:respawn:/sbin/getty 38400 tty2 linux
 c3:12345:respawn:/sbin/getty 38400 tty3 linux
 c4:12345:respawn:/sbin/getty 38400 tty4 linux
-{% endhighlight %}</p>
-</div>
-</div>
-</li>
-<li><code>vim /srv/lxc/vm01/etc/init.d/hwclockfirst.sh</code>
-<div class="CodeRay">
-<div class="code">{% highlight text %}
+{% endhighlight %}
+
+* `vim /srv/lxc/vm01/etc/init.d/hwclockfirst.sh`
+
+{% highlight bash %}
 #!/bin/sh
 ### BEGIN INIT INFO
 # Provides:          hwclockfirst
@@ -128,13 +118,11 @@ c4:12345:respawn:/sbin/getty 38400 tty4 linux
 # Default-Stop:
 ### END INIT INFO
 exit 0
-{% endhighlight %}</p>
-</div>
-</div>
-</li>
-<li><code>vim /srv/lxc/vm01/etc/init.d/hwclock.sh</code>
-<div class="CodeRay">
-<div class="code">{% highlight text %}
+{% endhighlight %}
+
+* `vim /srv/lxc/vm01/etc/init.d/hwclock.sh`
+
+{% highlight bash %}
 #!/bin/sh
 ### BEGIN INIT INFO
 # Provides:          hwclock
@@ -144,11 +132,7 @@ exit 0
 # Default-Stop:      0 6
 ### END INIT INFO
 exit 0
-{% endhighlight %}</p>
-</div>
-</div>
-</li>
-<li><code>>/etc/lxc/vm01/log</code></li>
-<li><code>lxc-start -n vm01 -f /etc/lxc/vm01/conf -o /etc/lxc/vm01/log --logpriority INFO</code></li>
-</ol>
-</div>
+{% endhighlight %}
+
+* `/etc/lxc/vm01/log`
+* `lxc-start -n vm01 -f /etc/lxc/vm01/conf -o /etc/lxc/vm01/log --logpriority INFO`
