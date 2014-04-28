@@ -36,21 +36,21 @@
 
 
     <!-- Pygments css -->
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
 
     <!-- site local styles -->
-    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/site.css">
 
     <!-- Google Publisher Information -->
     <link href="https://plus.google.com/106689595059572911333" rel="publisher" />
 
     <!-- Twitter Card -->
+    {% comment %}
+    {% endcomment %}
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Server/!Horror!">
     <meta name="twitter:description" content="I have a magnet and I don't mind using it!">
 
-    {% comment %}
-    {% endcomment %}
 
     {% comment %}
     <!-- Facebook Open Graph -->
@@ -66,9 +66,9 @@
     <h1 class="page-header"><a href="{{ site.baseurl }}" class="navbar-brand">{{ site.name }}</a> <small>{{ site.tagline }}</small></h1>
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
       <ul class="nav navbar-nav">
-        <li><a class="fa fa-home" href="/">home</a></li>
-        <li><a href="/blog/">blog</a></li>
-        <li><a href="/about/">about</a></li>
+        <li><a class="fa fa-home" href="{{ site.baseurl }}">home</a></li>
+        <li><a href="{{ site.baseurl }}/blog/">blog</a></li>
+        <li><a href="{{ site.baseurl }}/about/">about</a></li>
       </ul>
     </nav>
     </header>
@@ -79,8 +79,8 @@
       <nav class="navbar navbar-default navbar-static-bottom">
         <ul class="nav navbar-nav">
           <li><a  class="fa fa-envelope" href="mailto:martin@marcher.name">martin@marcher.name</a></li>
-          <li><a class="fa fa-github" href="//github.com/serverhorror">github.com/serverhorror</a></li>
           {% comment %}
+          <li><a class="fa fa-github" href="//github.com/serverhorror">github.com/serverhorror</a></li>
           {% endcomment %}
           <li><a class="fa fa-twitter" href="//twitter.com/serverhorror">twitter.com/serverhorror</a></li>
           <li><a class="fa fa-google-plus" href="//plus.google.com/106689595059572911333?rel=author">Google+</a></li>
@@ -89,6 +89,7 @@
         </ul>
       </nav>
     </footer>
+    <p class="well">Generated: {{ site.time }}</p>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
