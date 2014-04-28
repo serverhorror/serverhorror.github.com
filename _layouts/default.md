@@ -43,6 +43,12 @@
 
     <!-- Publisher Information -->
     <link href="https://plus.google.com/106689595059572911333" rel="publisher" />
+
+    <!-- Feeds -->
+    <link rel="alternate" href="/atom.xml" type="application/atom+xml" title="{{ site.name }} ATOM Feed">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ site.baseurl}}/sitemap.xml" />
+
+
   </head>
   <body class="container">
     <header class="container-fluid">
