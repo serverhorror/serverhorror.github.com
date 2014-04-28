@@ -37,7 +37,7 @@
     <!-- Publisher Information -->
     <link href="https://plus.google.com/106689595059572911333" rel="publisher" />
   </head>
-  <body>
+  <body class="container">
     <header class="container-fluid">
     <h1 class="page-header"><a href="{{ site.baseurl }}" class="navbar-brand">{{ site.name }}</a> <small>{{ site.tagline }}</small></h1>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -48,7 +48,7 @@
       </ul>
     </nav>
     </header>
-    <section class="container">
+    <section>
     {{ content }}
     </section>
     <footer class="container-fluid">
