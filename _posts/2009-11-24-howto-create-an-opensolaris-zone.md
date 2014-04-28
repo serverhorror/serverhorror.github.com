@@ -15,7 +15,6 @@ meta:
   _wpas_skip_yup: '1'
 author: 
 ---
-<p>[digg=http://digg.com/linux_unix/HowTo_Create_an_OpenSolaris_Zone_ServerHorror]</p>
 <p>OK this is my first encounter with OpenSolaris Zones, so take all off the following with a grain of salt.</p>
 <p>To make it (hopefully) easy to destroy the zone we create a ZFS Filesystem which will hold all of our zones:</p>
 <p>{% highlight text %}

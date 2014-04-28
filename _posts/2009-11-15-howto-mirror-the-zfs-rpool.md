@@ -15,7 +15,6 @@ meta:
   _wpas_skip_yup: '1'
 author: 
 ---
-<p>[digg=http://digg.com/linux_unix/HowTo_Mirror_the_ZFS_rpool_ServerHorror]</p>
 <p>Let's use the shiny ZFS to have a mirrored pool which we can use to boot in case one of the hard disks fails. This involves several steps :</p>
 <ol>
 <li>Install a second disk in your box :)</li>

@@ -14,7 +14,6 @@ meta:
   _wpas_skip_fb: '1'
 author: 
 ---
-<p>[digg=http://digg.com/linux_unix/Where_are_the_BSD_Licensed_Enterprise_Filesystems]</p>
 <p>A very simple question.</p>
 <blockquote><p>Where is the "Enterprise Filesystem" licensed in a pure BSD way?</p></blockquote>
 <p>I know <a href="http://en.wikipedia.org/wiki/Zfs">ZFS</a> has been implemented by OpenSolaris (well yeah...that's the origin of ZFS) as well as <a href="http://www.freebsd.org">FreeBSD</a> but the <a href="http://en.wikipedia.org/wiki/Common_Development_and_Distribution_License">CDDL</a> is not without critique in the BSD community. The <a href="http://www.openbsd.org">OpenBSD</a> <a href="http://marc.info/?l=openbsd-tech&amp;m=110806948606417&amp;w=2">people consider the CDDL even more restrivtive than GNU/GPL</a>.</p>

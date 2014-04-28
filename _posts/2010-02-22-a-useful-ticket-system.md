@@ -15,9 +15,6 @@ meta:
   _wpas_skip_fb: '1'
 author: 
 ---
-<div>
-<p>[digg=http://digg.com/programming/A_useful_Ticket_System_Server_Horror]</p>
-</div>
 <div>This post has been in my queue since 2009-06-01 (¡wow - quite some time¡), now I finally found some time to further refine the draft - which actually consisted of only 2 items in a bulleted list, not that much.</div>
 <p>So here it goes I'm missing these things in a bugtracker…</p>
 <p><strong>Very very good documentation</strong> - without it everything else is lost. Of course the documentation should be excellent for all the points made below as well.</p>
