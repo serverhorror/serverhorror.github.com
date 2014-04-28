@@ -68,5 +68,5 @@
       ga('send', 'pageview');
     </script>
   </body>
-<!-- vim: set ts=2 sts=2 fenc=utf-8 expandtab: -->
+{% comment %} vim: set ts=2 sts=2 fenc=utf-8 expandtab: {% endcomment %}
 </html>
