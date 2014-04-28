@@ -48,7 +48,9 @@
       </ul>
     </nav>
     </header>
+    <section class="container">
     {{ content }}
+    </section>
     <footer class="container-fluid">
       <nav class="navbar navbar-default navbar-fixed-bottom">
         <ul class="nav navbar-nav">
