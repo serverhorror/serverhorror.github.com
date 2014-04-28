@@ -41,8 +41,26 @@
     <!-- site local styles -->
     <link rel="stylesheet" href="/css/site.css">
 
-    <!-- Publisher Information -->
+    <!-- Google Publisher Information -->
     <link href="https://plus.google.com/106689595059572911333" rel="publisher" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@site_username">
+    <meta name="twitter:title" content="Top 10 Things Ever">
+    <meta name="twitter:description" content="Up than 200 characters.">
+    <meta name="twitter:creator" content="@creator_username">
+    <meta name="twitter:image:src" content="http://placekitten.com/250/250">
+    <meta name="twitter:domain" content="YourDomain.com">
+    <meta name="twitter:app:name:iphone" content="Vine">
+    <meta name="twitter:app:name:ipad" content="Vine">
+    <meta name="twitter:app:name:googleplay" content="Vine">
+    <meta name="twitter:app:url:iphone" content="vine://v/93582sxlkjf">
+    <meta name="twitter:app:url:ipad" content="vine://v/93582sxlkjf">
+    <meta name="twitter:app:url:googleplay" content="http://vine.co/v/93582sxlkjf">
+    <meta name="twitter:app:id:iphone" content="id592447445">
+    <meta name="twitter:app:id:ipad" content="id432984038404">
+    <meta name="twitter:app:id:googleplay" content="co.vine.android">
 
     <!-- Feeds -->
     <link rel="alternate" type="application/atom+xml" title="{{ site.name }} ATOM Feed" href="{{ site.baseurl }}/atom.xml">
