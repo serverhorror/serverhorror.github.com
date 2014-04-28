@@ -4,7 +4,7 @@ layout: default
 <ul class="container-fluid list-unstyled">
   {% for post in site.posts %}
     <li>
-      <date pubdate time="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }} &raquo; <a href="{{ post.url }}">{{ post.title }}</a></date>
+      <time pubdate time="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }} <a class="fa fa-angle-double-right" href="{{ post.url }}">{{ post.title }}</a></time>
     </li>
   {% endfor %}
 </ul>

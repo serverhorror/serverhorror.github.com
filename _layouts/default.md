@@ -28,6 +28,13 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- FontAwesome -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Source Code Pro -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+
+
     <!-- Pygments css -->
     <link rel="stylesheet" href="/css/syntax.css">
 
@@ -42,7 +49,7 @@
     <h1 class="page-header"><a href="{{ site.baseurl }}" class="navbar-brand">{{ site.name }}</a> <small>{{ site.tagline }}</small></h1>
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
       <ul class="nav navbar-nav">
-        <li><a href="/">home</a></li>
+        <li><a class="fa fa-home" href="/">home</a></li>
         <li><a href="/blog/">blog</a></li>
         <li><a href="/about/">about</a></li>
       </ul>
@@ -54,12 +61,14 @@
     <footer class="container-fluid">
       <nav class="navbar navbar-default navbar-static-bottom">
         <ul class="nav navbar-nav">
-          <li><a href="mailto:martin@marcher.name">martin@marcher.name</a></li>
-          {% comment %}<li><a href="//github.com/serverhorror">github.com/serverhorror</a></li>{% endcomment %}
-          <li><a href="//twitter.com/serverhorror">twitter.com/serverhorror</a></li>
-          <li><a href="//plus.google.com/106689595059572911333?rel=author">Google+</a></li>
-          <li><a href="//www.xing.com/go/invite/7047758">Xing</a></li>
-          <li><a href="//de.linkedin.com/in/martinmarcher">LinkedIn</a></li>
+          <li><a  class="fa fa-envelope" href="mailto:martin@marcher.name">martin@marcher.name</a></li>
+          <li><a class="fa fa-github" href="//github.com/serverhorror">github.com/serverhorror</a></li>
+          {% comment %}
+          {% endcomment %}
+          <li><a class="fa fa-twitter" href="//twitter.com/serverhorror">twitter.com/serverhorror</a></li>
+          <li><a class="fa fa-google-plus" href="//plus.google.com/106689595059572911333?rel=author">Google+</a></li>
+          <li><a class="fa fa-xing" href="//www.xing.com/go/invite/7047758">Xing</a></li>
+          <li><a class="fa fa-linkedin-square" href="//de.linkedin.com/in/martinmarcher">LinkedIn</a></li>
         </ul>
       </nav>
     </footer>
