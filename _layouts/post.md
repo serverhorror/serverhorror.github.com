@@ -5,7 +5,11 @@ layout: default
   <h2>{{ page.title }}</h2>
   <time class="meta" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
   {{ content }}
+  {% comment %}
+  {% if page.author %}
   <address rel="author">Author: <a href="//twitter.com/serverhorror">{{ page.author }}</a></address>
+  {% endif %}
+  {% endcomment %}
 </article>
 <ul class="pager">
   <li class="previous"><a href="{{ site.baseurl }}{{ page.previous.url }}" rel="previous">&larr; Previous</a></li>
