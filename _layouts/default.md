@@ -45,8 +45,8 @@
     <link href="https://plus.google.com/106689595059572911333" rel="publisher" />
 
     <!-- Feeds -->
-    <link rel="alternate" href="/atom.xml" type="application/atom+xml" title="{{ site.name }} ATOM Feed">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ site.baseurl}}/sitemap.xml" />
+    <link rel="alternate" type="application/atom+xml" title="{{ site.name }} ATOM Feed" href="{{ site.baseurl }}/atom.xml">
+    <link rel="sitemap" type="application/xml" title="{{ site.name }} Sitemap" href="{{ site.baseurl}}/sitemap.xml" />
 
 
   </head>
