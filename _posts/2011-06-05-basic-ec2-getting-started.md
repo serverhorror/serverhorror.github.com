@@ -83,7 +83,4 @@ author:
 </div>
 </li>
 </ol>
-<hr />
-<p>I'm switching blogs. Just look at <a href="http://serverhorror.eu">http://serverhorror.eu</a> during the time of transition.</p>
-<p><strong>Original Post at: <a href="http://serverhorror.eu/basic-ec2-getting-started">http://serverhorror.eu/basic-ec2-getting-started</a></strong></p>
 </div>

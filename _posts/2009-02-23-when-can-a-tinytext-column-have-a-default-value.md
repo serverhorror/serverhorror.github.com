@@ -38,12 +38,14 @@ mysql> show warnings;
 
 wouldn't have happened with a <a href="http://www.postgresql.org">real database</a>:
 
+{% highlight psql %}
+create TABLE xxxx(
+ id serial,
+ bla text default 'foo'
+);
+-- NOTICE:  CREATE TABLE will create implicit sequence "xxxx_id_seq" for serial column "xxxx.id"
+{% endhighlight %}
 {% highlight text %}
-test=# create TABLE xxxx(
-test(#  id serial,
-test(#  bla text default 'foo'
-test(# );
-NOTICE:  CREATE TABLE will create implicit sequence "xxxx_id_seq" for serial column "xxxx.id"
 CREATE TABLE
 test=# INSERT into xxxx (id) values (1);
 INSERT 0 1

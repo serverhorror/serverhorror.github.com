@@ -90,7 +90,17 @@ author:
 <p>I just implicitely defined that above. Just make a WSGI application, a simple one like the <a href="http://webpy.org/cookbook/mod_wsgi-apache"><code>web.py</code> cookbook sample</a> is enough:</p>
 <div class="CodeRay">
 <div class="code">
-<pre>import web  urls = ( '/.*', 'hello', )  class hello: def GET(self): return "<a class="zem_slink" title="Hello world program" href="http://en.wikipedia.org/wiki/Hello_world_program" rel="wikipedia">Hello, world</a>."  application = web.application(urls, globals()).wsgifunc()</pre>
+{% highlight python %}
+import web
+urls = ( '/.*', 'hello', )
+
+class hello:
+	def GET(self):
+		return
+
+
+application = web.application(urls, globals()).wsgifunc()
+{% endhighlight %}
 </div>
 </div>
 <h3>Application Configuration</h3>

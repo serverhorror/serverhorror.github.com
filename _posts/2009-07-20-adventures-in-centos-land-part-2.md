@@ -62,14 +62,14 @@ tcp        0      0 :::22             :::*       
 
 Much better isn't it? Now let's take care of reboots:
 
-{% highlight text %}
-# chkconfig --level 345 portmap off
-# chkconfig --level 345 cups off
-# chkconfig --level 345 avahi-daemon off
-# chkconfig --level 345 nfslock off
-# chkconfig --level 235 sendmail off
-# chkconfig --level 2345 postfix on
-# chkconfig --level 2345 sshd on
+{% highlight bash %}
+chkconfig --level 345 portmap off
+chkconfig --level 345 cups off
+chkconfig --level 345 avahi-daemon off
+chkconfig --level 345 nfslock off
+chkconfig --level 235 sendmail off
+chkconfig --level 2345 postfix on
+chkconfig --level 2345 sshd on
 {% endhighlight text %}
 
 Just to be on the safe side let's double check that ssh will come up on reboots:

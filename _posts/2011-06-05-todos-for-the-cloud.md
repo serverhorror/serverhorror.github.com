@@ -30,7 +30,4 @@ author:
 <li><em>OPTIONAL</em> migrate to <a href="http://www.freedesktop.org/wiki/Software/systemd">systemd</a></li>
 <li><em>OPTIONAL</em> start playing with scribe</li>
 </ul>
-<hr />
-<p>I'm switching blogs. Just look at <a href="http://serverhorror.eu">http://serverhorror.eu</a> during the time of transition.</p>
-<p><strong>Original Post at: <a href="http://serverhorror.eu/todos-for-the-cloud">http://serverhorror.eu/todos-for-the-cloud</a></strong></p>
 </div>
