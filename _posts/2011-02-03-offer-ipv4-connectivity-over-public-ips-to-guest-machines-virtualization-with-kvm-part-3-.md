@@ -50,7 +50,7 @@ iface br0 inet static
     address 192.0.2.2
     netmask 255.255.255.0
     gateway   192.0.2.1</pre>
-<p>Now for the only file we actually need to update<br />
+<p>Now for the only file we actually need to update
 <strong><tt>/srv/fai/config/file/etc/network/interfaces/demohost</tt></strong>:</p>
 <pre># Loopback device:
 auto lo
@@ -62,7 +62,7 @@ iface eth1 inet static
   address   192.0.2.3
   netmask   255.255.255.0
   gateway   192.0.2.1</pre>
-<p>And the script FAI will use during the installation process<br />
+<p>And the script FAI will use during the installation process
 <strong><tt>/srv/fai/config/scripts/demohost/30-interfaces</tt></strong>:</p>
 <pre>#! /bin/bash
 
@@ -89,7 +89,7 @@ sudo /usr/bin/kvm -k en-us \
     -pidfile /var/run/$NAME.pid \
     -monitor stdio \
     -S</pre>
-<p><strong>Also do not forget to update your host definitions in dhcpd.conf to use the new ethernet address for the fixed-host definition(s)</strong><br />
+<p><strong>Also do not forget to update your host definitions in dhcpd.conf to use the new ethernet address for the fixed-host definition(s)</strong>
 So what happens here?</p>
 <ul>
 <li>Define 2 Network interfaces

@@ -32,7 +32,7 @@ author:
 <p style="padding-left:30px;">You write some plug-in, the plug-in has a log, the plug-in reports to stdout for Nagios messages, the plug-in writes to stderr to tell about errors, there are different levels of verbosity to debug, it has at least 2 different return values</p>
 <p>Why on earth is there:</p>
 <p style="padding-left:30px;" dir="ltr">A stream of plugin results (usually exit codes), a stream of messages on stdout (meta results?), a stream of log messages (meta2 results?), a stream of messages for stderr (is that logging, monitoring, meta3 results, ignorable?)</p>
-<p>On top of that all those kinds of messages are incompatible. <strong>There’s no such thing as structured logging!</strong><br />
+<p>On top of that all those kinds of messages are incompatible. <strong>There’s no such thing as structured logging!</strong>
 Please, please just let me send everything to some remote place where it will be persisted and I have a central view on all my events.</p>
 <p>Add as much <a class="zem_slink" title="Metadata" href="http://en.wikipedia.org/wiki/Metadata" rel="wikipedia">meta data</a> as possible.</p>
 <p style="padding-left:30px;">source host, receiving host (or hosts if there were several in between), reception times, timestamps -- <strong>and please: do add fractions of a second, host names and ip addresses</strong>, a possibility to extend the amount of meta data</p>

@@ -15,10 +15,14 @@ meta:
   _wpas_skip_yup: '1'
 author: 
 ---
-<p>The people form <a href="http://www.icinga.org">Icinga</a> started a poll about the kind of <a href="http://www.icinga.org/2009/06/08/vote-for-your-favorite-database/">database support users want to see</a> with ido-utils (Icinga Data Out).</p>
-<p>I voted quite early in the process and the results were more than promising from my point of view. <a href="http://www.mysql.com">MySQL</a> and <a href="http://www.postgresql.org">PostgreSQL</a> had each about 50% with PostgreSQL having a few percent less than MySQL, after some time (16 days), the results are now quite different.</p>
-<p>PostgreSQL is still on the second place, <a href="http://www.oracle.com">Oracle</a> on the 3rd place with only about half the votes of PostgreSQL. However MySQL clearly seems to be the database of choice most users want with nearly twice as many votes as PostgreSQL.</p>
-<p style="text-align:left;">As of today (2009-06-24) the results look like this:</p>
-<p>[caption id="attachment_151" align="aligncenter" width="474" caption="Icinga Database Poll"]<a href="http://www.icinga.org/2009/06/08/vote-for-your-favorite-database/"><img class="size-full wp-image-151" title="icinga_db_poll" src="http://serverhorror.files.wordpress.com/2009/06/icinga_db_poll.png" alt="Icinga Database Poll" width="474" height="310" /></a>[/caption]</p>
-<p style="text-align:center;">
-<p style="text-align:left;">That was quite a move. I still hope to see PostgreSQL to be supported very soon, personally I consider the feature-set of PostgreSQL to be far superior to that of MySQL</p>
+The people form <a href="http://www.icinga.org">Icinga</a> started a poll about the kind of <a href="http://www.icinga.org/2009/06/08/vote-for-your-favorite-database/">database support users want to see</a> with ido-utils (Icinga Data Out).
+
+I voted quite early in the process and the results were more than promising from my point of view. <a href="http://www.mysql.com">MySQL</a> and <a href="http://www.postgresql.org">PostgreSQL</a> had each about 50% with PostgreSQL having a few percent less than MySQL, after some time (16 days), the results are now quite different.
+
+PostgreSQL is still on the second place, <a href="http://www.oracle.com">Oracle</a> on the 3rd place with only about half the votes of PostgreSQL. However MySQL clearly seems to be the database of choice most users want with nearly twice as many votes as PostgreSQL.
+
+As of today (2009-06-24) the results look like this:
+
+<a href="http://www.icinga.org/2009/06/08/vote-for-your-favorite-database/"><img class="size-full wp-image-151" title="icinga_db_poll" src="http://serverhorror.files.wordpress.com/2009/06/icinga_db_poll.png" alt="Icinga Database Poll" width="474" height="310" /></a>
+
+That was quite a move. I still hope to see PostgreSQL to be supported very soon, personally I consider the feature-set of PostgreSQL to be far superior to that of MySQL

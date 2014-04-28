@@ -25,5 +25,5 @@ author:
 <li>Educating Users</li>
 <li>Action is Better Than Inaction</li>
 </ol>
-<p>[1] Yes I do think hacking is cool, unfortunately <span style="font-family:Arial,Helvetica,sans-serif;"><a href="http://www.ranum.com/"><em>Marcus J. Ranum</em></a> is right about it. The media reports about hacking make it cool personally I freak out a bit about the difference of hacking vs. cracking</span><strong><span style="font-family:Arial,Helvetica,sans-serif;"><br />
+<p>[1] Yes I do think hacking is cool, unfortunately <span style="font-family:Arial,Helvetica,sans-serif;"><a href="http://www.ranum.com/"><em>Marcus J. Ranum</em></a> is right about it. The media reports about hacking make it cool personally I freak out a bit about the difference of hacking vs. cracking</span><strong><span style="font-family:Arial,Helvetica,sans-serif;">
 </span></strong></p>

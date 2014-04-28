@@ -15,10 +15,10 @@ meta:
 author: 
 ---
 <p>So, I just switched to <a href="http://www.opensolaris.org">OpenSolaris</a> on my workstation. In the sense of "<a href="http://en.wikipedia.org/wiki/Eating_one%27s_own_dog_food">Eating one's own dog food</a>" I may have a better argumentation on wether I should like it or not. So far everything seems to work althoug I don't quite have a mirrored ZFS root pool in case one disk dies.</p>
-<p>I also nearly immediately switched to the "<a href="http://pkg.opensolaris.org/dev/en/index.shtml">OpenSolaris Development Release Packaging Repository</a>" - actually that's a lie. I'm switching to it right at this very moment....<br />
-[sourcecode langauage="text"]<br />
-$ pfexec pkg set-publisher -O http://pkg.opensolaris.org/dev opensolaris.org<br />
-$ pfexec pkg image-update<br />
-Creating Plan /<br />
-[/sourcecode]<br />
+<p>I also nearly immediately switched to the "<a href="http://pkg.opensolaris.org/dev/en/index.shtml">OpenSolaris Development Release Packaging Repository</a>" - actually that's a lie. I'm switching to it right at this very moment....
+{% highlight text %}
+$ pfexec pkg set-publisher -O http://pkg.opensolaris.org/dev opensolaris.org
+$ pfexec pkg image-update
+Creating Plan /
+{% endhighlight %}
 Maybe, just maybe I'll stick to it....</p>

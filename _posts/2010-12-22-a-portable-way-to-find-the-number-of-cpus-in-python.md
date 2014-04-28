@@ -14,9 +14,9 @@ meta:
   reddit: a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1320179097";}
 author: 
 ---
-<p>This works in Python to get the number of CPUs in a system:</p>
-<p>[sourcecode language="python"]<br />
-import os<br />
-print os.sysconf('SC_NPROCESSORS_CONF')<br />
-print os.sysconf('SC_NPROCESSORS_ONLN') # if different that the above this should be used<br />
-[/sourcecode]</p>
+This works in Python to get the number of CPUs in a system:
+{% highlight python %}
+import os
+print os.sysconf('SC_NPROCESSORS_CONF')
+print os.sysconf('SC_NPROCESSORS_ONLN') # if different that the above this should be used
+{% endhighlight %}

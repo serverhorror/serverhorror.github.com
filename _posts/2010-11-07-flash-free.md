@@ -20,7 +20,7 @@ meta:
 author: 
 ---
 <p>I have no idea whether this is a good idea or not. But as of this moment I'm Flash Free</p>
-<p>[sourcecode]<br />
-cd /Library/Internet\ Plug-Ins/<br />
-rm -rf Flash\ Player.plugin/ NP-PPC-Dir-Shockwave flashplayer.xpt<br />
-[/sourcecode]</p>
+{% highlight text %}
+cd /Library/Internet\ Plug-Ins/
+rm -rf Flash\ Player.plugin/ NP-PPC-Dir-Shockwave flashplayer.xpt
+{% endhighlight %}</p>

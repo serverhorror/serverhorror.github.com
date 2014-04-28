@@ -1,6 +1,27 @@
+safe: true
+lsi: false
+
 name: Server!/Horror!
+tagline: I have a magnet and I don't mind using it!
+timezone: Europe/Vienna
+encoding: utf-8
+
 markdown: redcarpet
 pygments: true
 baseurl: http://serverhorror.com
+excerpt_separator: ""
+# permalink: /blog/:year/:month/:day/:title.html
+
+
+host: localhost
+port: 4040
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "post"
+      author: "Server!/Horror"
 
 # vim: set ts=2 sts=2 fenc=utf-8 expandtab:

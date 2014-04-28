@@ -41,7 +41,7 @@ author:
 <p>Logins on EC2 only allow public key authentication — and that is a good thing!</p>
 <div class="CodeRay">
 <div class="code">
-<pre># only one time (per host that is authorized for this image) ec2-add-keypair my-keypair cat &lt; ~/.ec2/id_rsa-my-keypair &gt; -----BEGIN RSA PRIVATE KEY----- &gt;... &gt; -----END RSA PRIVATE KEY----- &gt; EOF chmod 0600 ~/.ec2/id_rsa-my-keypair</pre>
+<pre># only one time (per host that is authorized for this image) ec2-add-keypair my-keypair cat < ~/.ec2/id_rsa-my-keypair > -----BEGIN RSA PRIVATE KEY----- >... > -----END RSA PRIVATE KEY----- > EOF chmod 0600 ~/.ec2/id_rsa-my-keypair</pre>
 </div>
 </div>
 </li>

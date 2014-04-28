@@ -5,7 +5,7 @@ categories: []
 tags: []
 status: publish
 type: post
-published: true
+published: false
 meta:
   _wpas_mess: 'Rethinking Storage (again...): http://wp.me/pxxjT-kk'
   reddit: a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1306442938";}
@@ -78,9 +78,9 @@ All of the following requirements must be doable while the "persistence thing" i
   It's not a disaster if I have 10 nodes and 2 fail. It should just tell me
   about it. A perfect thing would be if it would just say something like:
 
-  &gt; OK, I just found out that 2 of my 10 nodes are missing so I'll simply make
-  &gt; sure I have enough copies of the data and tell everyone that now there's
-  &gt; less overall storage available!
+  > OK, I just found out that 2 of my 10 nodes are missing so I'll simply make
+  > sure I have enough copies of the data and tell everyone that now there's
+  > less overall storage available!
 
 * A nice API for applications to use the storage. That means:
   * Authentication, Authorization
@@ -129,7 +129,7 @@ Rather than this:
 
 Do this:
 
-    ["Some error occured in this request", { :request =&gt; request, :input =&gt; input, :client =&gt; ip}]
+    ["Some error occured in this request", { :request => request, :input => input, :client => ip}]
 
 I have yet to find server software that does this in a way where I don't want
 to run away and cry. Please, please anyone who writes daemon software either
@@ -145,9 +145,9 @@ able to ask the daemon (and preferrably the system as a whole) about the
 things that are going on. Sure I can just ICMP ping all the servers, sure I
 can test wether a port accepts TCP connections. And if that goes wrong I know:
 
-&gt; Hey, another one of the 10 servers is down
+> Hey, another one of the 10 servers is down
 
 But what I really want to know is:
 
-&gt; Geeh! It's 3.42AM, do I really have to care about that or can I just get
-&gt; back to sleep and fix that tomorrow?</pre>
+> Geeh! It's 3.42AM, do I really have to care about that or can I just get
+> back to sleep and fix that tomorrow?</pre>

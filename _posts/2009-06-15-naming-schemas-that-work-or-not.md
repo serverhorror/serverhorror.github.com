@@ -96,7 +96,7 @@ author:
 </ul>
 <p>Let's create the hostnames we are going to use:</p>
 <ul>
-<li>sno-scm.in.snakeoil.example - note I'm using .invalid for documentation purposes as per <a href="http://www.faqs.org/rfcs/rfc2606.html">RFC 2606</a>, also I won't repeat the domain in all the other hostnames<a href="http://www.faqs.org/rfcs/rfc2606.html"><br />
+<li>sno-scm.in.snakeoil.example - note I'm using .invalid for documentation purposes as per <a href="http://www.faqs.org/rfcs/rfc2606.html">RFC 2606</a>, also I won't repeat the domain in all the other hostnames<a href="http://www.faqs.org/rfcs/rfc2606.html">
 </a></li>
 <li>sno-devl-mail, sno-devl-mailout, sno-stag-mail, sno-stag-mailout, sno-prod-mail, sno-prod-mailout - I'll also leave out the hostnames for staging and production environments now. I'm pretty sure you are able to construct them yourself</li>
 <li>sno-devl-storage</li>

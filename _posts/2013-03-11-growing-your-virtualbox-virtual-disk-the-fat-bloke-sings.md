@@ -18,7 +18,7 @@ meta:
   _wpas_skip_106560: '1'
 author: 
 ---
-<p>[sourcecode language="bash"]<br />
-VBoxManage modifyhd &lt;uuid&gt;|&lt;filename&gt; [--resize &lt;megabytes&gt;|--resizebyte &lt;bytes&gt;]<br />
-[/sourcecode]</p>
+<p>{% highlight text %}
+VBoxManage modifyhd <uuid>|<filename> [--resize <megabytes>|--resizebyte <bytes>]
+{% endhighlight %}</p>
 <p>via <a href="https://blogs.oracle.com/fatbloke/entry/growing_your_virtualbox_virtual_disk">Growing your VirtualBox Virtual Disk (The Fat Bloke Sings)</a>.</p>

@@ -11,6 +11,8 @@ meta:
   reddit: a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1306079209";}
 author: 
 ---
-<p>This seems to be a great thing. Of course right now only Google has it (more or less, it's still not public).</p>
-<p>Just watch the video and try not to keep your mouth open about the features they were thinking about.</p>
-<p>[youtube=http://www.youtube.com/watch?v=v_UyVmITiYQ&amp;hl=en&amp;fs=1&amp;border=1]</p>
+This seems to be a great thing. Of course right now only Google has it (more or
+less, it's still not public).  Just watch the video and try not to keep your
+mouth open about the features they were thinking about.
+
+<iframe width="560" height="315" src="//www.youtube.com/embed/v_UyVmITiYQ" frameborder="0" allowfullscreen></iframe>

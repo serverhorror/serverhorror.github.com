@@ -24,10 +24,10 @@ author:
 * ido2db will now prints out available database drivers
 * fix ido2db segfault when try to access non existing tables
 * DocBook v5 conversion
-* Fix menu frameset cols width&lt;!--more--&gt;
-[/sourcecode]
+* Fix menu frameset cols width<!--more-->
+{% endhighlight %}
 Here is the ChangeLog for Nagios referenced above:
-[sourcecode language="text"]
+{% highlight text %}
 3.1.1 - 02/??/2009
 ------------------
 * New &quot;important check command&quot; flag for use in service templates, to aid configuration in distributed environments

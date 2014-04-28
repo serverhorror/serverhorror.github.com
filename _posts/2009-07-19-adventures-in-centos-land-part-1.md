@@ -227,9 +227,9 @@ Finished
 Setting up Install Process
 Parsing package install arguments
 Resolving Dependencies
---&gt; Running transaction check
----&gt; Package nagios.i386 0:3.0.6-1.el5.rf set to be updated
---&gt; Finished Dependency Resolution</p>
+--> Running transaction check
+---> Package nagios.i386 0:3.0.6-1.el5.rf set to be updated
+--> Finished Dependency Resolution</p>
 <p>Dependencies Resolved</p>
 <p>=============================================================================
 Package                 Arch       Version          Repository        Size

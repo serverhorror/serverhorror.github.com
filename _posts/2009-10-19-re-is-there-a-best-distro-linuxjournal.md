@@ -15,8 +15,8 @@ author:
 <p><a href="http://www.linuxjournal.com/content/there-best-distro">LinuxJournal is asking for the best Linux Distro</a>, first I thought</p>
 <p>It's actually quite easy to answer (especially to someone who will understand the implications):</p>
 <h2>There is no "best Linux"</h2>
-<p>Just asko what's the best commercial Unix out there. One could<br />
-say: "They all start at the same point" it's a kernel and some<br />
+<p>Just asko what's the best commercial Unix out there. One could
+say: "They all start at the same point" it's a kernel and some
 toolset you can then use and (re)script to your needs.</p>
 <p>The best ist actually the one that meets your requirements best.</p>
 <ul>
