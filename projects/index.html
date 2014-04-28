@@ -1,0 +1,19 @@
+---
+layout: default
+---
+<div class="container">
+  {% for project in site.github_projects %}
+  <div class="github-box-wrap" data-repo="{{ project }}"></div>
+  {% endfor %}
+</div>
+<script src="{{ site.baseurl }}/assets/jquery-github/dist/jquery.github.min.js"></script>
+<script>
+        $("[data-repo]").github({
+          iconStars:  true,
+          iconForks:  false,
+          iconIssues: false
+
+        });
+</script>
+
+{% comment %} vim: set ts=2 sts=2 fenc=utf-8 expandtab: {% endcomment %}

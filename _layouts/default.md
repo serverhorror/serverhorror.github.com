@@ -34,6 +34,10 @@
     <!-- Source Code Pro -->
     <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
 
+    <!-- Github Projects CSS -->
+    {% comment %}
+    {% endcomment %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/jquery-github/assets/base.css">
 
     <!-- Pygments css -->
     <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
@@ -69,6 +73,7 @@
         <li><a class="fa fa-home" href="{{ site.baseurl }}">home</a></li>
         <li><a href="{{ site.baseurl }}/blog/">blog</a></li>
         <li><a href="{{ site.baseurl }}/about/">about</a></li>
+        <li><a class="fa fa-github" href="{{ site.baseurl }}/projects/">projects</a></li>
       </ul>
     </nav>
     </header>
