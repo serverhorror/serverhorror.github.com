@@ -8,7 +8,7 @@ encoding: utf-8
 
 markdown: redcarpet
 pygments: true
-baseurl: http://serverhorror.com
+baseurl: //serverhorror.com
 excerpt_separator: ""
 # permalink: /blog/:year/:month/:day/:title.html
 
