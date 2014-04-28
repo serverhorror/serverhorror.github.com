@@ -40,10 +40,33 @@
 
     </head>
     <body>
-
-          {% include header.html %}
-          {{ content }}
-          {% include footer.html %}
+    <header>
+    <section class="page-header">
+    <h1><a href="{{ site.baseurl }}" class="navbar-brand">{{ site.name }}</a> <small>{{ site.tagline }}</small></h1>
+    </section>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="/">home</a></li>
+            <li><a href="/blog/">blog</a></li>
+            <li><a href="/about/">about</a></li>
+        </ul>
+      </div>
+    </nav>
+    </header>
+    {{ content }}
+    <footer>
+        <nav class="navbar navbar-default navbar-static-bottom">
+          <div class="container-fluid">
+              <ul class="nav navbar-nav">
+                  <li><a href="mailto:martin@marcher.name">martin@marcher.name</a></li>
+                  <li><a href="https://github.com/serverhorror">github.com/serverhorror</a></li>
+                  <li><a href="https://twitter.com/serverhorror">twitter.com/serverhorror</a></li>
+                  <li><a href="//plus.google.com/106689595059572911333?rel=author">Google+</a></li>
+              </ul>
+          </div>
+        </nav>
+    </footer>
 
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
