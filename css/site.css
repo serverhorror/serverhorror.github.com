@@ -1,6 +1,5 @@
-body {
-	padding-top: 70px;
-	padding-bottom: 70px;
+.github-box-wrap * {
+	box-sizing: content-box;
 }
 
 article > time,
