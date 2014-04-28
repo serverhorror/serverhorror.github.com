@@ -42,7 +42,7 @@
     <section class="page-header">
     <h1><a href="{{ site.baseurl }}" class="navbar-brand">{{ site.name }}</a> <small>{{ site.tagline }}</small></h1>
     </section>
-    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
           <li><a href="/">home</a></li>
@@ -54,7 +54,7 @@
     </header>
     {{ content }}
     <footer>
-      <nav class="navbar navbar-default navbar-static-bottom">
+      <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
           <ul class="nav navbar-nav">
             <li><a href="mailto:martin@marcher.name">martin@marcher.name</a></li>
