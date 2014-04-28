@@ -46,22 +46,15 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@serverhorror">
-    <meta name="twitter:title" content="Server!/Horror!">
+    <meta name="twitter:title" content="Server/!Horror!">
     <meta name="twitter:description" content="I have a magnet and I don't mind using it!">
-    <meta name="twitter:creator" content="@serverhorror">
-    <meta name="twitter:image:src" content="http://placekitten.com/250/250">
-    <meta name="twitter:domain" content="YourDomain.com">
-    <meta name="twitter:app:name:iphone" content="Vine">
-    <meta name="twitter:app:name:ipad" content="Vine">
-    <meta name="twitter:app:name:googleplay" content="Vine">
-    <meta name="twitter:app:url:iphone" content="vine://v/93582sxlkjf">
-    <meta name="twitter:app:url:ipad" content="vine://v/93582sxlkjf">
-    <meta name="twitter:app:url:googleplay" content="http://vine.co/v/93582sxlkjf">
-    <meta name="twitter:app:id:iphone" content="id592447445">
-    <meta name="twitter:app:id:ipad" content="id432984038404">
-    <meta name="twitter:app:id:googleplay" content="co.vine.android">
 
+    {% comment %}
+    {% endcomment %}
+
+    {% comment %}
+    <!-- Facebook Open Graph -->
+    {% endcomment %}
     <!-- Feeds -->
     <link rel="alternate" type="application/atom+xml" title="{{ site.name }} ATOM Feed" href="{{ site.baseurl }}/atom.xml">
     <link rel="sitemap" type="application/xml" title="{{ site.name }} Sitemap" href="{{ site.baseurl}}/sitemap.xml" />
