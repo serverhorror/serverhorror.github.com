@@ -18,8 +18,6 @@ port: 4040
 
 github_projects:
   - serverhorror/docker-graphite
-  - serverhorror/python-semver
-  - serverhorror/functiontimer
   
 
 defaults:
