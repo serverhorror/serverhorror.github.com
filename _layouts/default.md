@@ -52,13 +52,26 @@
     {% comment %}
     {% endcomment %}
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Server/!Horror!">
+    <meta name="twitter:site" content="@serverhorror">
+    <meta name="twitter:title" content="Server!/Horror!">
     <meta name="twitter:description" content="I have a magnet and I don't mind using it!">
-
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image:src" content="">
+    <meta name="twitter:domain" content="">
+    <meta name="twitter:app:name:iphone" content="">
+    <meta name="twitter:app:name:ipad" content="">
+    <meta name="twitter:app:name:googleplay" content="">
+    <meta name="twitter:app:url:iphone" content="">
+    <meta name="twitter:app:url:ipad" content="">
+    <meta name="twitter:app:url:googleplay" content="">
+    <meta name="twitter:app:id:iphone" content="">
+    <meta name="twitter:app:id:ipad" content="">
+    <meta name="twitter:app:id:googleplay" content="">
 
     {% comment %}
     <!-- Facebook Open Graph -->
     {% endcomment %}
+
     <!-- Feeds -->
     <link rel="alternate" type="application/atom+xml" title="{{ site.name }} ATOM Feed" href="{{ site.baseurl }}/atom.xml">
     <link rel="sitemap" type="application/xml" title="{{ site.name }} Sitemap" href="{{ site.baseurl}}/sitemap.xml" />
