@@ -55,8 +55,8 @@
     <meta name="twitter:site" content="@serverhorror">
     <meta name="twitter:title" content="Server!/Horror!">
     <meta name="twitter:description" content="I have a magnet and I don't mind using it!">
-    <meta name="twitter:creator" content="">
-    <meta name="twitter:image:src" content="">
+    <meta name="twitter:creator" content="@serverhorror">
+    <meta name="twitter:image:src" content="http://www.gravatar.com/avatar/58f3dd702b0b3beb1274a25326ab2069.png">
     <meta name="twitter:domain" content="">
     <meta name="twitter:app:name:iphone" content="">
     <meta name="twitter:app:name:ipad" content="">
