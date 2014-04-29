@@ -76,7 +76,6 @@
     <link rel="alternate" type="application/atom+xml" title="{{ site.name }} ATOM Feed" href="{{ site.baseurl }}/atom.xml">
     <link rel="sitemap" type="application/xml" title="{{ site.name }} Sitemap" href="{{ site.baseurl}}/sitemap.xml" />
 
-
   </head>
   <body class="container">
     <header class="container-fluid">
