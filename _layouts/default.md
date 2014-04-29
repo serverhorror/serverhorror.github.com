@@ -54,7 +54,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@serverhorror">
     <meta name="twitter:title" content="Server!/Horror!">
-    <meta name="twitter:description" content="I have a magnet and I don't mind using it!">
+    <meta name="twitter:description" content="Testing with another twitter card description!">
     <meta name="twitter:creator" content="@serverhorror">
     <meta name="twitter:image:src" content="http://www.gravatar.com/avatar/58f3dd702b0b3beb1274a25326ab2069.png">
     <meta name="twitter:domain" content="serverhorror.com">
