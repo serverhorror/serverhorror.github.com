@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }}</title>
+    <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/assets/favicon.ico">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script async src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
