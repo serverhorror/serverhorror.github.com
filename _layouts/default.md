@@ -70,16 +70,16 @@
     <h1 class="page-header"><a href="{{ site.baseurl }}" class="navbar-brand">{{ site.name }}</a> <small>{{ site.tagline }}</small></h1>
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
       <ul class="nav navbar-nav">
-        <li><a class="fa fa-home" href="{{ site.baseurl }}">home</a></li>
+        <li><a class="fa fa-home" href="{{ site.baseurl }}/">home</a></li>
         {% comment %}
-        <li><a href="{{ site.baseurl }}/blog/">blog</a></li>
         {% endcomment %}
+        <li><a href="{{ site.baseurl }}/blog/">blog</a></li>
         <li><a href="{{ site.baseurl }}/about/">about</a></li>
         <li><a class="fa fa-github" href="{{ site.baseurl }}/projects/">projects</a></li>
       </ul>
     </nav>
     </header>
-    <section>
+    <section class="container">
     {{ content }}
     </section>
     <footer class="container-fluid">

@@ -16,6 +16,7 @@ excerpt_separator: ""
 host: localhost
 port: 4040
 
+business_contact: hello@marcher.name
 github_projects:
   - serverhorror/docker-graphite
   
