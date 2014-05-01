@@ -1,0 +1,70 @@
+==================================================================
+https://keybase.io/serverhorror
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://serverhorror.com
+  * I am serverhorror (https://keybase.io/serverhorror) on keybase.
+  * I have a public key with fingerprint 3E7B 5A86 662E 1FAA 5E59  4FEC 9BE5 F51F 118C 9E88
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "3e7b5a86662e1faa5e594fec9be5f51f118c9e88",
+            "host": "keybase.io",
+            "key_id": "9be5f51f118c9e88",
+            "uid": "fd21235ead00665249bfd32836e99200",
+            "username": "serverhorror"
+        },
+        "service": {
+            "hostname": "serverhorror.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1398971202,
+    "expire_in": 157680000,
+    "prev": "7d9c8d2c1dacebbedcd7981f89fa4bcd2288666e569a5494803b08b112406c0f",
+    "seqno": 8,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG/MacGPG2 v2.0.22 (Darwin)
+
+owGbwMvMwMQ4++lXecGeeR2Mpw/8SmIITpqdVK2UlJ9SqWRVrZSdCqbSMvPSU4sK
+ijLzSpSslIxTzZNMEy3MzMyMUg3TEhNNU00tTdJSky2TUk3TTA3TDA0tki1TLSyU
+dJQy8otBOoDGJCUWp+pl5gPFgJz4zBSgKBb1pWCJtBQjQyNj09TEFAMDMzNTIxPL
+pLQUYyMLY7NUS0sjAwOQwuLUorzE3FSgaiCrLLUoI7+oKL9IqVYHzM9MTgW5G2Q9
+FlV6yfm5QDMKivJL8pPzc4CyGSUlBVYgzSWVBSDV5alJ8VBz4pMy81KA/gdqABpQ
+nJmfp2RlCFSZXJIJMtjQ2NLC0tzQyMBIRym1oiCzKDU+E6TC1NzMwgAIQNaklgGN
+NE+xTLZIMUo2TElMTk1KSk1JTjG3tDBMs7BMSzRJSk4xMrIABWmqqZlloqmJpYmF
+gXGSgUWSoaGRiYFZskGaEshnhXn5SlYWQGcmpoP8lJmel1hSWpSqVMvVySTDwsDI
+xMDGygSKQgYuTgFYxCrL8/9POD3hpGBYp9kNq0ML3sb7f026sH73erWKzJgJDza7
+PfwzP1H+TIlCTmVBvOIFAd/tRUGit7zF6rcwstYfqW3TN+85e3v3ZK7Nwc++SLJu
+ErW34azUvDNtzkvJqwJ3ErtVgnZODbzF5JEQn2m572VgcY+kflNixWfNBytPzfZV
++WWa9OKO4a23NcfbM+ukv1RH+Twvqivvyz31vbuiky302eqyRIsvVo+3zX0oGb3R
+UrTY+9YekYn6VZZelVHmrCHHVxTV2rTtaHa8LzehZvdlPf/UzXEz1jY6u+zRC2Kp
+cGTZl5shW3aWrdnadg5nn4TNlZqPKiHri47d65B3/5H0Zav+cRn128+3HtouXnpN
+0abgpYPtTln2hf2Pd0opT2MTNFNbHKw450zNaaHN72N+qV6LEghlZ+xmudPz/WNi
+f96lN5M63v2/m7L9ePC8cP+nbuv+SUoFrT+5LDTua2Ww+ppr75TTpBP/ci+Rr5D8
+v+X93ke6njuKnKp/SD5YNGGff2cdk2if3f/QDRYVoTarl+9g0+VMz1hjsOj6tPC4
+u/9sTOvlzOwu7P+7tXV28Dmefv9ZxuuD5kg+fyj5ctmhs38f3A9UenHuyeMTVku8
+HHhOVwsdWxQTEnSIN3blofCz1s9Mr+gvF3Gc/UpSa92Dq5Vm+hzq1aH3mNIu7hR9
+kyZ4P/mQFfv6Wl+BibJ8J9N+XJK7F/3w5nn2KQA=
+=lvQB
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/serverhorror
+
+==================================================================
+
