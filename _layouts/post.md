@@ -1,14 +1,20 @@
 ---
 layout: default
 ---
-<article pubdate="{{ page.date | date_to_xmlschema }}" class="container-fluid">
-  <h2>{{ page.title }}</h2>
-  <time class="meta" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
+<article itemscope itemtype="http://schema.org/Article" pubdate="{{ page.date | date_to_xmlschema }}" class="container-fluid">
+  <h1 itemprop="name">{{ page.title }}</h1>
+  <time itemprop="datePublished" class="meta" content="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
   {{ content }}
-  {% comment %}
-  {% if page.author %}
-  <address rel="author">Author: <a href="//twitter.com/serverhorror">{{ page.author }}</a></address>
+  {% if page.author != nil %}
+  <address rel="author">
+    <a href="//twitter.com/serverhorror">
+      <span  itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">{{ page.author }}</span>
+      </span>
+    </a>
+  </address>
   {% endif %}
+  {% comment %}
   {% endcomment %}
 </article>
 <ul class="pager">
