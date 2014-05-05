@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<article itemscope itemtype="http://schema.org/Article" pubdate="{{ page.date | date_to_xmlschema }}" class="container-fluid">
+<article itemscope itemtype="http://schema.org/Article" wordCount="{{ page.content | number_of_words }}" pubdate="{{ page.date | date_to_xmlschema }}" class="container-fluid">
   <h1 itemprop="name">{{ page.title }}</h1>
   <time itemprop="datePublished" class="meta" content="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
   {{ content }}
