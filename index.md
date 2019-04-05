@@ -8,4 +8,5 @@ layout: default
     </li>
   {% endfor %}
 </ul>
+
 <!-- vim: set ts=2 sts=2 fenc=utf-8 expandtab: -->
